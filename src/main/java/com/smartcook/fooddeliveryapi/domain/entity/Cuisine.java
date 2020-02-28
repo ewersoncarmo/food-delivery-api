@@ -1,4 +1,4 @@
-package com.smartcook.fooddeliveryapi.domain.model;
+package com.smartcook.fooddeliveryapi.domain.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,14 +13,13 @@ import lombok.Setter;
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Permission {
+public class Cuisine {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@EqualsAndHashCode.Include
 	private Long id;
 	
+	@EqualsAndHashCode.Include
 	private String name;
-
-	private String description;
+	
 }

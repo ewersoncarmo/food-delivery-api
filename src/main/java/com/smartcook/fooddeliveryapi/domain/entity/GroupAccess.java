@@ -1,13 +1,15 @@
-package com.smartcook.fooddeliveryapi.domain.model;
+package com.smartcook.fooddeliveryapi.domain.entity;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -17,7 +19,7 @@ import lombok.Setter;
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Restaurant {
+public class GroupAccess {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +28,9 @@ public class Restaurant {
 	
 	private String name;
 	
-	private BigDecimal freightRate;
-	
-	@ManyToOne
-	@JoinColumn(name = "cuisine_id")
-	private Cuisine cuisine;
+	@ManyToMany
+	@JoinTable(name = "group_access_permission",
+			   joinColumns = @JoinColumn(name = "group_access_id"),
+			   inverseJoinColumns = @JoinColumn(name = "permission_id"))
+	private List<Permission> permissions = new ArrayList<>();
 }

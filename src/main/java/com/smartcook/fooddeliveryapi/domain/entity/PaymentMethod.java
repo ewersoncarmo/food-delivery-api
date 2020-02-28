@@ -1,4 +1,4 @@
-package com.smartcook.fooddeliveryapi.domain.model;
+package com.smartcook.fooddeliveryapi.domain.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

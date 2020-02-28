@@ -1,0 +1,96 @@
+package com.smartcook.fooddeliveryapi.controller;
+
+import java.net.URI;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.smartcook.fooddeliveryapi.domain.assembler.CuisineAssembler;
+import com.smartcook.fooddeliveryapi.domain.entity.Cuisine;
+import com.smartcook.fooddeliveryapi.domain.model.request.CuisineModelRequest;
+import com.smartcook.fooddeliveryapi.domain.model.response.CuisineModelResponse;
+import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
+import com.smartcook.fooddeliveryapi.service.CuisineService;
+
+@RestController
+@RequestMapping("/api/v1/cuisines")
+public class CuisineController {
+
+	@Autowired
+	private CuisineService cuisineService;
+	
+	@Autowired
+	private CuisineAssembler cuisineAssembler;
+	
+	@PostMapping
+	public ResponseEntity<ModelResponse<CuisineModelResponse>> create(@Valid @RequestBody CuisineModelRequest cuisineModelRequest) {
+		Cuisine cuisine = cuisineAssembler.toEntity(cuisineModelRequest);
+		
+		cuisineService.create(cuisine);
+		
+		CuisineModelResponse cuisineModelResponse = cuisineAssembler.toModel(cuisine);
+		
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(cuisineModelResponse.getId())
+				.toUri();
+		
+		return ResponseEntity.created(uri)
+				.body(ModelResponse.withData(cuisineModelResponse));
+	}
+	
+	@GetMapping
+	public ResponseEntity<ModelResponse<List<CuisineModelResponse>>> findAll() {
+		List<Cuisine> cuisines = cuisineService.findAll();
+
+		List<CuisineModelResponse> cuisineModelResponse = cuisineAssembler.toCollectionModel(cuisines);
+		
+		return ResponseEntity.ok()
+				.body(ModelResponse.withData(cuisineModelResponse));
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<ModelResponse<CuisineModelResponse>> findById(@PathVariable("id") Long id) {
+		Cuisine cuisine = cuisineService.findById(id);
+
+		CuisineModelResponse cuisineModelResponse = cuisineAssembler.toModel(cuisine);
+		
+		return ResponseEntity.ok()
+				.body(ModelResponse.withData(cuisineModelResponse));
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<ModelResponse<CuisineModelResponse>> update(@Valid @RequestBody CuisineModelRequest cuisineModelRequest,
+			@PathVariable("id") Long id) {
+		Cuisine cuisine = cuisineService.findById(id);
+		
+		cuisineAssembler.copyToEntity(cuisineModelRequest, cuisine);
+		
+		cuisineService.update(cuisineModelRequest, cuisine);
+		
+		CuisineModelResponse cuisineModelResponse = cuisineAssembler.toModel(cuisine);
+		
+		return ResponseEntity.ok()
+				.body(ModelResponse.withData(cuisineModelResponse));
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
+		cuisineService.delete(id);
+		
+		return ResponseEntity.noContent()
+				.build();
+	}
+}
