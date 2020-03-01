@@ -78,7 +78,7 @@ public class CuisineController {
 		
 		cuisineAssembler.copyToEntity(cuisineModelRequest, cuisine);
 		
-		cuisineService.update(cuisineModelRequest, cuisine);
+		cuisineService.update(cuisine);
 		
 		CuisineModelResponse cuisineModelResponse = cuisineAssembler.toModel(cuisine);
 		

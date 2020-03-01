@@ -23,7 +23,7 @@ public class MethodArgumentNotValidExceptionHandler extends AbstractExceptionHan
 					return ErrorDetailModelResponse
 						.builder()
 							.field(fieldError.getField())
-							.message(fieldError.getDefaultMessage())
+							.message(String.format("Field %s %s", fieldError.getField(), fieldError.getDefaultMessage()))
 						.build();
 				})
 				.collect(Collectors.toList());

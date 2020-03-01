@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.smartcook.fooddeliveryapi.domain.entity.Cuisine;
-import com.smartcook.fooddeliveryapi.domain.model.request.CuisineModelRequest;
 import com.smartcook.fooddeliveryapi.persistence.CuisineRepository;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
 
@@ -17,7 +16,11 @@ public class CuisineService {
 	private CuisineRepository cuisineRepository;
 	
 	public Cuisine create(Cuisine cuisine) {
-		validateDuplicatedName(cuisine.getName());
+		// M-2=Cuisine with Name {0} already exists.
+		cuisineRepository.findByName(cuisine.getName())
+			.ifPresent(c -> {
+				throw new ServiceException("M-2", cuisine.getName()); 
+				});
 		
 		return cuisineRepository.save(cuisine);
 	}
@@ -31,10 +34,12 @@ public class CuisineService {
 		return cuisineRepository.findById(id).orElseThrow(() -> new ServiceException("M-1", id));
 	}
 
-	public Cuisine update(CuisineModelRequest cuisineModelRequest, Cuisine cuisine) {
-		if (!cuisine.getName().equals(cuisineModelRequest.getName())) {
-			validateDuplicatedName(cuisineModelRequest.getName());
-		}
+	public Cuisine update(Cuisine cuisine) {
+		// M-2=Cuisine with Name {0} already exists.
+		cuisineRepository.findByDuplicatedName(cuisine.getName(), cuisine.getId())
+			.ifPresent(c -> {
+				throw new ServiceException("M-2", cuisine.getName()); 
+				});
 		
 		return cuisineRepository.save(cuisine);
 	}
@@ -42,14 +47,9 @@ public class CuisineService {
 	public void delete(Long id) {
 		Cuisine cuisine = findById(id);
 		
+		// TODO check if cuisine has restaurants
+		
 		cuisineRepository.delete(cuisine);
 	}
 
-	private void validateDuplicatedName(String name) {
-		// M-2=Cuisine with Name {0} already exists.
-		cuisineRepository.findByName(name)
-			.ifPresent(c -> {
-				throw new ServiceException("M-2", c.getName()); 
-				});
-	}
 }
