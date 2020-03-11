@@ -15,6 +15,9 @@ public class CuisineService {
 	@Autowired
 	private CuisineRepository cuisineRepository;
 	
+	@Autowired
+	private RestaurantService restaurantService;
+	
 	public Cuisine create(Cuisine cuisine) {
 		// M-2=Cuisine with Name {0} already exists.
 		cuisineRepository.findByName(cuisine.getName())
@@ -47,7 +50,10 @@ public class CuisineService {
 	public void delete(Long id) {
 		Cuisine cuisine = findById(id);
 		
-		// TODO check if cuisine has restaurants
+		// M-10=Cuisine has restaurants. It can not be removed.
+		if (restaurantService.findByCuisine_Id(id).size() > 0) {
+			throw new ServiceException("M-10");
+		}
 		
 		cuisineRepository.delete(cuisine);
 	}

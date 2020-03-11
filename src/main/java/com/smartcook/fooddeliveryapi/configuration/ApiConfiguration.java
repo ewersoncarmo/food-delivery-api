@@ -11,4 +11,5 @@ public class ApiConfiguration {
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
+	
 }

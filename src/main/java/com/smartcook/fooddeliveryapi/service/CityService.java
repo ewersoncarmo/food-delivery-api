@@ -21,10 +21,10 @@ public class CityService {
 	public City create(City city) {
 		city.setState(stateService.findById(city.getState().getId()));
 		
-		// M-6=City with Name {0} and State {1} already exists.
+		// M-8=City with Name {0} and State {1} already exists.
 		cityRepository.findByName(city.getName(), city.getState().getId())
 			.ifPresent(c -> {
-				throw new ServiceException("M-6", city.getName(), city.getState().getName()); 
+				throw new ServiceException("M-8", city.getName(), city.getState().getName()); 
 				});
 		
 		
@@ -36,17 +36,21 @@ public class CityService {
 	}
 
 	public City findById(Long id) {
-		// M-5=No City with Id {0} was found.
-		return cityRepository.findById(id).orElseThrow(() -> new ServiceException("M-5", id));
+		// M-7=No City with Id {0} was found.
+		return cityRepository.findById(id).orElseThrow(() -> new ServiceException("M-7", id));
+	}
+	
+	public List<City> findByState_Id(Long stateId) {
+		return cityRepository.findByState_Id(stateId);
 	}
 
 	public City update(City city) {
 		city.setState(stateService.findById(city.getState().getId()));
 		
-		// M-6=City with Name {0} and State {1} already exists.
+		// M-8=City with Name {0} and State {1} already exists.
 		cityRepository.findByDuplicatedName(city.getName(), city.getState().getId(), city.getId())
 			.ifPresent(c -> {
-				throw new ServiceException("M-6", city.getName(), city.getState().getName()); 
+				throw new ServiceException("M-8", city.getName(), city.getState().getName()); 
 				});
 		
 		return cityRepository.save(city);

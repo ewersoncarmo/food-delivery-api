@@ -21,5 +21,4 @@ public class Cuisine {
 	
 	@EqualsAndHashCode.Include
 	private String name;
-	
 }

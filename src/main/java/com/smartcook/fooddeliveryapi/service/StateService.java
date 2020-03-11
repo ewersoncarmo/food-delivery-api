@@ -15,11 +15,14 @@ public class StateService {
 	@Autowired
 	private StateRepository stateRepository;
 	
+	@Autowired
+	private CityService cityService;
+	
 	public State create(State state) {
-		// M-4=State with Name {0} already exists.
+		// M-5=State with Name {0} already exists.
 		stateRepository.findByName(state.getName())
 			.ifPresent(s -> {
-				throw new ServiceException("M-4", state.getName()); 
+				throw new ServiceException("M-5", state.getName()); 
 				});
 		
 		return stateRepository.save(state);
@@ -30,15 +33,15 @@ public class StateService {
 	}
 
 	public State findById(Long id) {
-		// M-3=No State with Id {0} was found.
-		return stateRepository.findById(id).orElseThrow(() -> new ServiceException("M-3", id));
+		// M-4=No State with Id {0} was found.
+		return stateRepository.findById(id).orElseThrow(() -> new ServiceException("M-4", id));
 	}
 
 	public State update(State state) {
-		// M-4=State with Name {0} already exists.
+		// M-5=State with Name {0} already exists.
 		stateRepository.findByDuplicatedName(state.getName(), state.getId())
 			.ifPresent(s -> {
-				throw new ServiceException("M-4", state.getName()); 
+				throw new ServiceException("M-5", state.getName()); 
 				});
 		
 		return stateRepository.save(state);
@@ -47,9 +50,9 @@ public class StateService {
 	public void delete(Long id) {
 		State state = findById(id);
 		
-		// M-7=State has cities. It can not be removed.
-		if (state.getCities().size() > 0) {
-			throw new ServiceException("M-7");
+		// M-6=State has cities. It can not be removed.
+		if (cityService.findByState_Id(id).size() > 0) {
+			throw new ServiceException("M-6");
 		}
 		
 		stateRepository.delete(state);

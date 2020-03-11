@@ -1,4 +1,4 @@
-package com.smartcook.fooddeliveryapi;
+package com.smartcook.fooddeliveryapi.applicationcontexttest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,5 +9,5 @@ class FoodDeliveryApiApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
+	
 }

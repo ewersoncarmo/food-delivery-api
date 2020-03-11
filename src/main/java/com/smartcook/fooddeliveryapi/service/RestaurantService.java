@@ -25,10 +25,10 @@ public class RestaurantService {
 		restaurant.setCuisine(cuisineService.findById(restaurant.getCuisine().getId()));
 		restaurant.getAddress().setCity(cityService.findById(restaurant.getAddress().getCity().getId()));
 		
-		// M-9=Restaurant with Name {0} and City {1} already exists.
+		// M-10=Restaurant with Name {0} and City {1} already exists.
 		restaurantRepository.findByName(restaurant.getName(), restaurant.getAddress().getCity().getId())
 			.ifPresent(r -> {
-				throw new ServiceException("M-9", restaurant.getName(), restaurant.getAddress().getCity().getName()); 
+				throw new ServiceException("M-10", restaurant.getName(), restaurant.getAddress().getCity().getName()); 
 				});
 		
 		return restaurantRepository.save(restaurant);
@@ -39,18 +39,22 @@ public class RestaurantService {
 	}
 
 	public Restaurant findById(Long id) {
-		// M-8=No Restaurant with Id {0} was found.
-		return restaurantRepository.findById(id).orElseThrow(() -> new ServiceException("M-8", id));
+		// M-9=No Restaurant with Id {0} was found.
+		return restaurantRepository.findById(id).orElseThrow(() -> new ServiceException("M-9", id));
+	}
+	
+	public List<Restaurant> findByCuisine_Id(Long cuisineId) {
+		return restaurantRepository.findByCuisine_Id(cuisineId);
 	}
 
 	public Restaurant update(Restaurant restaurant) {
 		restaurant.setCuisine(cuisineService.findById(restaurant.getCuisine().getId()));
 		restaurant.getAddress().setCity(cityService.findById(restaurant.getAddress().getCity().getId()));
 		
-		// M-9=Restaurant with Name {0} and City {1} already exists.
+		// M-10=Restaurant with Name {0} and City {1} already exists.
 		restaurantRepository.findByDuplicatedName(restaurant.getName(), restaurant.getAddress().getCity().getId(), restaurant.getId())
 			.ifPresent(r -> {
-				throw new ServiceException("M-9", restaurant.getName(), restaurant.getAddress().getCity().getName()); 
+				throw new ServiceException("M-10", restaurant.getName(), restaurant.getAddress().getCity().getName()); 
 				});
 		
 		return restaurantRepository.save(restaurant);

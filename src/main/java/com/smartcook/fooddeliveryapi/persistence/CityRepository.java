@@ -1,5 +1,6 @@
 package com.smartcook.fooddeliveryapi.persistence;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,4 +25,6 @@ public interface CityRepository extends JpaRepository<City, Long> {
 		 + "       c.state.id  = :stateId and "
 		 + "       c.id       != :id          ")
 	Optional<City> findByDuplicatedName(@Param("name") String name, @Param("stateId") Long stateId, @Param("id") Long id);
+	
+	List<City> findByState_Id(Long stateId);
 }
