@@ -9,7 +9,13 @@ import static org.hamcrest.Matchers.notNullValue;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -17,8 +23,14 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
+@SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
+@AutoConfigureTestDatabase
+@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public abstract class AbstractRestAssuredIntegrationTest extends AbstractIntegrationTest {
 
+	@LocalServerPort
+	private int port;
+	
 	@BeforeEach
 	public void setUp() {
 		RestAssured.port = port;

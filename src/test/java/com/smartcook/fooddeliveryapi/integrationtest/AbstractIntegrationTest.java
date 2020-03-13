@@ -4,25 +4,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.util.ResourceUtils;
 import org.springframework.util.StreamUtils;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@TestPropertySource("/application-test.properties")
-@AutoConfigureTestDatabase
-@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
+@TestPropertySource(locations = "/application-test.properties")
+@ActiveProfiles("test")
 public abstract class AbstractIntegrationTest {
 
-	@LocalServerPort
-	protected int port;
-	
 	protected String getContentFromResource(String resourceName) {
 		try {
 			InputStream inputStream = ResourceUtils.class.getResourceAsStream(resourceName);
