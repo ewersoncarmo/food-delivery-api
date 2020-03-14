@@ -1,0 +1,17 @@
+{
+	"name": "Habanero",
+	"freightRate": 10,
+	"cuisine": {
+		"id": 1
+	},
+	"address": {
+		"zipCode": "87005002",
+		"street": "Street",
+		"number": "159",
+		"complement": "Complement",
+		"neighborhood": "Neighborhood",
+		"city": {
+			"id": 1
+		}
+	}
+}

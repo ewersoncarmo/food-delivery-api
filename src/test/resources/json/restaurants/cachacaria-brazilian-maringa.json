@@ -1,0 +1,17 @@
+{
+	"name": "Cachaçaria",
+	"freightRate": 20,
+	"cuisine": {
+		"id": 1
+	},
+	"address": {
+		"zipCode": "84265400",
+		"street": "New Street",
+		"number": "200",
+		"complement": "New Complement",
+		"neighborhood": "New Neighborhood",
+		"city": {
+			"id": 1
+		}
+	}
+}

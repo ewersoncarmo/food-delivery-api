@@ -8,7 +8,6 @@ import static org.hamcrest.Matchers.hasSize;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
@@ -16,18 +15,11 @@ import io.restassured.response.Response;
 
 class CityIT extends AbstractRestAssuredIntegrationTest {
 	
-	private static StateIT stateIT;
-	
 	@Override
 	protected String getBasePath() {
 		return "/api/v1/cities";
 	}
 
-	@BeforeAll
-	public static void before() {
-		stateIT = new StateIT();
-	}
-	
 	@Test
 	public void shouldSucceed_WhenCreateAValidCity() {
 		createAValidCity()
@@ -43,7 +35,7 @@ class CityIT extends AbstractRestAssuredIntegrationTest {
 	
 	@Test
 	public void shouldFailOnCreate_WhenUnexistsAState() {
-		Response response = postRequest("/json/cities/maringa-city-request.json");
+		Response response = postRequest("/json/cities/maringa-parana.json");
 		assertServiceException(response, "M-4");
 	}
 	
@@ -51,7 +43,7 @@ class CityIT extends AbstractRestAssuredIntegrationTest {
 	public void shouldFailOnCreate_WhenAlreadyExistsACityWithTheSameName() {
 		createAValidCity();
 		
-		Response response = postRequest("/json/cities/maringa-city-request.json");
+		Response response = postRequest("/json/cities/maringa-parana.json");
 		assertServiceException(response, "M-8");
 	}
 
@@ -65,7 +57,10 @@ class CityIT extends AbstractRestAssuredIntegrationTest {
 				.root("data")
 					.body("", hasSize(1))
 					.body("[0].id", greaterThan(0))
-					.body("[0].name", equalTo("Maringá"));
+					.body("[0].name", equalTo("Maringá"))
+					.body("[0].state", notNullValue())
+					.body("[0].state.id", greaterThan(0))
+					.body("[0].state.name", equalTo("Paraná"));
 	}
 	
 	@Test
@@ -80,7 +75,10 @@ class CityIT extends AbstractRestAssuredIntegrationTest {
 				.statusCode(HttpStatus.OK.value())
 				.root("data")
 					.body("id", equalTo(1))
-					.body("name", equalTo("Maringá"));
+					.body("name", equalTo("Maringá"))
+					.body("state", notNullValue())
+					.body("state.id", greaterThan(0))
+					.body("state.name", equalTo("Paraná"));
 	}
 	
 	@Test
@@ -99,12 +97,15 @@ class CityIT extends AbstractRestAssuredIntegrationTest {
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
 		
-		putRequest("/json/cities/curitiba-city-request.json", pathParams, "/{id}")
+		putRequest("/json/cities/curitiba-parana.json", pathParams, "/{id}")
 			.then()
 				.statusCode(HttpStatus.OK.value())
 				.root("data")
 					.body("id", equalTo(1))
-					.body("name", equalTo("Curitiba"));
+					.body("name", equalTo("Curitiba"))
+					.body("state", notNullValue())
+					.body("state.id", greaterThan(0))
+					.body("state.name", equalTo("Paraná"));
 	}
 	
 	@Test
@@ -112,7 +113,7 @@ class CityIT extends AbstractRestAssuredIntegrationTest {
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
 		
-		Response response = putRequest("/json/cities/presidente-venceslau-city-request.json", pathParams, "/{id}");
+		Response response = putRequest("/json/cities/presidente-venceslau-sao-paulo.json", pathParams, "/{id}");
 		assertServiceException(response, "M-7");
 	}
 	
@@ -123,7 +124,7 @@ class CityIT extends AbstractRestAssuredIntegrationTest {
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
 		
-		Response response = putRequest("/json/cities/presidente-venceslau-city-request.json", pathParams, "/{id}");
+		Response response = putRequest("/json/cities/presidente-venceslau-sao-paulo.json", pathParams, "/{id}");
 		assertServiceException(response, "M-4");
 	}
 	
@@ -131,12 +132,12 @@ class CityIT extends AbstractRestAssuredIntegrationTest {
 	public void shouldFailOnUpdate_WhenAlreadyExistsACityWithTheSameName() {
 		createAValidCity();
 		
-		postRequest("/json/cities/curitiba-city-request.json");
+		postRequest("/json/cities/curitiba-parana.json");
 		
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 2);
 		
-		Response response = putRequest("/json/cities/maringa-city-request.json", pathParams, "/{id}");
+		Response response = putRequest("/json/cities/maringa-parana.json", pathParams, "/{id}");
 		assertServiceException(response, "M-8");
 	}
 	
@@ -160,12 +161,21 @@ class CityIT extends AbstractRestAssuredIntegrationTest {
 		Response response = deleteRequest(pathParams, "/{id}");
 		assertServiceException(response, "M-7");
 	}
-	
-	// TODO - shouldFail_WhenDeleteACityThatHasRestaurants
-	
-	private Response createAValidCity() {
-		stateIT.createAValidState();
+
+	@Test
+	public void shouldFail_WhenDeleteACityThatHasRestaurants() {
+		new RestaurantIT().createAValidRestaurant();
 		
-		return postRequest("/json/cities/maringa-city-request.json");
+		Map<String, Object> pathParams = new HashMap<>();
+		pathParams.put("id", 1);
+		
+		Response response = deleteRequest(pathParams, "/{id}");
+		assertServiceException(response, "M-9");
+	}
+	
+	public Response createAValidCity() {
+		new StateIT().createAValidState();
+		
+		return postRequest("/json/cities/maringa-parana.json");
 	}
 }

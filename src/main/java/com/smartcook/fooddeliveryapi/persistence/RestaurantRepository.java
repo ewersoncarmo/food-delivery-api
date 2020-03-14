@@ -27,4 +27,9 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 	Optional<Restaurant> findByDuplicatedName(@Param("name") String name, @Param("cityId") Long cityId, @Param("id") Long id);
 	
 	List<Restaurant> findByCuisine_Id(Long cuisineId);
+
+	@Query("select r                           "
+		 + "from   Restaurant r                "
+		 + "where  r.address.city.id = :cityId ")
+	List<Restaurant> findByCity_Id(@Param("cityId") Long cityId);
 }

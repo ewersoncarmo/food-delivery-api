@@ -6,16 +6,22 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.notNullValue;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import org.springframework.util.ResourceUtils;
+import org.springframework.util.StreamUtils;
+
+import com.smartcook.fooddeliveryapi.util.AbstractConfigurationTest;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -24,9 +30,8 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
-@AutoConfigureTestDatabase
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
-public abstract class AbstractRestAssuredIntegrationTest extends AbstractIntegrationTest {
+public abstract class AbstractRestAssuredIntegrationTest extends AbstractConfigurationTest {
 
 	@LocalServerPort
 	private int port;
@@ -109,5 +114,14 @@ public abstract class AbstractRestAssuredIntegrationTest extends AbstractIntegra
 				.addHeader("Accept", ContentType.JSON.toString())
 				.setBody(getContentFromResource(body))
 				.build();
+	}
+	
+	private String getContentFromResource(String resourceName) {
+		try {
+			InputStream inputStream = ResourceUtils.class.getResourceAsStream(resourceName);
+			return StreamUtils.copyToString(inputStream, Charset.forName("UTF-8"));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

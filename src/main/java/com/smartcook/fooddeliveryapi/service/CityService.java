@@ -18,6 +18,9 @@ public class CityService {
 	@Autowired
 	private StateService stateService;
 	
+	@Autowired
+	private RestaurantService restaurantService;
+	
 	public City create(City city) {
 		city.setState(stateService.findById(city.getState().getId()));
 		
@@ -59,7 +62,10 @@ public class CityService {
 	public void delete(Long id) {
 		City city = findById(id);
 		
-		// TODO check city relationships
+		// M-9=City has restaurants. It can not be removed.
+		if (restaurantService.findByCity_Id(id).size() > 0) {
+			throw new ServiceException("M-9");
+		}
 		
 		cityRepository.delete(city);
 	}

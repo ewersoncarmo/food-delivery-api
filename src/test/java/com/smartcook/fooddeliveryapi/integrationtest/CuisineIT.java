@@ -21,7 +21,7 @@ class CuisineIT extends AbstractRestAssuredIntegrationTest {
 	
 	@Test
 	public void shouldSucceed_WhenCreateAValidCuisine() {
-		postRequest("/json/cuisines/brazilian-cuisine-request.json")
+		createAValidCuisine()
 			.then()
 				.statusCode(HttpStatus.CREATED.value())
 				.root("data")
@@ -31,16 +31,16 @@ class CuisineIT extends AbstractRestAssuredIntegrationTest {
 	
 	@Test
 	public void shouldFailOnCreate_WhenAlreadyExistsACuisineWithTheSameName() {
-		postRequest("/json/cuisines/brazilian-cuisine-request.json");
+		postRequest("/json/cuisines/brazilian.json");
 		
-		Response response = postRequest("/json/cuisines/brazilian-cuisine-request.json");
+		Response response = postRequest("/json/cuisines/brazilian.json");
 		assertServiceException(response, "M-2");
 	}
 	
 	@Test
 	public void shouldSucceed_WhenFindAllCuisines() {
-		postRequest("/json/cuisines/brazilian-cuisine-request.json");
-		postRequest("/json/cuisines/english-cuisine-request.json");
+		postRequest("/json/cuisines/brazilian.json");
+		postRequest("/json/cuisines/italian.json");
 		
 		getRequest()
 			.then()
@@ -50,12 +50,12 @@ class CuisineIT extends AbstractRestAssuredIntegrationTest {
 					.body("[0].id", greaterThan(0))
 					.body("[0].name", equalTo("Brazilian"))
 					.body("[1].id", greaterThan(0))
-					.body("[1].name", equalTo("English"));
+					.body("[1].name", equalTo("Italian"));
 	}
 	
 	@Test
 	public void shouldSucceed_WhenFindAnExistingCuisine() {
-		postRequest("/json/cuisines/brazilian-cuisine-request.json");
+		postRequest("/json/cuisines/brazilian.json");
 
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
@@ -79,17 +79,17 @@ class CuisineIT extends AbstractRestAssuredIntegrationTest {
 
 	@Test
 	public void shouldSucceed_WhenUpdateAnExistingCuisine() {
-		postRequest("/json/cuisines/brazilian-cuisine-request.json");
+		postRequest("/json/cuisines/brazilian.json");
 		
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
 		
-		putRequest("/json/cuisines/english-cuisine-request.json", pathParams, "/{id}")
+		putRequest("/json/cuisines/italian.json", pathParams, "/{id}")
 			.then()
 				.statusCode(HttpStatus.OK.value())
 				.root("data")
 					.body("id", equalTo(1))
-					.body("name", equalTo("English"));
+					.body("name", equalTo("Italian"));
 	}
 	
 	@Test
@@ -97,25 +97,25 @@ class CuisineIT extends AbstractRestAssuredIntegrationTest {
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
 		
-		Response response = putRequest("/json/cuisines/english-cuisine-request.json", pathParams, "/{id}");
+		Response response = putRequest("/json/cuisines/italian.json", pathParams, "/{id}");
 		assertServiceException(response, "M-1");
 	}
 	
 	@Test
 	public void shouldFailOnUpdate_WhenAlreadyExistsACuisineWithTheSameName() {
-		postRequest("/json/cuisines/brazilian-cuisine-request.json");
-		postRequest("/json/cuisines/english-cuisine-request.json");
+		postRequest("/json/cuisines/brazilian.json");
+		postRequest("/json/cuisines/italian.json");
 		
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 2);
 		
-		Response response = putRequest("/json/cuisines/brazilian-cuisine-request.json", pathParams, "/{id}");
+		Response response = putRequest("/json/cuisines/brazilian.json", pathParams, "/{id}");
 		assertServiceException(response, "M-2");
 	}
 	
 	@Test
 	public void shouldSucceed_WhenDeleteAnExistingCuisine() {
-		postRequest("/json/cuisines/brazilian-cuisine-request.json");
+		postRequest("/json/cuisines/brazilian.json");
 		
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
@@ -133,7 +133,19 @@ class CuisineIT extends AbstractRestAssuredIntegrationTest {
 		Response response = deleteRequest(pathParams, "/{id}");
 		assertServiceException(response, "M-1");
 	}
-	
-	// TODO - shouldFail_WhenDeleteACuisineThatHasRestaurants
-	
+
+	@Test
+	public void shouldFail_WhenDeleteACuisineThatHasRestaurants() {
+		new RestaurantIT().createAValidRestaurant();
+		
+		Map<String, Object> pathParams = new HashMap<>();
+		pathParams.put("id", 1);
+		
+		Response response = deleteRequest(pathParams, "/{id}");
+		assertServiceException(response, "M-3");
+	}
+
+	public Response createAValidCuisine() {
+		return postRequest("/json/cuisines/brazilian.json");
+	}
 }

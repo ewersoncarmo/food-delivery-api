@@ -29,22 +29,18 @@ class StateIT extends AbstractRestAssuredIntegrationTest {
 					.body("name", equalTo("Paraná"));
 	}
 
-	public Response createAValidState() {
-		return postRequest("/json/states/parana-state-request.json");
-	}
-	
 	@Test
 	public void shouldFailOnCreate_WhenAlreadyExistsAStateWithTheSameName() {
-		postRequest("/json/states/parana-state-request.json");
+		postRequest("/json/states/parana.json");
 		
-		Response response = postRequest("/json/states/parana-state-request.json");
+		Response response = postRequest("/json/states/parana.json");
 		assertServiceException(response, "M-5");
 	}
 	
 	@Test
 	public void shouldSucceed_WhenFindAllStates() {
-		postRequest("/json/states/parana-state-request.json");
-		postRequest("/json/states/sao-paulo-state-request.json");
+		postRequest("/json/states/parana.json");
+		postRequest("/json/states/sao-paulo.json");
 		
 		getRequest()
 			.then()
@@ -59,7 +55,7 @@ class StateIT extends AbstractRestAssuredIntegrationTest {
 	
 	@Test
 	public void shouldSucceed_WhenFindAnExistingState() {
-		postRequest("/json/states/parana-state-request.json");
+		postRequest("/json/states/parana.json");
 
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
@@ -83,12 +79,12 @@ class StateIT extends AbstractRestAssuredIntegrationTest {
 
 	@Test
 	public void shouldSucceed_WhenUpdateAnExistingState() {
-		postRequest("/json/states/parana-state-request.json");
+		postRequest("/json/states/parana.json");
 		
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
 		
-		putRequest("/json/states/sao-paulo-state-request.json", pathParams, "/{id}")
+		putRequest("/json/states/sao-paulo.json", pathParams, "/{id}")
 			.then()
 				.statusCode(HttpStatus.OK.value())
 				.root("data")
@@ -101,25 +97,25 @@ class StateIT extends AbstractRestAssuredIntegrationTest {
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
 		
-		Response response = putRequest("/json/states/sao-paulo-state-request.json", pathParams, "/{id}");
+		Response response = putRequest("/json/states/sao-paulo.json", pathParams, "/{id}");
 		assertServiceException(response, "M-4");
 	}
 	
 	@Test
 	public void shouldFailOnUpdate_WhenAlreadyExistsAStateWithTheSameName() {
-		postRequest("/json/states/parana-state-request.json");
-		postRequest("/json/states/sao-paulo-state-request.json");
+		postRequest("/json/states/parana.json");
+		postRequest("/json/states/sao-paulo.json");
 		
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 2);
 		
-		Response response = putRequest("/json/states/parana-state-request.json", pathParams, "/{id}");
+		Response response = putRequest("/json/states/parana.json", pathParams, "/{id}");
 		assertServiceException(response, "M-5");
 	}
 	
 	@Test
 	public void shouldSucceed_WhenDeleteAnExistingState() {
-		postRequest("/json/states/parana-state-request.json");
+		postRequest("/json/states/parana.json");
 		
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
@@ -138,6 +134,18 @@ class StateIT extends AbstractRestAssuredIntegrationTest {
 		assertServiceException(response, "M-4");
 	}
 	
-	// TODO - shouldFail_WhenDeleteAStateThatHasCities
-	
+	@Test
+	public void shouldFail_WhenDeleteAStateThatHasCities() {
+		new CityIT().createAValidCity();
+		
+		Map<String, Object> pathParams = new HashMap<>();
+		pathParams.put("id", 1);
+		
+		Response response = deleteRequest(pathParams, "/{id}");
+		assertServiceException(response, "M-6");
+	}
+
+	public Response createAValidState() {
+		return postRequest("/json/states/parana.json");
+	}
 }

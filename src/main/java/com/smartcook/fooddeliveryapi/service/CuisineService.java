@@ -50,9 +50,9 @@ public class CuisineService {
 	public void delete(Long id) {
 		Cuisine cuisine = findById(id);
 		
-		// M-10=Cuisine has restaurants. It can not be removed.
+		// M-3=Cuisine has restaurants. It can not be removed.
 		if (restaurantService.findByCuisine_Id(id).size() > 0) {
-			throw new ServiceException("M-10");
+			throw new ServiceException("M-3");
 		}
 		
 		cuisineRepository.delete(cuisine);
