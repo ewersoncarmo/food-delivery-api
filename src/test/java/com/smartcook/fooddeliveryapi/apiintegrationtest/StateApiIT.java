@@ -1,4 +1,4 @@
-package com.smartcook.fooddeliveryapi.integrationtest;
+package com.smartcook.fooddeliveryapi.apiintegrationtest;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 
 import io.restassured.response.Response;
 
-class StateIT extends AbstractRestAssuredIntegrationTest {
+class StateApiIT extends AbstractRestAssuredIntegrationTest {
 	
 	@Override
 	protected String getBasePath() {
@@ -136,7 +136,7 @@ class StateIT extends AbstractRestAssuredIntegrationTest {
 	
 	@Test
 	public void shouldFail_WhenDeleteAStateThatHasCities() {
-		new CityIT().createAValidCity();
+		new CityApiIT().createAValidCity();
 		
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);

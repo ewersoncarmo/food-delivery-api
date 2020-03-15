@@ -1,4 +1,4 @@
-package com.smartcook.fooddeliveryapi.integrationtest;
+package com.smartcook.fooddeliveryapi.apiintegrationtest;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 
 import io.restassured.response.Response;
 
-class RestaurantIT extends AbstractRestAssuredIntegrationTest {
+class RestaurantApiIT extends AbstractRestAssuredIntegrationTest {
 	
 	@Override
 	protected String getBasePath() {
@@ -44,7 +44,7 @@ class RestaurantIT extends AbstractRestAssuredIntegrationTest {
 	
 	@Test
 	public void shouldFailOnCreate_WhenUnexistsACuisine() {
-		new CityIT().createAValidCity();
+		new CityApiIT().createAValidCity();
 		
 		Response response = postRequest("/json/restaurants/habanero-brazilian-maringa.json");
 		assertServiceException(response, "M-1");
@@ -52,7 +52,7 @@ class RestaurantIT extends AbstractRestAssuredIntegrationTest {
 	
 	@Test
 	public void shouldFailOnCreate_WhenUnexistsACity() {
-		new CuisineIT().createAValidCuisine();
+		new CuisineApiIT().createAValidCuisine();
 		
 		Response response = postRequest("/json/restaurants/habanero-brazilian-maringa.json");
 		assertServiceException(response, "M-7");
@@ -222,8 +222,8 @@ class RestaurantIT extends AbstractRestAssuredIntegrationTest {
 	// TODO - check if restaurants has relationships before removing
 	
 	public Response createAValidRestaurant() {
-		new CuisineIT().createAValidCuisine();
-		new CityIT().createAValidCity();
+		new CuisineApiIT().createAValidCuisine();
+		new CityApiIT().createAValidCity();
 		
 		return postRequest("/json/restaurants/habanero-brazilian-maringa.json");
 	}

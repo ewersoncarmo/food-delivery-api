@@ -1,4 +1,4 @@
-package com.smartcook.fooddeliveryapi.integrationtest;
+package com.smartcook.fooddeliveryapi.apiintegrationtest;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;

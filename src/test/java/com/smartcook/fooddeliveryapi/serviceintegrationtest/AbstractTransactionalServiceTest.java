@@ -1,4 +1,4 @@
-package com.smartcook.fooddeliveryapi.servicetest;
+package com.smartcook.fooddeliveryapi.serviceintegrationtest;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;

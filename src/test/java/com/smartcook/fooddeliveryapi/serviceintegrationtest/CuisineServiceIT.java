@@ -1,4 +1,4 @@
-package com.smartcook.fooddeliveryapi.servicetest;
+package com.smartcook.fooddeliveryapi.serviceintegrationtest;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,30 +13,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.smartcook.fooddeliveryapi.domain.entity.Cuisine;
 import com.smartcook.fooddeliveryapi.service.CuisineService;
 
-public class CuisineServiceTest extends AbstractTransactionalServiceTest {
+public class CuisineServiceIT extends AbstractTransactionalServiceTest {
 
 	@Autowired
 	private CuisineService cuisineService;
 	
-	private Cuisine cuisine;
+	private Cuisine brazilian;
 	
 	@BeforeEach
 	public void setUp() {
 		Cuisine cuisine = new Cuisine();
 		cuisine.setName("Brazilian");
 		
-		this.cuisine = cuisine;
+		this.brazilian = cuisine;
 	}
 	
 	@Test
 	public void shouldSucceed_WhenCreateAValidCuisine() {
-		cuisineService.create(cuisine);
-		assertNotNull(cuisine.getId());
+		cuisineService.create(brazilian);
+		assertNotNull(brazilian.getId());
 	}
 	
 	@Test
 	public void shouldFailOnCreate_WhenAlreadyExistsACuisineWithTheSameName() {
-		cuisineService.create(cuisine);
+		cuisineService.create(brazilian);
 
 		Cuisine duplicatedCuisine = new Cuisine();
 		duplicatedCuisine.setName("Brazilian");
@@ -48,7 +48,7 @@ public class CuisineServiceTest extends AbstractTransactionalServiceTest {
 	
 	@Test
 	public void shouldSucceed_WhenFindAllCuisines() {
-		cuisineService.create(cuisine);
+		cuisineService.create(brazilian);
 
 		Cuisine italian = new Cuisine();
 		italian.setName("Italian");
@@ -62,11 +62,11 @@ public class CuisineServiceTest extends AbstractTransactionalServiceTest {
 	
 	@Test
 	public void shouldSucceed_WhenFindAnExistingCuisine() {
-		cuisineService.create(cuisine);
-		assertNotNull(cuisine.getId());
+		cuisineService.create(brazilian);
+		assertNotNull(brazilian.getId());
 		
-		Cuisine result = cuisineService.findById(cuisine.getId());
-		assertEquals(cuisine, result);
+		Cuisine result = cuisineService.findById(brazilian.getId());
+		assertEquals(brazilian, result);
 	}
 	
 	@Test
@@ -78,23 +78,24 @@ public class CuisineServiceTest extends AbstractTransactionalServiceTest {
 	
 	@Test
 	public void shouldSucceed_WhenUpdateAnExistingCuisine() {
-		cuisineService.create(cuisine);
+		cuisineService.create(brazilian);
 		
-		cuisine.setName("Italian");
+		brazilian.setName("Italian");
 		
-		cuisineService.update(cuisine);
+		cuisineService.update(brazilian);
 		
-		assertEquals("Italian", cuisine.getName());
+		assertEquals("Italian", brazilian.getName());
 	}
 	
 	@Test
 	public void shouldFailOnUpdate_WhenAlreadyExistsACuisineWithTheSameName() {
-		cuisineService.create(cuisine);
+		cuisineService.create(brazilian);
 
 		Cuisine italian = new Cuisine();
 		italian.setName("Italian");
 		
 		cuisineService.create(italian);
+		
 		italian.setName("Brazilian");
 		
 		assertThatThrownBy(() -> {
@@ -104,12 +105,12 @@ public class CuisineServiceTest extends AbstractTransactionalServiceTest {
 	
 	@Test
 	public void shouldSucceed_WhenDeleteAnExistingCuisine() {
-		cuisineService.create(cuisine);
+		cuisineService.create(brazilian);
 		
-		cuisineService.delete(cuisine.getId());
+		cuisineService.delete(brazilian.getId());
 		
 		assertThatThrownBy(() -> {
-			cuisineService.findById(cuisine.getId());
+			cuisineService.findById(brazilian.getId());
 		}).hasMessageContaining("M-1");
 	}
 	

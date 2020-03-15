@@ -19,11 +19,12 @@ public class City {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@EqualsAndHashCode.Include
 	private Long id;
 	
+	@EqualsAndHashCode.Include
 	private String name;
 	
+	@EqualsAndHashCode.Include
 	@ManyToOne
 	@JoinColumn(name = "state_id")
 	private State state;
