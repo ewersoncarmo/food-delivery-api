@@ -120,9 +120,4 @@ public class CuisineServiceIT extends AbstractTransactionalServiceTest {
 			cuisineService.findById(1L);
 		}).hasMessageContaining("M-1");
 	}
-	
-	@Test
-	public void shouldFail_WhenDeleteACuisineThatHasRestaurants() {
-		// TODO
-	}
 }

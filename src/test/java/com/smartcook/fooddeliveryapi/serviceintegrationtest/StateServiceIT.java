@@ -120,9 +120,4 @@ public class StateServiceIT extends AbstractTransactionalServiceTest {
 			stateService.delete(1L);
 		}).hasMessageContaining("M-4");
 	}
-	
-	@Test
-	public void shouldFail_WhenDeleteAStateThatHasCities() {
-		// TODO
-	}
 }

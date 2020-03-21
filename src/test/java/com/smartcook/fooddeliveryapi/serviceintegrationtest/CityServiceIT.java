@@ -201,9 +201,4 @@ public class CityServiceIT extends AbstractTransactionalServiceTest {
 			cityService.findById(1L);
 		}).hasMessageContaining("M-7");
 	}
-	
-	@Test
-	public void shouldFail_WhenDeleteACityThatHasRestaurants() {
-		// TODO
-	}
 }
