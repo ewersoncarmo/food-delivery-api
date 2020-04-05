@@ -14,9 +14,9 @@ public interface StateRepository extends JpaRepository<State, Long> {
 
 	Optional<State> findByName(String name);
 
-	@Query("select e                   "
-		 + "from   State e             "
-		 + "where  e.name  = :name and "
-		 + "       e.id   != :id       ")
+	@Query("select s                   "
+		 + "from   State s             "
+		 + "where  s.name  = :name and "
+		 + "       s.id   != :id       ")
 	Optional<State> findByDuplicatedName(@Param("name") String name, @Param("id") Long id);
 }

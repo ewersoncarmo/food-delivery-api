@@ -17,9 +17,9 @@ public class PaymentMethod {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@EqualsAndHashCode.Include
 	private Long id;
 	
+	@EqualsAndHashCode.Include
 	private String description;
 	
 }

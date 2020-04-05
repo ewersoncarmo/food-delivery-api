@@ -13,5 +13,6 @@ public class RestaurantModelResponse {
 	private String name;
 	private BigDecimal freightRate;
 	private CuisineModelResponse cuisine;
+	private Boolean active;
 	private AddressModelResponse address;
 }

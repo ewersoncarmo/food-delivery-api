@@ -75,6 +75,7 @@ create table restaurant (
 	name varchar(80) not null, 
 	freight_rate decimal(19,2) not null, 
 	cuisine_id bigint not null, 
+	active tinyint(1) not null,
 	address_zip_code varchar(8) not null,
 	address_street varchar(80) not null, 
 	address_number varchar(10) not null, 

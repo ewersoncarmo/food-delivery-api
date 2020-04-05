@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
 import com.smartcook.fooddeliveryapi.persistence.RestaurantRepository;
@@ -62,6 +63,18 @@ public class RestaurantService {
 				});
 		
 		return restaurantRepository.save(restaurant);
+	}
+	
+	@Transactional
+	public void activate(Long id) {
+		Restaurant restaurant = findById(id);
+		restaurant.activate();
+	}
+	
+	@Transactional
+	public void deactivate(Long id) {
+		Restaurant restaurant = findById(id);
+		restaurant.deactivate();
 	}
 	
 	public void delete(Long id) {
