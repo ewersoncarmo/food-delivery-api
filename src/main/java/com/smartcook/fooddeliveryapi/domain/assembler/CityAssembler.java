@@ -3,8 +3,6 @@ package com.smartcook.fooddeliveryapi.domain.assembler;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.smartcook.fooddeliveryapi.domain.entity.City;
@@ -13,28 +11,30 @@ import com.smartcook.fooddeliveryapi.domain.model.request.CityModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.response.CityModelResponse;
 
 @Component
-public class CityAssembler {
+public class CityAssembler extends AbstractAssembler<City, CityModelRequest, CityModelResponse> {
 
-	@Autowired
-	private ModelMapper modelMapper;
-	
-	public City toEntity(CityModelRequest cityModelRequest) {
-		return modelMapper.map(cityModelRequest, City.class);
+	@Override
+	public City toEntity(CityModelRequest request) {
+		return modelMapper.map(request, City.class);
 	}
-	
-	public CityModelResponse toModel(City city) {
-		return modelMapper.map(city, CityModelResponse.class);
+
+	@Override
+	public CityModelResponse toModel(City entity) {
+		return modelMapper.map(entity, CityModelResponse.class);
 	}
-	
-	public List<CityModelResponse> toCollectionModel(List<City> cities) {
-		return cities.stream()
-				.map(city -> toModel(city))
+
+	@Override
+	public List<CityModelResponse> toCollectionModel(List<City> entityList) {
+		return entityList.stream()
+				.map(entity -> toModel(entity))
 				.collect(Collectors.toList());
 	}
-	
-	public void copyToEntity(CityModelRequest cityModelRequest, City city) {
-		city.setState(new State());
+
+	@Override
+	public void copyToEntity(CityModelRequest request, City entity) {
+		entity.setState(new State());
 		
-		modelMapper.map(cityModelRequest, city);
+		modelMapper.map(request, entity);
 	}
+
 }

@@ -3,8 +3,6 @@ package com.smartcook.fooddeliveryapi.domain.assembler;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.smartcook.fooddeliveryapi.domain.entity.State;
@@ -12,26 +10,27 @@ import com.smartcook.fooddeliveryapi.domain.model.request.StateModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.response.StateModelResponse;
 
 @Component
-public class StateAssembler {
+public class StateAssembler extends AbstractAssembler<State, StateModelRequest, StateModelResponse> {
 
-	@Autowired
-	private ModelMapper modelMapper;
-	
-	public State toEntity(StateModelRequest stateModelRequest) {
-		return modelMapper.map(stateModelRequest, State.class);
+	@Override
+	public State toEntity(StateModelRequest request) {
+		return modelMapper.map(request, State.class);
 	}
 	
-	public StateModelResponse toModel(State state) {
-		return modelMapper.map(state, StateModelResponse.class);
+	@Override
+	public StateModelResponse toModel(State entity) {
+		return modelMapper.map(entity, StateModelResponse.class);
 	}
 	
-	public List<StateModelResponse> toCollectionModel(List<State> states) {
-		return states.stream()
-				.map(state -> toModel(state))
+	@Override
+	public List<StateModelResponse> toCollectionModel(List<State> entityList) {
+		return entityList.stream()
+				.map(entity -> toModel(entity))
 				.collect(Collectors.toList());
 	}
 	
-	public void copyToEntity(StateModelRequest stateModelRequest, State state) {
-		modelMapper.map(stateModelRequest, state);
+	@Override
+	public void copyToEntity(StateModelRequest request, State entity) {
+		modelMapper.map(request, entity);
 	}
 }

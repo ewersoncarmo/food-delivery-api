@@ -3,8 +3,6 @@ package com.smartcook.fooddeliveryapi.domain.assembler;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.smartcook.fooddeliveryapi.domain.entity.PaymentMethod;
@@ -12,26 +10,27 @@ import com.smartcook.fooddeliveryapi.domain.model.request.PaymentMethodModelRequ
 import com.smartcook.fooddeliveryapi.domain.model.response.PaymentMethodModelResponse;
 
 @Component
-public class PaymentMethodAssembler {
+public class PaymentMethodAssembler extends AbstractAssembler<PaymentMethod, PaymentMethodModelRequest, PaymentMethodModelResponse> {
 
-	@Autowired
-	private ModelMapper modelMapper;
-	
-	public PaymentMethod toEntity(PaymentMethodModelRequest paymentMethodModelRequest) {
-		return modelMapper.map(paymentMethodModelRequest, PaymentMethod.class);
+	@Override
+	public PaymentMethod toEntity(PaymentMethodModelRequest request) {
+		return modelMapper.map(request, PaymentMethod.class);
 	}
 	
-	public PaymentMethodModelResponse toModel(PaymentMethod paymentMethod) {
-		return modelMapper.map(paymentMethod, PaymentMethodModelResponse.class);
+	@Override
+	public PaymentMethodModelResponse toModel(PaymentMethod entity) {
+		return modelMapper.map(entity, PaymentMethodModelResponse.class);
 	}
 	
-	public List<PaymentMethodModelResponse> toCollectionModel(List<PaymentMethod> paymentMethods) {
-		return paymentMethods.stream()
-				.map(paymentMethod -> toModel(paymentMethod))
+	@Override
+	public List<PaymentMethodModelResponse> toCollectionModel(List<PaymentMethod> entityList) {
+		return entityList.stream()
+				.map(entity -> toModel(entity))
 				.collect(Collectors.toList());
 	}
 	
-	public void copyToEntity(PaymentMethodModelRequest paymentMethodModelRequest, PaymentMethod paymentMethod) {
-		modelMapper.map(paymentMethodModelRequest, paymentMethod);
+	@Override
+	public void copyToEntity(PaymentMethodModelRequest request, PaymentMethod entity) {
+		modelMapper.map(request, entity);
 	}
 }
