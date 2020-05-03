@@ -3,7 +3,9 @@ package com.smartcook.fooddeliveryapi.domain.entity;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -59,7 +61,7 @@ public class Restaurant {
 	@JoinTable(name = "restaurant_payment_method",
 			   joinColumns = @JoinColumn(name = "restaurant_id"),
 			   inverseJoinColumns = @JoinColumn(name = "payment_method_id"))
-	private List<PaymentMethod> paymentMethods = new ArrayList<>();
+	private Set<PaymentMethod> paymentMethods = new HashSet<>();
 	
 	@OneToMany(mappedBy = "restaurant")
 	private List<Product> products = new ArrayList<>();
@@ -70,5 +72,13 @@ public class Restaurant {
 	
 	public void deactivate() {
 		setActive(false);
+	}
+
+	public void addPaymentMethod(PaymentMethod paymentMethod) {
+		getPaymentMethods().add(paymentMethod);
+	}
+
+	public void removePaymentMethod(PaymentMethod paymentMethod) {
+		getPaymentMethods().remove(paymentMethod);
 	}
 }

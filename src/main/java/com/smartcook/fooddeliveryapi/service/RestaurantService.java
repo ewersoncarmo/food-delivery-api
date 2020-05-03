@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.smartcook.fooddeliveryapi.domain.entity.PaymentMethod;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
 import com.smartcook.fooddeliveryapi.persistence.RestaurantRepository;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
@@ -18,6 +19,9 @@ public class RestaurantService {
 	
 	@Autowired
 	private CuisineService cuisineService;
+	
+	@Autowired
+	private PaymentMethodService paymentMethodService;
 	
 	@Autowired
 	private CityService cityService;
@@ -75,6 +79,22 @@ public class RestaurantService {
 	public void deactivate(Long id) {
 		Restaurant restaurant = findById(id);
 		restaurant.deactivate();
+	}
+
+	@Transactional
+	public void addPaymentMethod(Long restaurantId, Long paymentMethodId) {
+		Restaurant restaurant = findById(restaurantId);
+		PaymentMethod paymentMethod = paymentMethodService.findById(paymentMethodId);
+		
+		restaurant.addPaymentMethod(paymentMethod);
+	}
+	
+	@Transactional
+	public void removePaymentMethod(Long restaurantId, Long paymentMethodId) {
+		Restaurant restaurant = findById(restaurantId);
+		PaymentMethod paymentMethod = paymentMethodService.findById(paymentMethodId);
+		
+		restaurant.removePaymentMethod(paymentMethod);
 	}
 	
 	public void delete(Long id) {

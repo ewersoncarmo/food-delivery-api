@@ -1424,6 +1424,131 @@
 					"response": []
 				},
 				{
+					"name": "find-payment-methods",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/payment-methods",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"restaurants",
+								"1",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-payment-method",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/payment-methods/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"restaurants",
+								"1",
+								"payment-methods",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove-payment-method",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/payment-methods/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"restaurants",
+								"1",
+								"payment-methods",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "findById",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
