@@ -30,13 +30,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cuisines",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"cuisines"
@@ -70,13 +71,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cuisines",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"cuisines"
@@ -110,13 +112,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cuisines/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"cuisines",
@@ -148,13 +151,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cuisines/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"cuisines",
@@ -186,13 +190,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cuisines/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"cuisines",
@@ -201,6 +206,500 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"John\",\n\t\"email\": \"john@gmail.com\",\n\t\"password\": \"john123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Paul\",\n\t\"email\": \"paul@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"currentPassword\": \"john123\",\n\t\"newPassword\": \"john456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/1/change-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"users",
+								"1",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f5b80236-660b-4671-b6fe-15ce758fe866",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "946f16b7-2330-40d7-8f4d-6c90c19792ac",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Groups Access",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Analyst\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"groups-access"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"groups-access"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"groups-access",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Super User\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"cuisines",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"groups-access",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "15eb2c7b-7787-48b6-9309-1898464edead",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "05cd4661-487c-4d55-80b2-ddbda4a1a544",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -230,13 +729,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/states",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/states",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"states"
@@ -251,13 +751,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/states",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/states",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"states"
@@ -272,13 +773,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/states/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/states/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"states",
@@ -310,13 +812,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/states/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/states/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"states",
@@ -348,13 +851,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/states/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/states/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"states",
@@ -392,13 +896,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/payment-methods",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/payment-methods",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"payment-methods"
@@ -413,13 +918,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/payment-methods",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/payment-methods",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"payment-methods"
@@ -434,13 +940,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/payment-methods/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/payment-methods/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"payment-methods",
@@ -472,13 +979,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/payment-methods/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/payment-methods/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"payment-methods",
@@ -510,13 +1018,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/payment-methods/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/payment-methods/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"payment-methods",
@@ -576,13 +1085,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cities",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cities",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"cities"
@@ -616,13 +1126,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cities",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cities",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"cities"
@@ -656,13 +1167,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cities/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cities/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"cities",
@@ -694,13 +1206,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cities/6",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cities/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"cities",
@@ -732,13 +1245,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cities/6",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/cities/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"cities",
@@ -776,13 +1290,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/restaurants",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"restaurants"
@@ -813,13 +1328,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/restaurants",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"restaurants"
@@ -850,13 +1366,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/restaurants",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"restaurants"
@@ -890,13 +1407,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/restaurants",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"restaurants"
@@ -930,13 +1448,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/restaurants/1",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"restaurants",
@@ -968,13 +1487,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/restaurants/5",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"restaurants",
@@ -1006,13 +1526,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/restaurants/7",
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"food-delivery-api",
 								"api",
 								"v1",
 								"restaurants",

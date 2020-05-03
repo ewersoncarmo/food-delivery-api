@@ -21,6 +21,7 @@ import com.smartcook.fooddeliveryapi.domain.assembler.UserAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.User;
 import com.smartcook.fooddeliveryapi.domain.model.request.UserChangePasswordModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.request.UserModelRequest;
+import com.smartcook.fooddeliveryapi.domain.model.request.UserPasswordModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
 import com.smartcook.fooddeliveryapi.domain.model.response.UserModelResponse;
 import com.smartcook.fooddeliveryapi.service.UserService;
@@ -36,8 +37,8 @@ public class UserController {
 	private UserAssembler userAssembler;
 	
 	@PostMapping
-	public ResponseEntity<ModelResponse<UserModelResponse>> create(@Valid @RequestBody UserModelRequest userModelRequest) {
-		User user = userAssembler.toEntity(userModelRequest);
+	public ResponseEntity<ModelResponse<UserModelResponse>> create(@Valid @RequestBody UserPasswordModelRequest userPasswordModelRequest) {
+		User user = userAssembler.toEntity(userPasswordModelRequest);
 		
 		userService.create(user);
 		

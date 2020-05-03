@@ -39,6 +39,7 @@ public abstract class AbstractRestAssuredIntegrationTest extends AbstractConfigu
 	@BeforeEach
 	public void setUp() {
 		RestAssured.port = port;
+		RestAssured.basePath = "/food-delivery-api";
 	}
 	
 	protected Response postRequest(String body) {

@@ -19,7 +19,7 @@ foreign key (state_id) references state (id);
 create table user (
 	id bigint not null auto_increment, 
 	name varchar(80) not null, 
-	e_mail varchar(80) not null, 
+	email varchar(80) not null, 
 	password varchar(20) not null, 
 	creation_date datetime(6) not null, 
 	

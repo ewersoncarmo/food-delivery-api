@@ -113,6 +113,17 @@ public class UserServiceIT extends AbstractTransactionalServiceTest {
 	}
 	
 	@Test
+	public void shouldSucceed_WhenChangesPassword() {
+		User user = userService.create(john);
+
+		userService.changePassword(user.getId(), "john123", "john456");
+		
+		user = userService.findById(user.getId());
+		
+		assertEquals("john456", user.getPassword());
+	}
+
+	@Test
 	public void shouldFail_WhenChangesPassword() {
 		User user = userService.create(john);
 

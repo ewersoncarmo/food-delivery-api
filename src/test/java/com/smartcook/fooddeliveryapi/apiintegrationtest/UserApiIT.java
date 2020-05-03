@@ -88,13 +88,13 @@ class UserApiIT extends AbstractRestAssuredIntegrationTest {
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
 		
-		putRequest("/json/users/paul.json", pathParams, "/{id}")
+		putRequest("/json/users/john-smith.json", pathParams, "/{id}")
 			.then()
 				.statusCode(HttpStatus.OK.value())
 				.root("data")
 					.body("id", equalTo(1))
-					.body("name", equalTo("Paul"))
-					.body("email", equalTo("paul@gmail.com"));
+					.body("name", equalTo("John Smith"))
+					.body("email", equalTo("john.smith@gmail.com"));
 	}
 	
 	@Test
@@ -102,7 +102,7 @@ class UserApiIT extends AbstractRestAssuredIntegrationTest {
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 1);
 		
-		Response response = putRequest("/json/users/paul.json", pathParams, "/{id}");
+		Response response = putRequest("/json/users/john-smith.json", pathParams, "/{id}");
 		assertServiceException(response, "M-17");
 	}
 	
@@ -114,7 +114,7 @@ class UserApiIT extends AbstractRestAssuredIntegrationTest {
 		Map<String, Object> pathParams = new HashMap<>();
 		pathParams.put("id", 2);
 		
-		Response response = putRequest("/json/users/john.json", pathParams, "/{id}");
+		Response response = putRequest("/json/users/paul-roger.json", pathParams, "/{id}");
 		assertServiceException(response, "M-18");
 	}
 	
