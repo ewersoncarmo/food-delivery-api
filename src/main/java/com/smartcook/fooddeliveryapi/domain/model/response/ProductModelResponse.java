@@ -7,13 +7,11 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class RestaurantModelResponse {
+public class ProductModelResponse {
 
 	private Long id;
 	private String name;
-	private BigDecimal freightRate;
-	private CuisineModelResponse cuisine;
+	private String description;
+	private BigDecimal price;
 	private Boolean active;
-	private Boolean open;
-	private AddressModelResponse address;
 }

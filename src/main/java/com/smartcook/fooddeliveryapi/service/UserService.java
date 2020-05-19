@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.smartcook.fooddeliveryapi.domain.entity.GroupAccess;
 import com.smartcook.fooddeliveryapi.domain.entity.User;
 import com.smartcook.fooddeliveryapi.persistence.UserRepository;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
@@ -14,6 +16,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private GroupAccessService groupAccessService;
 	
 	public User create(User user) {
 		// M-18=User with e-mail {0} already exists.
@@ -55,6 +60,22 @@ public class UserService {
 		user.setPassword(newPassword);
 		
 		userRepository.save(user);
+	}
+	
+	@Transactional
+	public void addGroupAccess(Long userId, Long groupAccessId) {
+		User user = findById(userId);
+		GroupAccess groupAccess = groupAccessService.findById(groupAccessId);
+		
+		user.addGroupAccess(groupAccess);
+	}
+	
+	@Transactional
+	public void removeGroupAccess(Long userId, Long groupAccessId) {
+		User user = findById(userId);
+		GroupAccess groupAccess = groupAccessService.findById(groupAccessId);
+		
+		user.removeGroupAccess(groupAccess);
 	}
 	
 	public void delete(Long id) {

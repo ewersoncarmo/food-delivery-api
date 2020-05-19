@@ -48,6 +48,9 @@ public class Restaurant {
 	@Column
 	private Boolean active = Boolean.TRUE;
 	
+	@Column
+	private Boolean open = Boolean.TRUE;
+	
 	@Embedded
 	private Address address;
 	
@@ -63,6 +66,12 @@ public class Restaurant {
 			   inverseJoinColumns = @JoinColumn(name = "payment_method_id"))
 	private Set<PaymentMethod> paymentMethods = new HashSet<>();
 	
+	@ManyToMany
+	@JoinTable(name = "restaurant_responsible_user",
+			   joinColumns = @JoinColumn(name = "restaurant_id"),
+			   inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private Set<User> responsibleUsers = new HashSet<>();
+	
 	@OneToMany(mappedBy = "restaurant")
 	private List<Product> products = new ArrayList<>();
 
@@ -73,6 +82,14 @@ public class Restaurant {
 	public void deactivate() {
 		setActive(false);
 	}
+	
+	public void opening() {
+		setOpen(true);
+	}
+	
+	public void closing() {
+		setOpen(false);
+	}
 
 	public void addPaymentMethod(PaymentMethod paymentMethod) {
 		getPaymentMethods().add(paymentMethod);
@@ -80,5 +97,13 @@ public class Restaurant {
 
 	public void removePaymentMethod(PaymentMethod paymentMethod) {
 		getPaymentMethods().remove(paymentMethod);
+	}
+	
+	public void addResponsibleUser(User user) {
+		getResponsibleUsers().add(user);
+	}
+
+	public void removeResponsibleUser(User user) {
+		getResponsibleUsers().remove(user);
 	}
 }

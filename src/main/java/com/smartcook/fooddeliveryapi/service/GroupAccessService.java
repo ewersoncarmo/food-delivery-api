@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.smartcook.fooddeliveryapi.domain.entity.GroupAccess;
+import com.smartcook.fooddeliveryapi.domain.entity.Permission;
 import com.smartcook.fooddeliveryapi.persistence.GroupAccessRepository;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
 
@@ -14,6 +16,9 @@ public class GroupAccessService {
 
 	@Autowired
 	private GroupAccessRepository groupAccessRepository;
+	
+	@Autowired
+	private PermissionService permissionService;
 	
 	public GroupAccess create(GroupAccess groupAccess) {
 		// M-15=Group Access with Name {0} already exists.
@@ -42,6 +47,22 @@ public class GroupAccessService {
 				});
 		
 		return groupAccessRepository.save(groupAccess);
+	}
+	
+	@Transactional
+	public void addPermission(Long groupAccessId, Long permissionId) {
+		GroupAccess groupAccess = findById(groupAccessId);
+		Permission permission = permissionService.findById(permissionId);
+		
+		groupAccess.addPermission(permission);
+	}
+	
+	@Transactional
+	public void removePermission(Long groupAccessId, Long permissionId) {
+		GroupAccess groupAccess = findById(groupAccessId);
+		Permission permission = permissionService.findById(permissionId);
+		
+		groupAccess.removePermission(permission);
 	}
 	
 	public void delete(Long id) {

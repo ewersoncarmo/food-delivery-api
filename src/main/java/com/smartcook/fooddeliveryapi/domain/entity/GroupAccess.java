@@ -1,7 +1,7 @@
 package com.smartcook.fooddeliveryapi.domain.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,5 +32,13 @@ public class GroupAccess {
 	@JoinTable(name = "group_access_permission",
 			   joinColumns = @JoinColumn(name = "group_access_id"),
 			   inverseJoinColumns = @JoinColumn(name = "permission_id"))
-	private List<Permission> permissions = new ArrayList<>();
+	private Set<Permission> permissions = new HashSet<>();
+	
+	public void addPermission(Permission permission) {
+		getPermissions().add(permission);
+	}
+
+	public void removePermission(Permission permission) {
+		getPermissions().remove(permission);
+	}
 }

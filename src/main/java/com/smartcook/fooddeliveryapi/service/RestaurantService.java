@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.smartcook.fooddeliveryapi.domain.entity.PaymentMethod;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
+import com.smartcook.fooddeliveryapi.domain.entity.User;
 import com.smartcook.fooddeliveryapi.persistence.RestaurantRepository;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
 
@@ -22,6 +23,9 @@ public class RestaurantService {
 	
 	@Autowired
 	private PaymentMethodService paymentMethodService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@Autowired
 	private CityService cityService;
@@ -80,7 +84,29 @@ public class RestaurantService {
 		Restaurant restaurant = findById(id);
 		restaurant.deactivate();
 	}
+	
+	@Transactional
+	public void activate(List<Long> ids) {
+		ids.forEach(this::activate);
+	}
+	
+	@Transactional
+	public void deactivate(List<Long> ids) {
+		ids.forEach(this::deactivate);
+	}
 
+	@Transactional
+	public void opening(Long id) {
+		Restaurant restaurant = findById(id);
+		restaurant.opening();
+	}
+	
+	@Transactional
+	public void closing(Long id) {
+		Restaurant restaurant = findById(id);
+		restaurant.closing();
+	}
+	
 	@Transactional
 	public void addPaymentMethod(Long restaurantId, Long paymentMethodId) {
 		Restaurant restaurant = findById(restaurantId);
@@ -95,6 +121,22 @@ public class RestaurantService {
 		PaymentMethod paymentMethod = paymentMethodService.findById(paymentMethodId);
 		
 		restaurant.removePaymentMethod(paymentMethod);
+	}
+	
+	@Transactional
+	public void addResponsibleUser(Long restaurantId, Long userId) {
+		Restaurant restaurant = findById(restaurantId);
+		User user = userService.findById(userId);
+		
+		restaurant.addResponsibleUser(user);
+	}
+	
+	@Transactional
+	public void removeResponsibleUser(Long restaurantId, Long userId) {
+		Restaurant restaurant = findById(restaurantId);
+		User user = userService.findById(userId);
+		
+		restaurant.removeResponsibleUser(user);
 	}
 	
 	public void delete(Long id) {

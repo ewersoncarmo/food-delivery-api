@@ -2,6 +2,7 @@ package com.smartcook.fooddeliveryapi.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.smartcook.fooddeliveryapi.domain.assembler.RestaurantAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
+import com.smartcook.fooddeliveryapi.domain.model.request.RestaurantIdModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.request.RestaurantModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
 import com.smartcook.fooddeliveryapi.domain.model.response.RestaurantModelResponse;
@@ -97,6 +99,42 @@ public class RestaurantController {
 	@PostMapping("/{id}/deactivate")
 	public ResponseEntity<Void> deactivate(@PathVariable("id") Long id) {
 		restaurantService.deactivate(id);
+		
+		return ResponseEntity.noContent()
+				.build();
+	}
+	
+	@PostMapping("/activate")
+	public ResponseEntity<Void> activateBatch(@Valid @RequestBody List<RestaurantIdModelRequest> restaurantIdModelRequest) {
+		restaurantService.activate(restaurantIdModelRequest.stream().map(r -> {
+			return r.getId();
+		}).collect(Collectors.toList()));
+		
+		return ResponseEntity.noContent()
+				.build();
+	}
+	
+	@PostMapping("/deactivate")
+	public ResponseEntity<Void> deactivateBatch(@Valid @RequestBody List<RestaurantIdModelRequest> restaurantIdModelRequest) {
+		restaurantService.deactivate(restaurantIdModelRequest.stream().map(r -> {
+			return r.getId();
+		}).collect(Collectors.toList()));
+		
+		return ResponseEntity.noContent()
+				.build();
+	}
+	
+	@PostMapping("/{id}/opening")
+	public ResponseEntity<Void> opening(@PathVariable("id") Long id) {
+		restaurantService.opening(id);
+		
+		return ResponseEntity.noContent()
+				.build();
+	}
+	
+	@PostMapping("/{id}/closing")
+	public ResponseEntity<Void> closing(@PathVariable("id") Long id) {
+		restaurantService.closing(id);
 		
 		return ResponseEntity.noContent()
 				.build();

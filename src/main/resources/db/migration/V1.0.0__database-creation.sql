@@ -76,6 +76,7 @@ create table restaurant (
 	freight_rate decimal(19,2) not null, 
 	cuisine_id bigint not null, 
 	active tinyint(1) not null,
+	open tinyint(1) not null,
 	address_zip_code varchar(8) not null,
 	address_street varchar(80) not null, 
 	address_number varchar(10) not null, 
@@ -125,6 +126,17 @@ foreign key (restaurant_id) references restaurant (id);
 
 alter table restaurant_payment_method add constraint fk_rest_pay_meth_payment_method 
 foreign key (payment_method_id) references payment_method (id);
+
+create table restaurant_responsible_user (
+	restaurant_id bigint not null, 
+	user_id bigint not null
+) engine=InnoDB default charset=utf8;
+
+alter table restaurant_responsible_user add constraint fk_rest_resp_user_restaurant
+foreign key (restaurant_id) references restaurant (id);
+
+alter table restaurant_responsible_user add constraint fk_rest_resp_user_user
+foreign key (user_id) references user (id);
 
 create table purchase_order (
 	id bigint not null auto_increment, 
