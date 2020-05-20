@@ -35,7 +35,9 @@ create table group_access (
 
 create table user_group_access (
 	user_id bigint not null, 
-	group_access_id bigint not null
+	group_access_id bigint not null,
+	
+	primary key (user_id, group_access_id)
 ) engine=InnoDB default charset=utf8;
 
 alter table user_group_access add constraint fk_usr_grp_access_user 
@@ -54,7 +56,9 @@ create table permission (
 
 create table group_access_permission (
 	group_access_id bigint not null, 
-	permission_id bigint not null
+	permission_id bigint not null,
+	
+	primary key (group_access_id, permission_id)
 ) engine=InnoDB default charset=utf8;
 
 alter table group_access_permission add constraint fk_grp_access_per_group_access 
@@ -118,7 +122,9 @@ create table payment_method (
 
 create table restaurant_payment_method (
 	restaurant_id bigint not null, 
-	payment_method_id bigint not null
+	payment_method_id bigint not null,
+	
+	primary key (restaurant_id, payment_method_id)
 ) engine=InnoDB default charset=utf8;
 
 alter table restaurant_payment_method add constraint fk_rest_pay_meth_restaurant 
@@ -129,7 +135,9 @@ foreign key (payment_method_id) references payment_method (id);
 
 create table restaurant_responsible_user (
 	restaurant_id bigint not null, 
-	user_id bigint not null
+	user_id bigint not null,
+	
+	primary key (restaurant_id, user_id)
 ) engine=InnoDB default charset=utf8;
 
 alter table restaurant_responsible_user add constraint fk_rest_resp_user_restaurant
@@ -149,7 +157,7 @@ create table purchase_order (
 	address_complement varchar(100), 
 	address_neighborhood varchar(80) not null, 
 	address_city_id bigint not null,  
-	order_status integer not null, 
+	order_status varchar(10) not null, 
 	payment_method_id bigint not null, 
 	restaurant_id bigint not null, 
 	user_id bigint not null, 
@@ -182,7 +190,8 @@ create table purchase_order_item (
 	purchase_order_id bigint not null, 
 	product_id bigint not null, 
 	
-	primary key (id)
+	primary key (id),
+	unique key uk_purchase_order_item (purchase_order_id, product_id)
 ) engine=InnoDB default charset=utf8;
 
 alter table purchase_order_item add constraint fk_purchase_order_item_order 

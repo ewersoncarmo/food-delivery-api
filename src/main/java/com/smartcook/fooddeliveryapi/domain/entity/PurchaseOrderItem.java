@@ -21,7 +21,6 @@ public class PurchaseOrderItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@EqualsAndHashCode.Include
 	private Long id;
 	
 	private BigDecimal unitPrice;
@@ -29,11 +28,28 @@ public class PurchaseOrderItem {
 	private Integer quantity;
 	private String note;
 
+	@EqualsAndHashCode.Include
 	@ManyToOne
 	@JoinColumn(name = "purchase_order_id")
 	private PurchaseOrder purchaseOrder;
 
+	@EqualsAndHashCode.Include
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private Product product;
+	
+	public void calculateTotalPrice() {
+	    BigDecimal unitPrice = getUnitPrice();
+	    Integer quantity = getQuantity();
+
+	    if (unitPrice == null) {
+	        unitPrice = BigDecimal.ZERO;
+	    }
+
+	    if (quantity == null) {
+	        quantity = 0;
+	    }
+
+	    this.setTotalPrice(unitPrice.multiply(new BigDecimal(quantity)));
+	}
 }

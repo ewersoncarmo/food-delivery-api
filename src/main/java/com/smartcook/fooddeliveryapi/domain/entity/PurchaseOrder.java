@@ -5,8 +5,12 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,6 +30,11 @@ import lombok.Setter;
 @Entity
 public class PurchaseOrder {
 
+	public static void main(String[] args) {
+		OrderStatus created = OrderStatus.CREATED;
+		System.out.println(created);
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
@@ -38,9 +47,10 @@ public class PurchaseOrder {
 	@Embedded
 	private Address address;
 	
-	private OrderStatus orderStatus;
+	@Enumerated(EnumType.STRING)
+	private OrderStatus orderStatus = OrderStatus.CREATED;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "payment_method_id")
 	private PaymentMethod paymentMethod;
 	
@@ -52,13 +62,40 @@ public class PurchaseOrder {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(mappedBy = "purchaseOrder")
-	private List<PurchaseOrderItem> orders = new ArrayList<>();
+	@OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.PERSIST)
+	private List<PurchaseOrderItem> items = new ArrayList<>();
 	
 	@CreationTimestamp
 	private OffsetDateTime creationDate;
 
 	private OffsetDateTime confirmationDate;
-	private OffsetDateTime cancellationDate;
 	private OffsetDateTime deliveryDate;
+	private OffsetDateTime cancellationDate;
+	
+	public void calculateAmount() {
+		getItems().forEach(PurchaseOrderItem::calculateTotalPrice);
+		
+	    this.subTotal = getItems()
+	    		.stream()
+	    		.map(item -> item.getTotalPrice())
+	    			.reduce(BigDecimal.ZERO, BigDecimal::add);
+	    
+	    this.amount = this.subTotal.add(this.freightRate);
+	}
+
+	public void confirm() {
+		this.orderStatus = OrderStatus.CONFIRMED;
+		this.confirmationDate = OffsetDateTime.now();
+	}
+
+	public void deliver() {
+		this.orderStatus = OrderStatus.DELIVERED;
+		this.deliveryDate = OffsetDateTime.now();
+	}
+
+	public void cancel() {
+		this.orderStatus = OrderStatus.CANCELED;
+		this.cancellationDate = OffsetDateTime.now();
+	}
+	
 }

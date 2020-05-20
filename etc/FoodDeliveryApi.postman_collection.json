@@ -211,6 +211,275 @@
 			"protocolProfileBehavior": {}
 		},
 		{
+			"name": "Purchase Orders",
+			"item": [
+				{
+					"name": "findAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"purchase-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"purchase-orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"restaurant\": {\n\t\t\"id\": 1\n\t},\n\t\"paymentMethod\": {\n\t\t\"id\": 1\n\t},\n\t\"address\": {\n\t\t\"zipCode\": \"87005002\",\n\t\t\"street\": \"Rua Nardina Rodrigues Johansen\",\n\t\t\"number\": \"159\",\n\t\t\"complement\": \"Bloco 3, Apto 402\",\n\t\t\"neighborhood\": \"Loteamento Malbec\",\n\t\t\"city\": {\n\t\t\t\"id\": 1\n\t\t}\n\t},\n\t\"items\": [\n\t\t{\n\t\t\t\"productId\": 1,\n\t\t\t\"quantity\": 1,\n\t\t\t\"note\": \"Com fritas\"\n\t\t},\n\t\t{\n\t\t\t\"productId\": 2,\n\t\t\t\"quantity\": 3\n\t\t}\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"purchase-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirm",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders/9/confirm",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"purchase-orders",
+								"9",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deliver",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders/9/deliver",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"purchase-orders",
+								"9",
+								"deliver"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders/9/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"purchase-orders",
+								"9",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "051909bd-9fa2-491d-9ee5-1105dba0e004",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f2e4ee33-118e-4986-a8c2-1a9cfa62e0e9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "Users",
 			"item": [
 				{
@@ -2445,7 +2714,7 @@
 					"response": []
 				},
 				{
-					"name": "update",
+					"name": "create",
 					"request": {
 						"method": "POST",
 						"header": [

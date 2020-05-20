@@ -32,6 +32,7 @@ public class Product {
 	
 	private Boolean active;
 	
+	@EqualsAndHashCode.Include
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
