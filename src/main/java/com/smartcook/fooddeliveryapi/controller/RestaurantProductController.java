@@ -3,6 +3,7 @@ package com.smartcook.fooddeliveryapi.controller;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.validation.Valid;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -76,11 +78,17 @@ public class RestaurantProductController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<ProductModelResponse>>> findAll(@PathVariable("restaurantId") Long restaurantId) {
+	public ResponseEntity<ModelResponse<List<ProductModelResponse>>> findAll(@PathVariable("restaurantId") Long restaurantId,
+			@RequestParam(value = "includeInactive", required = false) boolean includeInactive) {
 		Restaurant restaurant = restaurantService.findById(restaurantId);
 
-		List<ProductModelResponse> products = productAssembler.toCollectionModel(restaurant.getProducts().
-																								stream().collect(Collectors.toList()));
+		List<ProductModelResponse> products = null;
+		
+		if (!includeInactive) {
+			products = productAssembler.toCollectionModel(restaurant.getProducts().stream().filter(p -> p.getActive() == true).collect(Collectors.toList()));
+		} else {
+			products = productAssembler.toCollectionModel(restaurant.getProducts().stream().collect(Collectors.toList()));
+		}
 		
 		return ResponseEntity.ok()
 				.body(ModelResponse.withData(products));

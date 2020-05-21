@@ -30,14 +30,8 @@ import lombok.Setter;
 @Entity
 public class PurchaseOrder {
 
-	public static void main(String[] args) {
-		OrderStatus created = OrderStatus.CREATED;
-		System.out.println(created);
-	}
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@EqualsAndHashCode.Include
 	private Long id;
 	
 	private BigDecimal subTotal;

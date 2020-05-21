@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.smartcook.fooddeliveryapi.domain.entity.Product;
 import com.smartcook.fooddeliveryapi.domain.entity.PurchaseOrder;
+import com.smartcook.fooddeliveryapi.domain.model.filter.PurchaseOrderFilter;
 import com.smartcook.fooddeliveryapi.persistence.PurchaseOrderRepository;
+import com.smartcook.fooddeliveryapi.persistence.specification.PurchaseOrderSpecification;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
 
 @Service
@@ -43,8 +45,8 @@ public class PurchaseOrderService {
 		return purchaseOrderRepository.save(purchaseOrder);
 	}
 
-	public List<PurchaseOrder> findAll() {
-		return purchaseOrderRepository.findAll();
+	public List<PurchaseOrder> search(PurchaseOrderFilter filter) {
+		return purchaseOrderRepository.findAll(PurchaseOrderSpecification.filter(filter));
 	}
 
 	public PurchaseOrder findById(Long id) {

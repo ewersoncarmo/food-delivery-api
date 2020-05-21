@@ -18,6 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.smartcook.fooddeliveryapi.domain.assembler.PurchaseOrderAssembler;
 import com.smartcook.fooddeliveryapi.domain.assembler.PurchaseOrderSummaryAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.PurchaseOrder;
+import com.smartcook.fooddeliveryapi.domain.model.filter.PurchaseOrderFilter;
 import com.smartcook.fooddeliveryapi.domain.model.request.PurchaseOrderModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
 import com.smartcook.fooddeliveryapi.domain.model.response.PurchaseOrderModelResponse;
@@ -55,8 +56,8 @@ public class PurchaseOrderController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<PurchaseOrderSummaryModelResponse>>> findAll() {
-		List<PurchaseOrder> purchaseOrders = purchaseOrderService.findAll();
+	public ResponseEntity<ModelResponse<List<PurchaseOrderSummaryModelResponse>>> search(PurchaseOrderFilter filter) {
+		List<PurchaseOrder> purchaseOrders = purchaseOrderService.search(filter);
 
 		List<PurchaseOrderSummaryModelResponse> purchaseOrderSummaryModelResponse = purchaseOrderSummaryAssembler.toCollectionModel(purchaseOrders);
 		

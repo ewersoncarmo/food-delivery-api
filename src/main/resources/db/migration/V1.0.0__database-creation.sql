@@ -5,6 +5,8 @@ create table state (
 	primary key (id)
 ) engine=InnoDB default charset=utf8;
 
+alter table state add constraint uk_state_name unique (name);
+
 create table city (
 	id bigint not null auto_increment, 
 	name varchar(80) not null, 
@@ -16,6 +18,8 @@ create table city (
 alter table city add constraint fk_city_state 
 foreign key (state_id) references state (id);
 
+alter table city add constraint uk_city_name_state unique (name, state_id);
+
 create table user (
 	id bigint not null auto_increment, 
 	name varchar(80) not null, 
@@ -26,12 +30,16 @@ create table user (
 	primary key (id)
 ) engine=InnoDB default charset=utf8;
 
+alter table user add constraint uk_user_email unique (email);
+
 create table group_access (
 	id bigint not null auto_increment, 
 	name varchar(80) not null, 
 	
 	primary key (id)
 ) engine=InnoDB default charset=utf8;
+
+alter table group_access add constraint uk_grp_access_name unique (name);
 
 create table user_group_access (
 	user_id bigint not null, 
@@ -54,6 +62,8 @@ create table permission (
 	primary key (id)
 ) engine=InnoDB default charset=utf8;
 
+alter table permission add constraint uk_permission_name unique (name);
+
 create table group_access_permission (
 	group_access_id bigint not null, 
 	permission_id bigint not null,
@@ -73,6 +83,8 @@ create table cuisine (
 	
 	primary key (id)
 ) engine=InnoDB default charset=utf8;
+
+alter table cuisine add constraint uk_cuisine_name unique (name);
 
 create table restaurant (
 	id bigint not null auto_increment, 
@@ -99,6 +111,8 @@ foreign key (cuisine_id) references cuisine (id);
 alter table restaurant add constraint fk_restaurant_city 
 foreign key (address_city_id) references city (id);
 
+alter table restaurant add constraint uk_restaurant_name_city unique (name, address_city_id);
+
 create table product (
 	id bigint not null auto_increment, 
 	name varchar(80) not null, 
@@ -113,12 +127,16 @@ create table product (
 alter table product add constraint fk_product_restaurant 
 foreign key (restaurant_id) references restaurant (id);
 
+alter table product add constraint uk_product_name_restaurant unique (name, restaurant_id);
+
 create table payment_method (
 	id bigint not null auto_increment, 
 	description varchar(40) not null, 
 	
 	primary key (id)
 ) engine=InnoDB default charset=utf8;
+
+alter table payment_method add constraint uk_payment_method_description unique (description);
 
 create table restaurant_payment_method (
 	restaurant_id bigint not null, 
@@ -190,8 +208,7 @@ create table purchase_order_item (
 	purchase_order_id bigint not null, 
 	product_id bigint not null, 
 	
-	primary key (id),
-	unique key uk_purchase_order_item (purchase_order_id, product_id)
+	primary key (id)
 ) engine=InnoDB default charset=utf8;
 
 alter table purchase_order_item add constraint fk_purchase_order_item_order 
@@ -199,3 +216,5 @@ foreign key (purchase_order_id) references purchase_order (id);
 
 alter table purchase_order_item add constraint fk_purchase_order_item_product 
 foreign key (product_id) references product (id);
+
+alter table purchase_order_item add constraint uk_purchase_order_item unique (purchase_order_id, product_id);

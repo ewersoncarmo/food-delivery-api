@@ -34,9 +34,9 @@ public class Restaurant {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@EqualsAndHashCode.Include
 	private Long id;
 	
+	@EqualsAndHashCode.Include
 	private String name;
 	
 	private BigDecimal freightRate;
@@ -51,6 +51,7 @@ public class Restaurant {
 	@Column
 	private Boolean open = Boolean.TRUE;
 	
+	@EqualsAndHashCode.Include
 	@Embedded
 	private Address address;
 	

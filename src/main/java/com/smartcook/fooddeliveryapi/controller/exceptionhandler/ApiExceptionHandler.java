@@ -3,6 +3,7 @@ package com.smartcook.fooddeliveryapi.controller.exceptionhandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -41,6 +42,9 @@ public class ApiExceptionHandler {
 	private MethodArgumentNotValidExceptionHandler methodArgumentNotValidExceptionHandler;
 	
 	@Autowired
+	private BindExceptionHandler bindExceptionHandler;
+	
+	@Autowired
 	private NoHandlerFoundExceptionHandler noHandlerFoundExceptionHandler;
 	
 	@Autowired
@@ -77,8 +81,13 @@ public class ApiExceptionHandler {
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	protected ResponseEntity<ModelResponse<Object>> handleMethodArgumentNotValid(MethodArgumentNotValidException exception) {
+	protected ResponseEntity<ModelResponse<Object>> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
 		return methodArgumentNotValidExceptionHandler.handleException(exception);
+	}
+	
+	@ExceptionHandler(BindException.class)
+	protected ResponseEntity<ModelResponse<Object>> handleBindException(BindException exception) {
+		return bindExceptionHandler.handleException(exception);
 	}
 	
 	@ExceptionHandler(NoHandlerFoundException.class)

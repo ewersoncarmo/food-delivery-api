@@ -249,6 +249,28 @@
 								"api",
 								"v1",
 								"purchase-orders"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "restaurantId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "creationDateBegin",
+									"value": "2020-05-21T00:00:00Z",
+									"disabled": true
+								},
+								{
+									"key": "creationDateEnd",
+									"value": "2020-05-21T19:41:30Z",
+									"disabled": true
+								}
 							]
 						}
 					},
