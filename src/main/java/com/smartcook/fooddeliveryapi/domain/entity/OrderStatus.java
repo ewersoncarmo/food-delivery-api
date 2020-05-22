@@ -1,10 +1,10 @@
 package com.smartcook.fooddeliveryapi.domain.entity;
 
-import com.smartcook.fooddeliveryapi.service.PurchaseOrderCanceledStatusFlow;
-import com.smartcook.fooddeliveryapi.service.PurchaseOrderConfirmedStatusFlow;
-import com.smartcook.fooddeliveryapi.service.PurchaseOrderCreatedStatusFlow;
-import com.smartcook.fooddeliveryapi.service.PurchaseOrderDeliveredStatusFlow;
-import com.smartcook.fooddeliveryapi.service.PurchaseOrderStatusFlow;
+import com.smartcook.fooddeliveryapi.service.purchaseorderstatusflow.PurchaseOrderCanceledStatusFlow;
+import com.smartcook.fooddeliveryapi.service.purchaseorderstatusflow.PurchaseOrderConfirmedStatusFlow;
+import com.smartcook.fooddeliveryapi.service.purchaseorderstatusflow.PurchaseOrderCreatedStatusFlow;
+import com.smartcook.fooddeliveryapi.service.purchaseorderstatusflow.PurchaseOrderDeliveredStatusFlow;
+import com.smartcook.fooddeliveryapi.service.purchaseorderstatusflow.PurchaseOrderStatusFlow;
 
 public enum OrderStatus {
 

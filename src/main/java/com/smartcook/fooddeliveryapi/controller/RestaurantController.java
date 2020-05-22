@@ -20,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.smartcook.fooddeliveryapi.domain.assembler.RestaurantAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
+import com.smartcook.fooddeliveryapi.domain.model.filter.RestaurantFilter;
 import com.smartcook.fooddeliveryapi.domain.model.request.RestaurantIdModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.request.RestaurantModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
@@ -54,8 +55,8 @@ public class RestaurantController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<RestaurantModelResponse>>> findAll() {
-		List<Restaurant> restaurant = restaurantService.findAll();
+	public ResponseEntity<ModelResponse<List<RestaurantModelResponse>>> search(RestaurantFilter filter) {
+		List<Restaurant> restaurant = restaurantService.search(filter);
 
 		List<RestaurantModelResponse> restaurantModelResponse = restaurantAssembler.toCollectionModel(restaurant);
 		

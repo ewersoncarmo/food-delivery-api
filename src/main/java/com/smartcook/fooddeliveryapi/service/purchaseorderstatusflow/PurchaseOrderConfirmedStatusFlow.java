@@ -1,4 +1,4 @@
-package com.smartcook.fooddeliveryapi.service;
+package com.smartcook.fooddeliveryapi.service.purchaseorderstatusflow;
 
 import com.smartcook.fooddeliveryapi.domain.entity.OrderStatus;
 import com.smartcook.fooddeliveryapi.domain.entity.PurchaseOrder;

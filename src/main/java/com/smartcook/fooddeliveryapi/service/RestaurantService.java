@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.smartcook.fooddeliveryapi.domain.entity.PaymentMethod;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
 import com.smartcook.fooddeliveryapi.domain.entity.User;
+import com.smartcook.fooddeliveryapi.domain.model.filter.RestaurantFilter;
 import com.smartcook.fooddeliveryapi.persistence.RestaurantRepository;
+import com.smartcook.fooddeliveryapi.persistence.specification.RestaurantSpecification;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
 
 @Service
@@ -43,8 +45,8 @@ public class RestaurantService {
 		return restaurantRepository.save(restaurant);
 	}
 
-	public List<Restaurant> findAll() {
-		return restaurantRepository.findAll();
+	public List<Restaurant> search(RestaurantFilter filter) {
+		return restaurantRepository.findAll(RestaurantSpecification.filter(filter));
 	}
 
 	public Restaurant findById(Long id) {

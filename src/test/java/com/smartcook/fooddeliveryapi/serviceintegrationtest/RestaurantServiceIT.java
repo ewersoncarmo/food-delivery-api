@@ -16,6 +16,7 @@ import com.smartcook.fooddeliveryapi.domain.entity.City;
 import com.smartcook.fooddeliveryapi.domain.entity.Cuisine;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
 import com.smartcook.fooddeliveryapi.domain.entity.State;
+import com.smartcook.fooddeliveryapi.domain.model.filter.RestaurantFilter;
 import com.smartcook.fooddeliveryapi.service.CityService;
 import com.smartcook.fooddeliveryapi.service.CuisineService;
 import com.smartcook.fooddeliveryapi.service.RestaurantService;
@@ -128,7 +129,7 @@ public class RestaurantServiceIT extends AbstractTransactionalServiceTest {
 	public void shouldSucceed_WhenFindAllRestaurants() {
 		restaurantService.create(habaneroBrazilianMaringa);
 		
-		List<Restaurant> list = restaurantService.findAll();
+		List<Restaurant> list = restaurantService.search(new RestaurantFilter());
 		
 		assertEquals(1, list.size());
 	}
