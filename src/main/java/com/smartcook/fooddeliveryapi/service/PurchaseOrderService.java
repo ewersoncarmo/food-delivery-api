@@ -1,8 +1,8 @@
 package com.smartcook.fooddeliveryapi.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,8 +45,8 @@ public class PurchaseOrderService {
 		return purchaseOrderRepository.save(purchaseOrder);
 	}
 
-	public List<PurchaseOrder> search(PurchaseOrderFilter filter) {
-		return purchaseOrderRepository.findAll(PurchaseOrderSpecification.filter(filter));
+	public Page<PurchaseOrder> search(PurchaseOrderFilter filter, Pageable pageable) {
+		return purchaseOrderRepository.findAll(PurchaseOrderSpecification.filter(filter), pageable);
 	}
 
 	public PurchaseOrder findById(Long id) {

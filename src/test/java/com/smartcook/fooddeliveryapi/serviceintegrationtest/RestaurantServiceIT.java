@@ -5,11 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import com.smartcook.fooddeliveryapi.domain.entity.Address;
 import com.smartcook.fooddeliveryapi.domain.entity.City;
@@ -129,9 +130,9 @@ public class RestaurantServiceIT extends AbstractTransactionalServiceTest {
 	public void shouldSucceed_WhenFindAllRestaurants() {
 		restaurantService.create(habaneroBrazilianMaringa);
 		
-		List<Restaurant> list = restaurantService.search(new RestaurantFilter());
+		Page<Restaurant> list = restaurantService.search(new RestaurantFilter(), PageRequest.of(0, 10));
 		
-		assertEquals(1, list.size());
+		assertEquals(1, list.getContent().size());
 	}
 	
 	@Test

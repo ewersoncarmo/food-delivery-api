@@ -13,8 +13,10 @@ public class RestaurantSpecification {
 
 	public static Specification<Restaurant> filter(RestaurantFilter filter) {
 		return (root, query, builder) -> {
-			root.fetch("cuisine");
-			root.fetch("address").fetch("city").fetch("state");
+			if (Restaurant.class.equals(query.getResultType())) {
+				root.fetch("cuisine");
+				root.fetch("address").fetch("city").fetch("state");
+			}
 			
 			var predicates = new ArrayList<Predicate>();
 			

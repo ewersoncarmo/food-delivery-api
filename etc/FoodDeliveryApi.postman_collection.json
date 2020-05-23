@@ -502,6 +502,119 @@
 			"protocolProfileBehavior": {}
 		},
 		{
+			"name": "Statistics",
+			"item": [
+				{
+					"name": "daily-sales",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/pdf, application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api/v1/statistics/daily-sales",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api",
+								"v1",
+								"statistics",
+								"daily-sales"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "restaurantId",
+									"value": "1ff",
+									"disabled": true
+								},
+								{
+									"key": "creationDateBegin",
+									"value": "2020-05-22T00:00:00Z",
+									"disabled": true
+								},
+								{
+									"key": "creationDateEnd",
+									"value": "2020-05-21T19:41:30Z",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "41ed0454-b4f5-41eb-a37a-ea42bdfbf8a1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1ced8048-d535-4166-9716-a50d2d0ae05e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "Users",
 			"item": [
 				{

@@ -18,11 +18,10 @@
 	<properties>
 		<java.version>12</java.version>
 		<modelmapper.version>2.3.6</modelmapper.version>
+		<jasperreports.version>6.12.2</jasperreports.version>
 	</properties>
 
 	<dependencies>
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -68,6 +67,16 @@
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
 			<version>${modelmapper.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>${jasperreports.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-functions</artifactId>
+			<version>${jasperreports.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.rest-assured</groupId>

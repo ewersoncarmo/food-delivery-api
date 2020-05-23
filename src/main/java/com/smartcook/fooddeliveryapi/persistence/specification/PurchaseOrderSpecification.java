@@ -13,9 +13,12 @@ public class PurchaseOrderSpecification {
 
 	public static Specification<PurchaseOrder> filter(PurchaseOrderFilter filter) {
 		return (root, query, builder) -> {
-			root.fetch("restaurant").fetch("cuisine");
-			root.fetch("restaurant").fetch("address").fetch("city").fetch("state");
-			root.fetch("user");
+			// This condition is necessary to avoid "org.hibernate.QueryException"
+			if (PurchaseOrder.class.equals(query.getResultType())) {
+				root.fetch("restaurant").fetch("cuisine");
+				root.fetch("restaurant").fetch("address").fetch("city").fetch("state");
+				root.fetch("user");
+			}
 			
 			var predicates = new ArrayList<Predicate>();
 			

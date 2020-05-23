@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,13 +57,14 @@ public class RestaurantController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<RestaurantModelResponse>>> search(RestaurantFilter filter) {
-		List<Restaurant> restaurant = restaurantService.search(filter);
+	public ResponseEntity<ModelResponse<Page<RestaurantModelResponse>>> search(RestaurantFilter filter, 
+			Pageable pageable) {
+		Page<Restaurant> restaurantPage = restaurantService.search(filter, pageable);
 
-		List<RestaurantModelResponse> restaurantModelResponse = restaurantAssembler.toCollectionModel(restaurant);
+		Page<RestaurantModelResponse> restaurantModelResponsePage = restaurantAssembler.toPageableModel(pageable, restaurantPage);
 		
 		return ResponseEntity.ok()
-				.body(ModelResponse.withData(restaurantModelResponse));
+				.body(ModelResponse.withData(restaurantModelResponsePage));
 	}
 	
 	@GetMapping("/{id}")
