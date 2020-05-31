@@ -8,9 +8,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.smartcook.fooddeliveryapi.domain.entity.Product;
+import com.smartcook.fooddeliveryapi.domain.entity.ProductPhoto;
+import com.smartcook.fooddeliveryapi.persistence.query.ProductPhotoQuery;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long>, ProductPhotoQuery {
 
 	@Query("select p                                   "
 		 + "from   Product p                           "
@@ -30,5 +32,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 		 + "       p.restaurant.id  = :restaurantId and "
 		 + "       p.id            != :id               ")
 	Optional<Product> findByDuplicatedName(@Param("name") String name, @Param("restaurantId") Long restaurantId, @Param("id") Long id);
+
+	@Query("select ph                                  "
+		 + "from   ProductPhoto ph                     "
+		 + "join   ph.product p                        "
+		 + "where  p.restaurant.id = :restaurantId and "
+		 + "       ph.product.id   = :productId        ")
+	Optional<ProductPhoto> findPhotoById(@Param("restaurantId") Long restaurantId, @Param("productId") Long productId);
 
 }

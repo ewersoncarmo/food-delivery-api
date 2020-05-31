@@ -129,6 +129,19 @@ foreign key (restaurant_id) references restaurant (id);
 
 alter table product add constraint uk_product_name_restaurant unique (name, restaurant_id);
 
+create table product_photo (
+	product_id bigint not null,
+	file_name varchar(150) not null,
+	description varchar(150),
+	content_type varchar(80) not null,
+	size int not null,
+	
+	primary key (product_id)
+) engine=InnoDB default charset=utf8;
+
+alter table product_photo add constraint fk_product_photo_product
+foreign key (product_id) references product (id);
+
 create table payment_method (
 	id bigint not null auto_increment, 
 	description varchar(40) not null, 

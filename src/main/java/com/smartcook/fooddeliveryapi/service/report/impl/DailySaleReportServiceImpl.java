@@ -30,7 +30,7 @@ public class DailySaleReportServiceImpl implements DailySaleReportService {
 	@Override
 	public byte[] generatePdfDailySales(DailySaleFilter filter) {
 		try {
-			var inputStream = this.getClass().getResourceAsStream("/reports/daily-sales.jasper");
+			var inputStream = this.getClass().getResourceAsStream("/reports/bin/daily-sales.jasper");
 			
 			var parameters = new HashMap<String, Object>();
 			parameters.put("REPORT_LOCALE", new Locale("pt", "BR"));

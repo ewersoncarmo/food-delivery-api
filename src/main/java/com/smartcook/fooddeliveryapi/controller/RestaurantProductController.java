@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,14 +17,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.smartcook.fooddeliveryapi.domain.assembler.ProductAssembler;
+import com.smartcook.fooddeliveryapi.domain.assembler.ProductPhotoAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.Product;
+import com.smartcook.fooddeliveryapi.domain.entity.ProductPhoto;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
 import com.smartcook.fooddeliveryapi.domain.model.request.ProductModelRequest;
+import com.smartcook.fooddeliveryapi.domain.model.request.ProductPhotoModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
 import com.smartcook.fooddeliveryapi.domain.model.response.ProductModelResponse;
+import com.smartcook.fooddeliveryapi.domain.model.response.ProductPhotoModelResponse;
 import com.smartcook.fooddeliveryapi.service.ProductService;
 import com.smartcook.fooddeliveryapi.service.RestaurantService;
 
@@ -36,6 +42,9 @@ public class RestaurantProductController {
 	
 	@Autowired
 	private ProductAssembler productAssembler;
+	
+	@Autowired
+	private ProductPhotoAssembler productPhotoAssembler;
 
 	@Autowired
 	private RestaurantService restaurantService;
@@ -102,6 +111,28 @@ public class RestaurantProductController {
 		
 		return ResponseEntity.ok()
 				.body(ModelResponse.withData(productModelResponse));
+	}
+	
+	@PutMapping(path = "/{productId}/photo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<ModelResponse<ProductPhotoModelResponse>> updatePhoto(@PathVariable("restaurantId") Long restaurantId,
+			@PathVariable("productId") Long productId, @Valid ProductPhotoModelRequest productPhotoModelRequest) {
+		Product product = productService.findByRestaurant(restaurantId, productId);
+		
+		MultipartFile multipartFile = productPhotoModelRequest.getFile();
+		
+		ProductPhoto productPhoto = new ProductPhoto();
+		productPhoto.setProduct(product);
+		productPhoto.setFileName(multipartFile.getOriginalFilename());
+		productPhoto.setDescription(productPhotoModelRequest.getDescription());
+		productPhoto.setContentType(multipartFile.getContentType());
+		productPhoto.setSize(multipartFile.getSize());
+		
+		ProductPhoto photo = productService.updatePhoto(productPhoto);
+		
+		ProductPhotoModelResponse productPhotoModelResponse = productPhotoAssembler.toModel(photo);
+		
+		return ResponseEntity.ok()
+				.body(ModelResponse.withData(productPhotoModelResponse));
 	}
 
 }

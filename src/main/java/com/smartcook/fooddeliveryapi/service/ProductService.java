@@ -1,9 +1,14 @@
 package com.smartcook.fooddeliveryapi.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.smartcook.fooddeliveryapi.domain.entity.Product;
+import com.smartcook.fooddeliveryapi.domain.entity.ProductPhoto;
+import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
 import com.smartcook.fooddeliveryapi.persistence.ProductRepository;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
 
@@ -38,4 +43,18 @@ public class ProductService {
 		return productRepository.findByRestaurant(restaurantId, productId).orElseThrow(() -> new ServiceException("M-22", productId, restaurantId));
 	}
 
+	@Transactional
+	public ProductPhoto updatePhoto(ProductPhoto productPhoto) {
+		Restaurant restaurant = productPhoto.getProduct().getRestaurant();
+		Product product = productPhoto.getProduct();
+		
+		Optional<ProductPhoto> photo = productRepository.findPhotoById(restaurant.getId(), product.getId());
+		
+		if (photo.isPresent()) {
+			productRepository.delete(photo.get());
+		}
+		
+		return productRepository.save(productPhoto);
+	}
+	
 }

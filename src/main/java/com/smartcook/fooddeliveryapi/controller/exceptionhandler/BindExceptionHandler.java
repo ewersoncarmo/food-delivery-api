@@ -29,7 +29,7 @@ public class BindExceptionHandler extends AbstractExceptionHandler<BindException
 					return ErrorDetailModelResponse
 						.builder()
 							.field(fieldError.getField())
-							.message(String.format("Field %s", messageSource.getMessage(fieldError, LocaleContextHolder.getLocale())))
+							.message(String.format("%s", messageSource.getMessage(fieldError, LocaleContextHolder.getLocale())))
 						.build();
 				})
 				.collect(Collectors.toList());
