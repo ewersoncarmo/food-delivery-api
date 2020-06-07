@@ -1,5 +1,7 @@
 package com.smartcook.fooddeliveryapi.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,13 +9,17 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpMediaTypeNotAcceptableException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +38,7 @@ import com.smartcook.fooddeliveryapi.domain.model.response.ProductModelResponse;
 import com.smartcook.fooddeliveryapi.domain.model.response.ProductPhotoModelResponse;
 import com.smartcook.fooddeliveryapi.service.ProductService;
 import com.smartcook.fooddeliveryapi.service.RestaurantService;
+import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
 
 @RestController
 @RequestMapping("/api/v1/restaurants/{restaurantId}/products")
@@ -115,7 +122,7 @@ public class RestaurantProductController {
 	
 	@PutMapping(path = "/{productId}/photo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<ModelResponse<ProductPhotoModelResponse>> updatePhoto(@PathVariable("restaurantId") Long restaurantId,
-			@PathVariable("productId") Long productId, @Valid ProductPhotoModelRequest productPhotoModelRequest) {
+			@PathVariable("productId") Long productId, @Valid ProductPhotoModelRequest productPhotoModelRequest) throws IOException {
 		Product product = productService.findByRestaurant(restaurantId, productId);
 		
 		MultipartFile multipartFile = productPhotoModelRequest.getFile();
@@ -127,7 +134,7 @@ public class RestaurantProductController {
 		productPhoto.setContentType(multipartFile.getContentType());
 		productPhoto.setSize(multipartFile.getSize());
 		
-		ProductPhoto photo = productService.updatePhoto(productPhoto);
+		ProductPhoto photo = productService.savePhoto(productPhoto, multipartFile.getInputStream());
 		
 		ProductPhotoModelResponse productPhotoModelResponse = productPhotoAssembler.toModel(photo);
 		
@@ -135,4 +142,58 @@ public class RestaurantProductController {
 				.body(ModelResponse.withData(productPhotoModelResponse));
 	}
 
+	@GetMapping(path = "/{productId}/photo", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ModelResponse<ProductPhotoModelResponse>> findPhoto(@PathVariable("restaurantId") Long restaurantId,
+			@PathVariable("productId") Long productId) {
+		ProductPhoto photo = productService.findPhoto(restaurantId, productId);
+
+		ProductPhotoModelResponse productPhotoModelResponse = productPhotoAssembler.toModel(photo);
+		
+		return ResponseEntity.ok()
+				.body(ModelResponse.withData(productPhotoModelResponse));
+	}
+	
+	@GetMapping(path = "/{productId}/photo")
+	public ResponseEntity<InputStreamResource> retrievePhoto(@PathVariable("restaurantId") Long restaurantId,
+			@PathVariable("productId") Long productId, @RequestHeader(name = "accept") String acceptHeader) 
+					throws HttpMediaTypeNotAcceptableException {
+		try {
+			ProductPhoto productPhoto = productService.findPhoto(restaurantId, productId);
+			
+			MediaType photoMediaType = MediaType.parseMediaType(productPhoto.getContentType());
+			List<MediaType> allowedMediaTypes = MediaType.parseMediaTypes(acceptHeader);
+			
+			checkCompatibleMediaTypes(photoMediaType, allowedMediaTypes);
+			
+			InputStream inputStream = productService.retrieve(productPhoto.getFileName());
+			
+			return ResponseEntity.ok()
+					.contentType(photoMediaType)
+					.body(new InputStreamResource(inputStream));
+		} catch (ServiceException e) {
+			return ResponseEntity.notFound()
+					.build();
+		}
+	}
+
+	@DeleteMapping("/{productId}/photo")
+	public ResponseEntity<Void> removePhoto(@PathVariable("restaurantId") Long restaurantId,
+			@PathVariable("productId") Long productId) {
+		ProductPhoto photo = productService.findPhoto(restaurantId, productId);
+		
+		productService.removePhoto(photo);
+		
+		return ResponseEntity.noContent()
+				.build();
+	}
+	
+	private void checkCompatibleMediaTypes(MediaType photoMediaType, List<MediaType> allowedMediaTypes) 
+			throws HttpMediaTypeNotAcceptableException {
+		boolean compatible = allowedMediaTypes.stream()
+				.anyMatch(m -> m.isCompatibleWith(photoMediaType));
+		
+		if (!compatible) {
+			throw new HttpMediaTypeNotAcceptableException(allowedMediaTypes);
+		}
+	}
 }

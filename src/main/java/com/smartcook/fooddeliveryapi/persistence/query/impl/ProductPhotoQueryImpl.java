@@ -23,6 +23,15 @@ public class ProductPhotoQueryImpl implements ProductPhotoQuery {
 
 	@Transactional
 	@Override
+	public ProductPhoto saveAndFlush(ProductPhoto productPhoto) {
+		productPhoto = save(productPhoto);
+		entityManager.flush();
+		
+		return productPhoto;
+	}
+
+	@Transactional
+	@Override
 	public void delete(ProductPhoto productPhoto) {
 		entityManager.remove(productPhoto);
 	}

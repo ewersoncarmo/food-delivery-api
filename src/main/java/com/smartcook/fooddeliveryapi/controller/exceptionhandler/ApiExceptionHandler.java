@@ -1,9 +1,11 @@
 package com.smartcook.fooddeliveryapi.controller.exceptionhandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
+import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
 import com.smartcook.fooddeliveryapi.service.exception.ReportException;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
+import com.smartcook.fooddeliveryapi.service.exception.StorageException;
 
 @ControllerAdvice
 public class ApiExceptionHandler {
@@ -66,6 +69,11 @@ public class ApiExceptionHandler {
 		return httpMediaTypeNotSupportedExceptionHandler.handleException(exception);
 	}
 	
+	@ExceptionHandler(HttpMediaTypeNotAcceptableException.class)
+	protected ResponseEntity<ModelResponse<Object>> handleHttpMediaTypeNotAcceptableException(HttpMediaTypeNotAcceptableException exception) {
+		return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+	}
+	
 	@ExceptionHandler(MissingServletRequestParameterException.class)
 	protected ResponseEntity<ModelResponse<Object>> handleMissingServletRequestParameter(MissingServletRequestParameterException exception) {
 		return missingServletRequestParameterExceptionHandler.handleException(exception);
@@ -96,7 +104,7 @@ public class ApiExceptionHandler {
 		return noHandlerFoundExceptionHandler.handleException(exception);
 	}
 
-	@ExceptionHandler({Exception.class, ReportException.class})
+	@ExceptionHandler({Exception.class, ReportException.class, StorageException.class})
 	public ResponseEntity<ModelResponse<Object>> handleGenericException(Exception exception) {
 		return genericExceptionHandler.handleException(exception);
 	}

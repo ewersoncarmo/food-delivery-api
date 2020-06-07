@@ -6,5 +6,7 @@ public interface ProductPhotoQuery {
 
 	ProductPhoto save(ProductPhoto productPhoto);
 	
+	ProductPhoto saveAndFlush(ProductPhoto productPhoto);
+
 	void delete(ProductPhoto productPhoto);
 }

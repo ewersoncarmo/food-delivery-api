@@ -13,7 +13,6 @@ import com.smartcook.fooddeliveryapi.persistence.query.DailySaleQuery;
 import com.smartcook.fooddeliveryapi.service.exception.ReportException;
 import com.smartcook.fooddeliveryapi.service.report.DailySaleReportService;
 
-import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -39,7 +38,7 @@ public class DailySaleReportServiceImpl implements DailySaleReportService {
 			
 			JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, parameters, dataSource);
 			return JasperExportManager.exportReportToPdf(jasperPrint);
-		} catch (JRException e) {
+		} catch (Exception e) {
 			LOG.error("There was an unexpected error while generating pdf report.", e);
 			throw new ReportException("There was an unexpected error while generating pdf report."); 
 		}
