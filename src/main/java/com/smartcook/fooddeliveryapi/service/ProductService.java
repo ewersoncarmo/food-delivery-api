@@ -73,6 +73,7 @@ public class ProductService {
 			.builder()
 				.fileName(productPhoto.getFileName())
 				.inputStream(inputStream)
+				.contentType(productPhoto.getContentType())
 			.build();
 		
 		productPhotoStorageService.store(existingFile, photoFile);
@@ -87,14 +88,14 @@ public class ProductService {
 		return findExistingPhoto(restaurantId, productId).orElseThrow(() -> new ServiceException("M-30", productId));
 	}
 
+	public String retrieve(String fileName) {
+		return productPhotoStorageService.retrieve(fileName);
+	}
+
 	@Transactional
 	public void removePhoto(ProductPhoto photo) {
 		productRepository.delete(photo);
 		productPhotoStorageService.remove(photo.getFileName());
-	}
-	
-	public InputStream retrieve(String fileName) {
-		return productPhotoStorageService.retrieve(fileName);
 	}
 
 	private Optional<ProductPhoto> findExistingPhoto(Long restaurantId, Long productId) {

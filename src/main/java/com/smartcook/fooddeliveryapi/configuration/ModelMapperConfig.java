@@ -8,7 +8,7 @@ import com.smartcook.fooddeliveryapi.domain.entity.PurchaseOrderItem;
 import com.smartcook.fooddeliveryapi.domain.model.request.PurchaseOrderItemModelRequest;
 
 @Configuration
-public class ApiConfiguration {
+public class ModelMapperConfig {
 
 	@Bean
 	public ModelMapper modelMapper() {
@@ -19,5 +19,4 @@ public class ApiConfiguration {
 		
 		return modelMapper;
 	}
-	
 }

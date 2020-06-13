@@ -9,10 +9,10 @@ import lombok.Getter;
 public interface ProductPhotoStorageService {
 
 	void store(Photo photo);
+
+	String retrieve(String fileName);
 	
 	void remove(String fileName);
-	
-	InputStream retrieve(String fileName);
 	
 	default void store(String fileName, Photo photo) {
 		this.store(photo);
@@ -32,5 +32,7 @@ public interface ProductPhotoStorageService {
 		
 		private String fileName;
 		private InputStream inputStream;
+		private String contentType;
 	}
+	
 }

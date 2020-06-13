@@ -2972,7 +2972,7 @@
 					"response": []
 				},
 				{
-					"name": "find-photo",
+					"name": "update-photo",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -3024,7 +3024,7 @@
 					"response": []
 				},
 				{
-					"name": "retrieve-photo",
+					"name": "find-photo",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3037,44 +3037,6 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/products/1/photo",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"food-delivery-api",
-								"api",
-								"v1",
-								"restaurants",
-								"1",
-								"products",
-								"1",
-								"photo"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "remove-photo",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "multipart/form-data",
-								"disabled": true
-							},
-							{
-								"key": "Accept",
-								"value": "image/png",
 								"type": "text"
 							}
 						],
