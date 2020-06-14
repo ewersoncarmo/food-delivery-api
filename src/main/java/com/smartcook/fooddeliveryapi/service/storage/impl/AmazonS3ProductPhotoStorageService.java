@@ -14,13 +14,13 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.smartcook.fooddeliveryapi.configuration.AmazonS3StorageProperties;
 import com.smartcook.fooddeliveryapi.service.exception.StorageException;
-import com.smartcook.fooddeliveryapi.service.storage.ProductPhotoStorageService;
+import com.smartcook.fooddeliveryapi.service.storage.AbstractProductPhotoStorage;
 
 @Component
-public class AmazonS3ProductPhotoStorageService implements ProductPhotoStorageService {
+public class AmazonS3ProductPhotoStorageService extends AbstractProductPhotoStorage {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AmazonS3ProductPhotoStorageService.class);
-	
+
 	@Autowired
 	private AmazonS3StorageProperties amazonS3StorageProperties;
 	
@@ -28,17 +28,17 @@ public class AmazonS3ProductPhotoStorageService implements ProductPhotoStorageSe
 	private AmazonS3 amazonS3;
 	
 	@Override
-	public void store(Photo photo) {
+	protected void store(ProductPhotoStorageEvent event) {
 		try {
-			String filePath = getFilePath(photo.getFileName());
+			String filePath = getFilePath(event.getFileName());
 			
 			var objectMetadata = new ObjectMetadata();
-			objectMetadata.setContentType(photo.getContentType());
+			objectMetadata.setContentType(event.getContentType());
 			
 			var putObjectRequest = new PutObjectRequest(
 					amazonS3StorageProperties.getBucketName(), 
 					filePath, 
-					photo.getInputStream(),
+					event.getInputStream(),
 					objectMetadata)
 				.withCannedAcl(CannedAccessControlList.PublicRead);
 			
@@ -47,6 +47,15 @@ public class AmazonS3ProductPhotoStorageService implements ProductPhotoStorageSe
 			LOG.error("There was an unexpected error while storaging photo.", e);
 			throw new StorageException("There was an unexpected error while storaging photo.");
 		}
+	}
+
+	@Override
+	public String retrieve(String fileName) {
+		String filePath = getFilePath(fileName);
+		
+		URL url = amazonS3.getUrl(amazonS3StorageProperties.getBucketName(), filePath);
+		
+		return url.toString();
 	}
 
 	@Override
@@ -62,15 +71,6 @@ public class AmazonS3ProductPhotoStorageService implements ProductPhotoStorageSe
 	    	LOG.error("There was an unexpected error while removing photo.", e);
 			throw new StorageException("There was an unexpected error while removing photo.");
 	    }
-	}
-
-	@Override
-	public String retrieve(String fileName) {
-		String filePath = getFilePath(fileName);
-		
-		URL url = amazonS3.getUrl(amazonS3StorageProperties.getBucketName(), filePath);
-		
-		return url.toString();
 	}
 	
 	private String getFilePath(String fileName) {

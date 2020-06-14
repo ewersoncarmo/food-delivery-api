@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,17 +13,20 @@ import com.smartcook.fooddeliveryapi.domain.entity.ProductPhoto;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
 import com.smartcook.fooddeliveryapi.persistence.ProductRepository;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
-import com.smartcook.fooddeliveryapi.service.storage.ProductPhotoStorageService;
-import com.smartcook.fooddeliveryapi.service.storage.ProductPhotoStorageService.Photo;
+import com.smartcook.fooddeliveryapi.service.storage.AbstractProductPhotoStorage;
+import com.smartcook.fooddeliveryapi.service.storage.impl.ProductPhotoStorageEvent;
 
 @Service
 public class ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
+
+	@Autowired
+	private AbstractProductPhotoStorage abstractProductPhotoStorage;
 	
 	@Autowired
-	private ProductPhotoStorageService productPhotoStorageService;
+	private ApplicationEventPublisher eventPublisher;
 
 	public void create(Product product) {
 		// M-21=Product with Name {0} already exists.
@@ -54,29 +58,30 @@ public class ProductService {
 		Restaurant restaurant = productPhoto.getProduct().getRestaurant();
 		Product product = productPhoto.getProduct();
 		
-		productPhoto.setFileName(productPhotoStorageService.generateFileName(productPhoto.getFileName()));
+		productPhoto.setFileName(AbstractProductPhotoStorage.generateFileName(productPhoto.getFileName()));
 
 		Optional<ProductPhoto> existingPhoto = findExistingPhoto(restaurant.getId(), product.getId());
 
-		String existingFile = null;
+		String existingFileName = null;
 		
 		if (existingPhoto.isPresent()) {
 			ProductPhoto existingProductPhoto = existingPhoto.get();
-			existingFile = existingProductPhoto.getFileName();
+			existingFileName = existingProductPhoto.getFileName();
 			
 			productRepository.delete(existingProductPhoto);
 		} 
 		
 		productPhoto = productRepository.saveAndFlush(productPhoto);
 		
-		Photo photoFile = Photo
+		ProductPhotoStorageEvent event = ProductPhotoStorageEvent
 			.builder()
 				.fileName(productPhoto.getFileName())
+				.existingFileName(existingFileName)
 				.inputStream(inputStream)
 				.contentType(productPhoto.getContentType())
 			.build();
-		
-		productPhotoStorageService.store(existingFile, photoFile);
+
+		eventPublisher.publishEvent(event);
 		
 		return productPhoto;
 	}
@@ -89,13 +94,13 @@ public class ProductService {
 	}
 
 	public String retrieve(String fileName) {
-		return productPhotoStorageService.retrieve(fileName);
+		return abstractProductPhotoStorage.retrieve(fileName);
 	}
 
 	@Transactional
 	public void removePhoto(ProductPhoto photo) {
 		productRepository.delete(photo);
-		productPhotoStorageService.remove(photo.getFileName());
+		abstractProductPhotoStorage.remove(photo.getFileName());
 	}
 
 	private Optional<ProductPhoto> findExistingPhoto(Long restaurantId, Long productId) {
