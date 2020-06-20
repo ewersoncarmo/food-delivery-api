@@ -17,6 +17,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
+import com.smartcook.fooddeliveryapi.service.exception.EmailException;
 import com.smartcook.fooddeliveryapi.service.exception.ReportException;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
 import com.smartcook.fooddeliveryapi.service.exception.StorageException;
@@ -104,7 +105,7 @@ public class ApiExceptionHandler {
 		return noHandlerFoundExceptionHandler.handleException(exception);
 	}
 
-	@ExceptionHandler({Exception.class, ReportException.class, StorageException.class})
+	@ExceptionHandler({Exception.class, ReportException.class, StorageException.class, EmailException.class})
 	public ResponseEntity<ModelResponse<Object>> handleGenericException(Exception exception) {
 		return genericExceptionHandler.handleException(exception);
 	}

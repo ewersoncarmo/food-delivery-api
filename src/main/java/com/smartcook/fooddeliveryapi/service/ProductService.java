@@ -11,10 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.smartcook.fooddeliveryapi.domain.entity.Product;
 import com.smartcook.fooddeliveryapi.domain.entity.ProductPhoto;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
+import com.smartcook.fooddeliveryapi.domain.event.ProductPhotoStorageEvent;
 import com.smartcook.fooddeliveryapi.persistence.ProductRepository;
 import com.smartcook.fooddeliveryapi.service.exception.ServiceException;
 import com.smartcook.fooddeliveryapi.service.storage.AbstractProductPhotoStorage;
-import com.smartcook.fooddeliveryapi.service.storage.impl.ProductPhotoStorageEvent;
 
 @Service
 public class ProductService {

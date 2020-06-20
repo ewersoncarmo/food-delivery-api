@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import org.springframework.context.event.EventListener;
 
-import com.smartcook.fooddeliveryapi.service.storage.impl.ProductPhotoStorageEvent;
+import com.smartcook.fooddeliveryapi.domain.event.ProductPhotoStorageEvent;
 
 import lombok.Getter;
 import lombok.Setter;

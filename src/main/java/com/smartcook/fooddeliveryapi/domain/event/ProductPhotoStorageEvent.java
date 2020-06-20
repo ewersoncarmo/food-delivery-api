@@ -1,4 +1,4 @@
-package com.smartcook.fooddeliveryapi.service.storage.impl;
+package com.smartcook.fooddeliveryapi.domain.event;
 
 import java.io.InputStream;
 

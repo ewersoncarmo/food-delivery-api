@@ -13,6 +13,7 @@ import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.smartcook.fooddeliveryapi.configuration.AmazonS3StorageProperties;
+import com.smartcook.fooddeliveryapi.domain.event.ProductPhotoStorageEvent;
 import com.smartcook.fooddeliveryapi.service.exception.StorageException;
 import com.smartcook.fooddeliveryapi.service.storage.AbstractProductPhotoStorage;
 

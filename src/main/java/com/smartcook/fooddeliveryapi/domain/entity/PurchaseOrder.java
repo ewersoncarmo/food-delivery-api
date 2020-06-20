@@ -20,13 +20,11 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class PurchaseOrder {
 

@@ -34,6 +34,9 @@ public class PurchaseOrderService {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private PurchaseOrderStatusService purchaseOrderStatusService;
+	
 	@Transactional
 	public PurchaseOrder create(PurchaseOrder purchaseOrder) {
 		validatePurchaseOrder(purchaseOrder);
@@ -42,7 +45,11 @@ public class PurchaseOrderService {
 		purchaseOrder.setFreightRate(purchaseOrder.getRestaurant().getFreightRate());
 		purchaseOrder.calculateAmount();
 		
-		return purchaseOrderRepository.save(purchaseOrder);
+		purchaseOrderRepository.save(purchaseOrder);
+		
+		purchaseOrderStatusService.publichEmailEvent(purchaseOrder);
+		
+		return purchaseOrder;
 	}
 
 	public Page<PurchaseOrder> search(PurchaseOrderFilter filter, Pageable pageable) {
