@@ -2,10 +2,12 @@ package com.smartcook.fooddeliveryapi.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,6 +60,7 @@ public class StateController {
 		List<StateModelResponse> stateModelResponse = stateAssembler.toCollectionModel(states);
 		
 		return ResponseEntity.ok()
+				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))
 				.body(ModelResponse.withData(stateModelResponse));
 	}
 	
@@ -68,6 +71,7 @@ public class StateController {
 		StateModelResponse stateModelResponse = stateAssembler.toModel(state);
 		
 		return ResponseEntity.ok()
+				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))
 				.body(ModelResponse.withData(stateModelResponse));
 	}
 	

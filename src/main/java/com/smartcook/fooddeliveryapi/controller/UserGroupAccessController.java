@@ -1,9 +1,11 @@
 package com.smartcook.fooddeliveryapi.controller;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +38,7 @@ public class UserGroupAccessController {
 																									stream().collect(Collectors.toList()));
 		
 		return ResponseEntity.ok()
+				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))
 				.body(ModelResponse.withData(groupsAccess));
 	}
 	
