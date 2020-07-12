@@ -1,10 +1,10 @@
 package com.smartcook.fooddeliveryapi.controller;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,10 +31,10 @@ public class GroupAccessPermissionController {
 	private PermissionAssembler permissionAssembler;
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<PermissionModelResponse>>> findPermissions(@PathVariable("groupAccessId") Long groupAccessId) {
+	public ResponseEntity<ModelResponse<CollectionModel<PermissionModelResponse>>> findPermissions(@PathVariable("groupAccessId") Long groupAccessId) {
 		GroupAccess groupAccess = groupAccessService.findById(groupAccessId);
 
-		List<PermissionModelResponse> permissions = permissionAssembler.toCollectionModel(groupAccess.getPermissions().
+		CollectionModel<PermissionModelResponse> permissions = permissionAssembler.toCollectionModel(groupAccess.getPermissions().
 																											stream().collect(Collectors.toList()));
 		
 		return ResponseEntity.ok()

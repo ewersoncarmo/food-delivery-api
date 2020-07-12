@@ -2,12 +2,12 @@ package com.smartcook.fooddeliveryapi.controller;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -89,11 +89,11 @@ public class RestaurantProductController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<ProductModelResponse>>> findAll(@PathVariable("restaurantId") Long restaurantId,
+	public ResponseEntity<ModelResponse<CollectionModel<ProductModelResponse>>> findAll(@PathVariable("restaurantId") Long restaurantId,
 			@RequestParam(value = "includeInactive", required = false) boolean includeInactive) {
 		Restaurant restaurant = restaurantService.findById(restaurantId);
 
-		List<ProductModelResponse> products = null;
+		CollectionModel<ProductModelResponse> products = null;
 		
 		if (!includeInactive) {
 			products = productAssembler.toCollectionModel(restaurant.getProducts().stream().filter(p -> p.getActive() == true).collect(Collectors.toList()));

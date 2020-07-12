@@ -1,10 +1,10 @@
 package com.smartcook.fooddeliveryapi.controller;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,10 +31,10 @@ public class RestaurantResponsibleUserController {
 	private UserAssembler userAssembler;
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<UserModelResponse>>> findResponsibleUsers(@PathVariable("restaurantId") Long restaurantId) {
+	public ResponseEntity<ModelResponse<CollectionModel<UserModelResponse>>> findResponsibleUsers(@PathVariable("restaurantId") Long restaurantId) {
 		Restaurant restaurant = restaurantService.findById(restaurantId);
 
-		List<UserModelResponse> responsibleUsers = userAssembler.toCollectionModel(restaurant.getResponsibleUsers().
+		CollectionModel<UserModelResponse> responsibleUsers = userAssembler.toCollectionModel(restaurant.getResponsibleUsers().
 																								stream().collect(Collectors.toList()));
 		
 		return ResponseEntity.ok()

@@ -1,16 +1,18 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Component;
 
+import com.smartcook.fooddeliveryapi.controller.PaymentMethodController;
 import com.smartcook.fooddeliveryapi.domain.entity.PaymentMethod;
 import com.smartcook.fooddeliveryapi.domain.model.request.PaymentMethodModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.response.PaymentMethodModelResponse;
 
 @Component
 public class PaymentMethodAssembler extends AbstractAssembler<PaymentMethod, PaymentMethodModelRequest, PaymentMethodModelResponse> {
+
+	public PaymentMethodAssembler() {
+		super(PaymentMethodController.class, PaymentMethodModelResponse.class);
+	}
 
 	@Override
 	public PaymentMethod toEntity(PaymentMethodModelRequest request) {
@@ -20,13 +22,6 @@ public class PaymentMethodAssembler extends AbstractAssembler<PaymentMethod, Pay
 	@Override
 	public PaymentMethodModelResponse toModel(PaymentMethod entity) {
 		return modelMapper.map(entity, PaymentMethodModelResponse.class);
-	}
-	
-	@Override
-	public List<PaymentMethodModelResponse> toCollectionModel(List<PaymentMethod> entityList) {
-		return entityList.stream()
-				.map(entity -> toModel(entity))
-				.collect(Collectors.toList());
 	}
 	
 	@Override

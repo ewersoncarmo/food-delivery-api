@@ -1,6 +1,5 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -8,6 +7,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import com.smartcook.fooddeliveryapi.controller.RestaurantController;
 import com.smartcook.fooddeliveryapi.domain.entity.City;
 import com.smartcook.fooddeliveryapi.domain.entity.Cuisine;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
@@ -17,6 +17,10 @@ import com.smartcook.fooddeliveryapi.domain.model.response.RestaurantModelRespon
 @Component
 public class RestaurantAssembler extends AbstractAssembler<Restaurant, RestaurantModelRequest, RestaurantModelResponse> 
 	implements PaginationAssembler<Restaurant, RestaurantModelResponse> {
+
+	public RestaurantAssembler() {
+		super(RestaurantController.class, RestaurantModelResponse.class);
+	}
 
 	@Override
 	public Restaurant toEntity(RestaurantModelRequest request) {
@@ -29,13 +33,6 @@ public class RestaurantAssembler extends AbstractAssembler<Restaurant, Restauran
 	}
 	
 	@Override
-	public List<RestaurantModelResponse> toCollectionModel(List<Restaurant> entityList) {
-		return entityList.stream()
-				.map(entity -> toModel(entity))
-				.collect(Collectors.toList());
-	}
-	
-	@Override
 	public void copyToEntity(RestaurantModelRequest request, Restaurant entity) {
 		entity.setCuisine(new Cuisine());
 		entity.getAddress().setCity(new City());
@@ -45,6 +42,7 @@ public class RestaurantAssembler extends AbstractAssembler<Restaurant, Restauran
 
 	@Override
 	public Page<RestaurantModelResponse> toPageableModel(Pageable pageable, Page<Restaurant> page) {
-		return new PageImpl<>(toCollectionModel(page.getContent()), pageable, page.getTotalElements());
+		return new PageImpl<>(toCollectionModel(page.getContent()).getContent().stream().collect(Collectors.toList()), 
+				pageable, page.getTotalElements());
 	}
 }

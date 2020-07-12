@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,10 +55,10 @@ public class GroupAccessController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<GroupAccessModelResponse>>> findAll() {
+	public ResponseEntity<ModelResponse<CollectionModel<GroupAccessModelResponse>>> findAll() {
 		List<GroupAccess> groupsAccess = groupAccessService.findAll();
 
-		List<GroupAccessModelResponse> groupAccessModelResponse = groupAccessAssembler.toCollectionModel(groupsAccess);
+		CollectionModel<GroupAccessModelResponse> groupAccessModelResponse = groupAccessAssembler.toCollectionModel(groupsAccess);
 		
 		return ResponseEntity.ok()
 				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))

@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +23,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.smartcook.fooddeliveryapi.domain.assembler.CityAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.City;
 import com.smartcook.fooddeliveryapi.domain.model.request.CityModelRequest;
-import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
 import com.smartcook.fooddeliveryapi.domain.model.response.CityModelResponse;
+import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
 import com.smartcook.fooddeliveryapi.service.CityService;
 
 @RestController
@@ -54,10 +55,10 @@ public class CityController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<CityModelResponse>>> findAll() {
+	public ResponseEntity<ModelResponse<CollectionModel<CityModelResponse>>> findAll() {
 		List<City> cities = cityService.findAll();
 
-		List<CityModelResponse> cityModelResponse = cityAssembler.toCollectionModel(cities);
+		CollectionModel<CityModelResponse> cityModelResponse = cityAssembler.toCollectionModel(cities);
 		
 		return ResponseEntity.ok()
 				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))

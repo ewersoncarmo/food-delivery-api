@@ -1,16 +1,23 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.stereotype.Component;
 
+import com.smartcook.fooddeliveryapi.controller.UserController;
+import com.smartcook.fooddeliveryapi.controller.UserGroupAccessController;
 import com.smartcook.fooddeliveryapi.domain.entity.User;
 import com.smartcook.fooddeliveryapi.domain.model.request.UserModelRequest;
 import com.smartcook.fooddeliveryapi.domain.model.response.UserModelResponse;
 
 @Component
 public class UserAssembler extends AbstractAssembler<User, UserModelRequest, UserModelResponse> {
+
+	public UserAssembler() {
+		super(UserController.class, UserModelResponse.class);
+	}
 
 	@Override
 	public User toEntity(UserModelRequest request) {
@@ -19,16 +26,25 @@ public class UserAssembler extends AbstractAssembler<User, UserModelRequest, Use
 
 	@Override
 	public UserModelResponse toModel(User entity) {
-		return modelMapper.map(entity, UserModelResponse.class);
+		// add self relation		
+		UserModelResponse userModelResponse = createModelWithId(entity.getId(), entity);
+		
+		modelMapper.map(entity, userModelResponse);
+		
+		// add collection relation
+		userModelResponse.add(linkTo(UserController.class).withRel("users"));
+		// add self relation to group access
+		userModelResponse.add(linkTo(methodOn(UserGroupAccessController.class).findGroupsAccess(userModelResponse.getId())).withRel("groups-access"));
+		
+		return userModelResponse;
 	}
 
 	@Override
-	public List<UserModelResponse> toCollectionModel(List<User> entityList) {
-		return entityList.stream()
-				.map(entity -> toModel(entity))
-				.collect(Collectors.toList());
+	public CollectionModel<UserModelResponse> toCollectionModel(Iterable<? extends User> entities) {
+		return super.toCollectionModel(entities)
+				.add(linkTo(UserController.class).withSelfRel());
 	}
-
+	
 	@Override
 	public void copyToEntity(UserModelRequest request, User entity) {
 		modelMapper.map(request, entity);

@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,10 +55,10 @@ public class CuisineController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<CuisineModelResponse>>> findAll() {
+	public ResponseEntity<ModelResponse<CollectionModel<CuisineModelResponse>>> findAll() {
 		List<Cuisine> cuisines = cuisineService.findAll();
 
-		List<CuisineModelResponse> cuisineModelResponse = cuisineAssembler.toCollectionModel(cuisines);
+		CollectionModel<CuisineModelResponse> cuisineModelResponse = cuisineAssembler.toCollectionModel(cuisines);
 		
 		return ResponseEntity.ok()
 				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))

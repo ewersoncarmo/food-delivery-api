@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,10 +55,10 @@ public class PermissionController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<PermissionModelResponse>>> findAll() {
+	public ResponseEntity<ModelResponse<CollectionModel<PermissionModelResponse>>> findAll() {
 		List<Permission> permissions = permissionService.findAll();
 
-		List<PermissionModelResponse> permissionsModelResponse = permissionAssembler.toCollectionModel(permissions);
+		CollectionModel<PermissionModelResponse> permissionsModelResponse = permissionAssembler.toCollectionModel(permissions);
 		
 		return ResponseEntity.ok()
 				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))

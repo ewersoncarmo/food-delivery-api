@@ -1,10 +1,10 @@
 package com.smartcook.fooddeliveryapi.controller;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,10 +31,10 @@ public class UserGroupAccessController {
 	private GroupAccessAssembler groupAccessAssembler;
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<List<GroupAccessModelResponse>>> findGroupsAccess(@PathVariable("userId") Long userId) {
+	public ResponseEntity<ModelResponse<CollectionModel<GroupAccessModelResponse>>> findGroupsAccess(@PathVariable("userId") Long userId) {
 		User user = userService.findById(userId);
 
-		List<GroupAccessModelResponse> groupsAccess = groupAccessAssembler.toCollectionModel(user.getGroups().
+		CollectionModel<GroupAccessModelResponse> groupsAccess = groupAccessAssembler.toCollectionModel(user.getGroups().
 																									stream().collect(Collectors.toList()));
 		
 		return ResponseEntity.ok()
