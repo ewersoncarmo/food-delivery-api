@@ -1,5 +1,8 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.stereotype.Component;
 
 import com.smartcook.fooddeliveryapi.controller.StateController;
@@ -21,7 +24,21 @@ public class StateAssembler extends AbstractAssembler<State, StateModelRequest, 
 	
 	@Override
 	public StateModelResponse toModel(State entity) {
-		return modelMapper.map(entity, StateModelResponse.class);
+		// add self relation		
+		StateModelResponse stateModelResponse = createModelWithId(entity.getId(), entity);
+		
+		modelMapper.map(entity, stateModelResponse);
+		
+		// add collection relation
+		stateModelResponse.add(linkTo(StateController.class).withRel("states"));
+		
+		return stateModelResponse;
+	}
+	
+	@Override
+	public CollectionModel<StateModelResponse> toCollectionModel(Iterable<? extends State> entities) {
+		return super.toCollectionModel(entities)
+				.add(linkTo(StateController.class).withSelfRel());
 	}
 	
 	@Override

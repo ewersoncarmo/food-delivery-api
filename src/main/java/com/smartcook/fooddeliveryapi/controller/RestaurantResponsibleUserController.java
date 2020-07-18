@@ -1,5 +1,8 @@
 package com.smartcook.fooddeliveryapi.controller;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -35,7 +38,9 @@ public class RestaurantResponsibleUserController {
 		Restaurant restaurant = restaurantService.findById(restaurantId);
 
 		CollectionModel<UserModelResponse> responsibleUsers = userAssembler.toCollectionModel(restaurant.getResponsibleUsers().
-																								stream().collect(Collectors.toList()));
+																								stream().collect(Collectors.toList()))
+				.removeLinks()
+				.add(linkTo(methodOn(RestaurantResponsibleUserController.class).findResponsibleUsers(restaurantId)).withSelfRel());
 		
 		return ResponseEntity.ok()
 				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))
