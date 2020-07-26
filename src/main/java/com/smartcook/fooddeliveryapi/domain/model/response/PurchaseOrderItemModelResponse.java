@@ -2,6 +2,8 @@ package com.smartcook.fooddeliveryapi.domain.model.response;
 
 import java.math.BigDecimal;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -11,7 +13,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @JsonInclude(value = Include.NON_NULL)
-public class PurchaseOrderItemModelResponse {
+public class PurchaseOrderItemModelResponse extends RepresentationModel<PurchaseOrderItemModelResponse> {
 
 	private Long productId;
 	private String productName;

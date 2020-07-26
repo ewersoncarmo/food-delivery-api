@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -13,7 +15,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @JsonInclude(value = Include.NON_NULL)
-public class PurchaseOrderModelResponse {
+public class PurchaseOrderModelResponse extends RepresentationModel<PurchaseOrderModelResponse> {
 
 	private Long id;
 	private BigDecimal subTotal;

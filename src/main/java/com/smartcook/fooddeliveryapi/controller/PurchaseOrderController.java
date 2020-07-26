@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +41,9 @@ public class PurchaseOrderController {
 	@Autowired
 	private PurchaseOrderSummaryAssembler purchaseOrderSummaryAssembler;
 	
+	@Autowired
+	private PagedResourcesAssembler<PurchaseOrder> pagedResourcePurchaseOrderAssembler;
+	
 	@PostMapping
 	public ResponseEntity<ModelResponse<PurchaseOrderSummaryModelResponse>> create(@Valid @RequestBody PurchaseOrderModelRequest purchaseOrderModelRequest) {
 		PurchaseOrder purchaseOrder = purchaseOrderAssembler.toEntity(purchaseOrderModelRequest);
@@ -57,11 +62,12 @@ public class PurchaseOrderController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<Page<PurchaseOrderSummaryModelResponse>>> search(PurchaseOrderFilter filter, 
+	public ResponseEntity<ModelResponse<PagedModel<PurchaseOrderSummaryModelResponse>>> search(PurchaseOrderFilter filter, 
 			Pageable pageable) {
 		Page<PurchaseOrder> purchaseOrdersPage = purchaseOrderService.search(filter, pageable);
 
-		Page<PurchaseOrderSummaryModelResponse> purchaseOrderSummaryModelResponsePage = purchaseOrderSummaryAssembler.toPageableModel(pageable, purchaseOrdersPage);
+		PagedModel<PurchaseOrderSummaryModelResponse> purchaseOrderSummaryModelResponsePage = pagedResourcePurchaseOrderAssembler
+				.toModel(purchaseOrdersPage, purchaseOrderSummaryAssembler);
 		
 		return ResponseEntity.ok()
 				.body(ModelResponse.withData(purchaseOrderSummaryModelResponsePage));

@@ -9,6 +9,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +41,9 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantAssembler restaurantAssembler;
 	
+	@Autowired
+	private PagedResourcesAssembler<Restaurant> pagedResourceRestaurantAssembler;
+	
 	@PostMapping
 	public ResponseEntity<ModelResponse<RestaurantModelResponse>> create(@Valid @RequestBody RestaurantModelRequest restaurantModelRequest) {
 		Restaurant restaurant = restaurantAssembler.toEntity(restaurantModelRequest);
@@ -57,14 +62,14 @@ public class RestaurantController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<ModelResponse<Page<RestaurantModelResponse>>> search(RestaurantFilter filter, 
+	public ResponseEntity<ModelResponse<PagedModel<RestaurantModelResponse>>> search(RestaurantFilter filter, 
 			Pageable pageable) {
 		Page<Restaurant> restaurantPage = restaurantService.search(filter, pageable);
 
-		Page<RestaurantModelResponse> restaurantModelResponsePage = restaurantAssembler.toPageableModel(pageable, restaurantPage);
+		PagedModel<RestaurantModelResponse> pagedModel = pagedResourceRestaurantAssembler.toModel(restaurantPage, restaurantAssembler);
 		
 		return ResponseEntity.ok()
-				.body(ModelResponse.withData(restaurantModelResponsePage));
+				.body(ModelResponse.withData(pagedModel));
 	}
 	
 	@GetMapping("/{id}")

@@ -1,37 +1,61 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.TemplateVariable;
+import org.springframework.hateoas.TemplateVariable.VariableType;
+import org.springframework.hateoas.TemplateVariables;
+import org.springframework.hateoas.UriTemplate;
+import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
+import com.smartcook.fooddeliveryapi.controller.PurchaseOrderController;
+import com.smartcook.fooddeliveryapi.controller.RestaurantController;
+import com.smartcook.fooddeliveryapi.controller.UserController;
 import com.smartcook.fooddeliveryapi.domain.entity.PurchaseOrder;
 import com.smartcook.fooddeliveryapi.domain.model.response.PurchaseOrderSummaryModelResponse;
 
 @Component
-public class PurchaseOrderSummaryAssembler implements PaginationAssembler<PurchaseOrder, PurchaseOrderSummaryModelResponse> {
+public class PurchaseOrderSummaryAssembler extends RepresentationModelAssemblerSupport<PurchaseOrder, PurchaseOrderSummaryModelResponse> {
+
+	public PurchaseOrderSummaryAssembler() {
+		super(PurchaseOrderController.class, PurchaseOrderSummaryModelResponse.class);
+	}
 
 	@Autowired
 	protected ModelMapper modelMapper;
 	
-	public PurchaseOrderSummaryModelResponse toModel(PurchaseOrder entity) {
-		return modelMapper.map(entity, PurchaseOrderSummaryModelResponse.class);
-	}
-
-	public List<PurchaseOrderSummaryModelResponse> toCollectionModel(List<PurchaseOrder> entityList) {
-		return entityList.stream()
-				.map(entity -> toModel(entity))
-				.collect(Collectors.toList());
-	}
-
 	@Override
-	public Page<PurchaseOrderSummaryModelResponse> toPageableModel(Pageable pageable, Page<PurchaseOrder> page) {
-		return new PageImpl<>(toCollectionModel(page.getContent()), pageable, page.getTotalElements());
+	public PurchaseOrderSummaryModelResponse toModel(PurchaseOrder entity) {
+		// add self relation
+		PurchaseOrderSummaryModelResponse purchaseOrderSummaryModelResponse = createModelWithId(entity.getId(), entity);
+		
+		modelMapper.map(entity, purchaseOrderSummaryModelResponse);
+		
+		TemplateVariables pageVariables = new TemplateVariables(
+				new TemplateVariable("page", VariableType.REQUEST_PARAM),
+				new TemplateVariable("size", VariableType.REQUEST_PARAM),
+				new TemplateVariable("sort", VariableType.REQUEST_PARAM));
+		
+		TemplateVariables filterVariables = new TemplateVariables(
+				new TemplateVariable("userId", VariableType.REQUEST_PARAM),
+				new TemplateVariable("restaurantId", VariableType.REQUEST_PARAM),
+				new TemplateVariable("creationDateBegin", VariableType.REQUEST_PARAM),
+				new TemplateVariable("creationDateEnd", VariableType.REQUEST_PARAM));
+		
+		String purchaseOrdersUrl = linkTo(PurchaseOrderController.class).toUri().toString();
+		// add collection relation
+		purchaseOrderSummaryModelResponse.add(new Link(UriTemplate.of(purchaseOrdersUrl, pageVariables.concat(filterVariables)), "purchase-orders"));
+		// add self relation to restaurant
+		purchaseOrderSummaryModelResponse.getRestaurant().add(linkTo(methodOn(RestaurantController.class).findById(purchaseOrderSummaryModelResponse.getRestaurant().getId())).withSelfRel());
+		// add self relation to user
+		purchaseOrderSummaryModelResponse.getUser().add(linkTo(methodOn(UserController.class).findById(purchaseOrderSummaryModelResponse.getUser().getId())).withSelfRel());
+		
+		return purchaseOrderSummaryModelResponse;
 	}
 
 }

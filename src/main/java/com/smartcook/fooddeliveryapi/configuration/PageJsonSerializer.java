@@ -2,14 +2,17 @@ package com.smartcook.fooddeliveryapi.configuration;
 
 import java.io.IOException;
 
-import org.springframework.boot.jackson.JsonComponent;
 import org.springframework.data.domain.Page;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
-@JsonComponent
+/*
+ * This class is not being used anymore. 
+ * It just for history, in order to show a way to serialize pageable elements.
+ */
+//@JsonComponent
 public class PageJsonSerializer extends JsonSerializer<Page<Object>> {
 
 	@Override

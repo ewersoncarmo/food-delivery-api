@@ -1,10 +1,12 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
-import java.util.stream.Collectors;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.TemplateVariable;
+import org.springframework.hateoas.TemplateVariable.VariableType;
+import org.springframework.hateoas.TemplateVariables;
+import org.springframework.hateoas.UriTemplate;
 import org.springframework.stereotype.Component;
 
 import com.smartcook.fooddeliveryapi.controller.RestaurantController;
@@ -15,8 +17,7 @@ import com.smartcook.fooddeliveryapi.domain.model.request.RestaurantModelRequest
 import com.smartcook.fooddeliveryapi.domain.model.response.RestaurantModelResponse;
 
 @Component
-public class RestaurantAssembler extends AbstractAssembler<Restaurant, RestaurantModelRequest, RestaurantModelResponse> 
-	implements PaginationAssembler<Restaurant, RestaurantModelResponse> {
+public class RestaurantAssembler extends AbstractAssembler<Restaurant, RestaurantModelRequest, RestaurantModelResponse>{
 
 	public RestaurantAssembler() {
 		super(RestaurantController.class, RestaurantModelResponse.class);
@@ -29,7 +30,27 @@ public class RestaurantAssembler extends AbstractAssembler<Restaurant, Restauran
 	
 	@Override
 	public RestaurantModelResponse toModel(Restaurant entity) {
-		return modelMapper.map(entity, RestaurantModelResponse.class);
+		// add self relation
+		RestaurantModelResponse restaurantModelResponse = createModelWithId(entity.getId(), entity);
+		
+		modelMapper.map(entity, restaurantModelResponse);
+		
+		TemplateVariables pageVariables = new TemplateVariables(
+				new TemplateVariable("page", VariableType.REQUEST_PARAM),
+				new TemplateVariable("size", VariableType.REQUEST_PARAM),
+				new TemplateVariable("sort", VariableType.REQUEST_PARAM));
+		
+		TemplateVariables filterVariables = new TemplateVariables(
+				new TemplateVariable("cuisineId", VariableType.REQUEST_PARAM),
+				new TemplateVariable("cityId", VariableType.REQUEST_PARAM),
+				new TemplateVariable("active", VariableType.REQUEST_PARAM),
+				new TemplateVariable("open", VariableType.REQUEST_PARAM));
+		
+		String restaurantUrl = linkTo(RestaurantController.class).toUri().toString();
+		// add collection relation
+		restaurantModelResponse.add(new Link(UriTemplate.of(restaurantUrl, pageVariables.concat(filterVariables)), "restaurants"));
+		
+		return restaurantModelResponse;
 	}
 	
 	@Override
@@ -40,9 +61,4 @@ public class RestaurantAssembler extends AbstractAssembler<Restaurant, Restauran
 		modelMapper.map(request, entity);
 	}
 
-	@Override
-	public Page<RestaurantModelResponse> toPageableModel(Pageable pageable, Page<Restaurant> page) {
-		return new PageImpl<>(toCollectionModel(page.getContent()).getContent().stream().collect(Collectors.toList()), 
-				pageable, page.getTotalElements());
-	}
 }
