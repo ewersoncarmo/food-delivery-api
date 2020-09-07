@@ -1,5 +1,8 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.stereotype.Component;
 
 import com.smartcook.fooddeliveryapi.controller.PaymentMethodController;
@@ -21,7 +24,21 @@ public class PaymentMethodAssembler extends AbstractAssembler<PaymentMethod, Pay
 	
 	@Override
 	public PaymentMethodModelResponse toModel(PaymentMethod entity) {
-		return modelMapper.map(entity, PaymentMethodModelResponse.class);
+		// add self relation
+		PaymentMethodModelResponse paymentMethodResponse = createModelWithId(entity.getId(), entity);
+		
+		modelMapper.map(entity, paymentMethodResponse);
+		
+		// add collection relation
+		paymentMethodResponse.add(linkTo(PaymentMethodController.class).withRel("payment-methods"));
+		
+		return paymentMethodResponse;
+	}
+	
+	@Override
+	public CollectionModel<PaymentMethodModelResponse> toCollectionModel(Iterable<? extends PaymentMethod> entities) {
+		return super.toCollectionModel(entities)
+				.add(linkTo(PaymentMethodController.class).withSelfRel());
 	}
 	
 	@Override

@@ -90,4 +90,16 @@ public class PurchaseOrder {
 		this.cancellationDate = OffsetDateTime.now();
 	}
 	
+	public boolean canBeConfirmed() {
+		return this.orderStatus.equals(OrderStatus.CREATED);
+	}
+	
+	public boolean canBeDelivered() {
+		return this.orderStatus.equals(OrderStatus.CONFIRMED);
+	}
+	
+	public boolean canBeCenceled() {
+		return this.orderStatus.equals(OrderStatus.CREATED);
+	}
+	
 }

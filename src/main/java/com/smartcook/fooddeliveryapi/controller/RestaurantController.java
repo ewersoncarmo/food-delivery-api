@@ -61,6 +61,8 @@ public class RestaurantController {
 				.body(ModelResponse.withData(restaurantModelResponse));
 	}
 	
+	// TODO - create a new Response specific for this method, which will return only some properties
+	// TODO - create a new Assembler to handle this new Response
 	@GetMapping
 	public ResponseEntity<ModelResponse<PagedModel<RestaurantModelResponse>>> search(RestaurantFilter filter, 
 			Pageable pageable) {

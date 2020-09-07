@@ -1,6 +1,7 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.TemplateVariable;
@@ -9,7 +10,10 @@ import org.springframework.hateoas.TemplateVariables;
 import org.springframework.hateoas.UriTemplate;
 import org.springframework.stereotype.Component;
 
+import com.smartcook.fooddeliveryapi.controller.CityController;
+import com.smartcook.fooddeliveryapi.controller.CuisineController;
 import com.smartcook.fooddeliveryapi.controller.RestaurantController;
+import com.smartcook.fooddeliveryapi.controller.StateController;
 import com.smartcook.fooddeliveryapi.domain.entity.City;
 import com.smartcook.fooddeliveryapi.domain.entity.Cuisine;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
@@ -45,6 +49,13 @@ public class RestaurantAssembler extends AbstractAssembler<Restaurant, Restauran
 				new TemplateVariable("cityId", VariableType.REQUEST_PARAM),
 				new TemplateVariable("active", VariableType.REQUEST_PARAM),
 				new TemplateVariable("open", VariableType.REQUEST_PARAM));
+		
+		// add self relation to cuisine
+		restaurantModelResponse.getCuisine().add(linkTo(methodOn(CuisineController.class).findById(restaurantModelResponse.getCuisine().getId())).withSelfRel());
+		// add self relation to city
+		restaurantModelResponse.getAddress().getCity().add(linkTo(methodOn(CityController.class).findById(restaurantModelResponse.getAddress().getCity().getId())).withSelfRel());
+		// add self relation to state
+		restaurantModelResponse.getAddress().getCity().getState().add(linkTo(methodOn(StateController.class).findById(restaurantModelResponse.getAddress().getCity().getState().getId())).withSelfRel());
 		
 		String restaurantUrl = linkTo(RestaurantController.class).toUri().toString();
 		// add collection relation

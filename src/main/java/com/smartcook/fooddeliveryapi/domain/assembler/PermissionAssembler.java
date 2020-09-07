@@ -1,5 +1,8 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.stereotype.Component;
 
 import com.smartcook.fooddeliveryapi.controller.PermissionController;
@@ -21,7 +24,19 @@ public class PermissionAssembler extends AbstractAssembler<Permission, Permissio
 	
 	@Override
 	public PermissionModelResponse toModel(Permission entity) {
-		return modelMapper.map(entity, PermissionModelResponse.class);
+		PermissionModelResponse permissionModelResponse = createModelWithId(entity.getId(), entity);
+		
+		modelMapper.map(entity, permissionModelResponse);
+		
+		permissionModelResponse.add(linkTo(PermissionController.class).withRel("permissions"));
+		
+		return permissionModelResponse;
+	}
+	
+	@Override
+	public CollectionModel<PermissionModelResponse> toCollectionModel(Iterable<? extends Permission> entities) {
+		return super.toCollectionModel(entities)
+				.add(linkTo(PermissionController.class).withSelfRel());
 	}
 	
 	@Override

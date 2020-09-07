@@ -1,5 +1,8 @@
 package com.smartcook.fooddeliveryapi.controller;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -36,6 +39,14 @@ public class UserGroupAccessController {
 
 		CollectionModel<GroupAccessModelResponse> groupsAccess = groupAccessAssembler.toCollectionModel(user.getGroups().
 																									stream().collect(Collectors.toList()));
+		
+		groupsAccess.removeLinks()
+			.add(linkTo(methodOn(UserGroupAccessController.class).findGroupsAccess(userId)).withSelfRel())
+		    .add(linkTo(methodOn(UserGroupAccessController.class).addGroupAccess(userId, null)).withRel("add"));
+
+		groupsAccess.getContent().forEach(groupAccess -> {
+			groupAccess.add(linkTo(methodOn(UserGroupAccessController.class).removeGroupAccess(userId, groupAccess.getId())).withRel("remove"));
+		});
 		
 		return ResponseEntity.ok()
 				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))

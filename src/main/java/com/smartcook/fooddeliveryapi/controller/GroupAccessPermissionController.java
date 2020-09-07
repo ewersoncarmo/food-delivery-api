@@ -1,5 +1,8 @@
 package com.smartcook.fooddeliveryapi.controller;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -36,6 +39,14 @@ public class GroupAccessPermissionController {
 
 		CollectionModel<PermissionModelResponse> permissions = permissionAssembler.toCollectionModel(groupAccess.getPermissions().
 																											stream().collect(Collectors.toList()));
+		
+		permissions.removeLinks()
+			.add(linkTo(methodOn(GroupAccessPermissionController.class).findPermissions(groupAccessId)).withSelfRel())
+			.add(linkTo(methodOn(GroupAccessPermissionController.class).addPermission(groupAccessId, null)).withRel("add"));
+		
+		permissions.getContent().forEach(permission -> {
+			permission.add(linkTo(methodOn(GroupAccessPermissionController.class).removePermission(groupAccessId, permission.getId())).withRel("remove"));
+		});
 		
 		return ResponseEntity.ok()
 				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))

@@ -1,5 +1,8 @@
 package com.smartcook.fooddeliveryapi.controller;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.io.IOException;
 import java.net.URI;
 import java.util.stream.Collectors;
@@ -101,6 +104,8 @@ public class RestaurantProductController {
 			products = productAssembler.toCollectionModel(restaurant.getProducts().stream().collect(Collectors.toList()));
 		}
 		
+		products.add(linkTo(methodOn(RestaurantProductController.class).findAll(restaurantId, false)).withSelfRel());
+		
 		return ResponseEntity.ok()
 				.body(ModelResponse.withData(products));
 	}
@@ -147,6 +152,8 @@ public class RestaurantProductController {
 		ProductPhoto photo = productService.findPhoto(restaurantId, productId);
 		
 		ProductPhotoModelResponse productPhotoModelResponse = productPhotoAssembler.toModel(photo);
+		
+		productPhotoModelResponse.add(linkTo(methodOn(RestaurantProductController.class).findById(restaurantId, productId)).withSelfRel());
 
 		String url = productService.retrieve(productPhotoModelResponse.getFileName());
 		

@@ -1,7 +1,11 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.stereotype.Component;
 
+import com.smartcook.fooddeliveryapi.controller.CityController;
 import com.smartcook.fooddeliveryapi.controller.CuisineController;
 import com.smartcook.fooddeliveryapi.domain.entity.Cuisine;
 import com.smartcook.fooddeliveryapi.domain.model.request.CuisineModelRequest;
@@ -21,7 +25,20 @@ public class CuisineAssembler extends AbstractAssembler<Cuisine, CuisineModelReq
 	
 	@Override
 	public CuisineModelResponse toModel(Cuisine entity) {
-		return modelMapper.map(entity, CuisineModelResponse.class);
+		// add link to self relation
+		CuisineModelResponse cuisineModelResponse = createModelWithId(entity.getId(), entity);
+		
+		modelMapper.map(entity, cuisineModelResponse);
+		
+		cuisineModelResponse.add(linkTo(CuisineController.class).withRel("cuisines"));
+		
+		return cuisineModelResponse;
+	}
+	
+	@Override
+	public CollectionModel<CuisineModelResponse> toCollectionModel(Iterable<? extends Cuisine> entities) {
+		return super.toCollectionModel(entities)
+				.add(linkTo(CityController.class).withSelfRel());
 	}
 	
 	@Override

@@ -56,24 +56,24 @@ public class PaymentMethodController {
 	
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<PaymentMethodModelResponse>>> findAll() {
-		List<PaymentMethod> states = paymentMethodService.findAll();
+		List<PaymentMethod> paymentMethods = paymentMethodService.findAll();
 
-		CollectionModel<PaymentMethodModelResponse> stateModelResponse = paymentMethodAssembler.toCollectionModel(states);
+		CollectionModel<PaymentMethodModelResponse> paymentMethodModelResponse = paymentMethodAssembler.toCollectionModel(paymentMethods);
 		
 		return ResponseEntity.ok()
 				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))
-				.body(ModelResponse.withData(stateModelResponse));
+				.body(ModelResponse.withData(paymentMethodModelResponse));
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<ModelResponse<PaymentMethodModelResponse>> findById(@PathVariable("id") Long id) {
 		PaymentMethod paymentMethod = paymentMethodService.findById(id);
 
-		PaymentMethodModelResponse stateModelResponse = paymentMethodAssembler.toModel(paymentMethod);
+		PaymentMethodModelResponse paymentMethodModelResponse = paymentMethodAssembler.toModel(paymentMethod);
 		
 		return ResponseEntity.ok()
 				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))
-				.body(ModelResponse.withData(stateModelResponse));
+				.body(ModelResponse.withData(paymentMethodModelResponse));
 	}
 	
 	@PutMapping("/{id}")

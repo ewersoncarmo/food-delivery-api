@@ -14,6 +14,7 @@ import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSuppor
 import org.springframework.stereotype.Component;
 
 import com.smartcook.fooddeliveryapi.controller.PurchaseOrderController;
+import com.smartcook.fooddeliveryapi.controller.PurchaseOrderStatusController;
 import com.smartcook.fooddeliveryapi.controller.RestaurantController;
 import com.smartcook.fooddeliveryapi.controller.UserController;
 import com.smartcook.fooddeliveryapi.domain.entity.PurchaseOrder;
@@ -50,6 +51,17 @@ public class PurchaseOrderSummaryAssembler extends RepresentationModelAssemblerS
 		String purchaseOrdersUrl = linkTo(PurchaseOrderController.class).toUri().toString();
 		// add collection relation
 		purchaseOrderSummaryModelResponse.add(new Link(UriTemplate.of(purchaseOrdersUrl, pageVariables.concat(filterVariables)), "purchase-orders"));
+		if (entity.canBeConfirmed()) {
+			purchaseOrderSummaryModelResponse.add(linkTo(methodOn(PurchaseOrderStatusController.class).confirm(purchaseOrderSummaryModelResponse.getId())).withRel("confirm"));
+		}
+		// add self relation to deliver
+		if (entity.canBeDelivered()) {
+			purchaseOrderSummaryModelResponse.add(linkTo(methodOn(PurchaseOrderStatusController.class).deliver(purchaseOrderSummaryModelResponse.getId())).withRel("deliver"));
+		}
+		// add self relation to cancel
+		if (entity.canBeCenceled()) {
+			purchaseOrderSummaryModelResponse.add(linkTo(methodOn(PurchaseOrderStatusController.class).cancel(purchaseOrderSummaryModelResponse.getId())).withRel("cancel"));
+		}
 		// add self relation to restaurant
 		purchaseOrderSummaryModelResponse.getRestaurant().add(linkTo(methodOn(RestaurantController.class).findById(purchaseOrderSummaryModelResponse.getRestaurant().getId())).withSelfRel());
 		// add self relation to user

@@ -1,5 +1,8 @@
 package com.smartcook.fooddeliveryapi.domain.assembler;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import org.springframework.stereotype.Component;
 
 import com.smartcook.fooddeliveryapi.controller.RestaurantProductController;
@@ -21,7 +24,15 @@ public class ProductAssembler extends AbstractAssembler<Product, ProductModelReq
 
 	@Override
 	public ProductModelResponse toModel(Product entity) {
-		return modelMapper.map(entity, ProductModelResponse.class);
+		// add self relation
+		ProductModelResponse productModelResponse = createModelWithId(entity.getId(), entity, entity.getRestaurant().getId());
+		
+		modelMapper.map(entity, productModelResponse);
+		
+		// add collection relation
+		productModelResponse.add(linkTo(methodOn(RestaurantProductController.class).findAll(entity.getRestaurant().getId(), false)).withRel("products"));
+		
+		return productModelResponse;
 	}
 
 	@Override
