@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.StateAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.State;
 import com.smartcook.fooddeliveryapi.domain.model.request.StateModelRequest;
@@ -37,6 +38,7 @@ public class StateController {
 	@Autowired
 	private StateAssembler stateAssembler;
 	
+	@CheckSecurity.States.CanEdit
 	@PostMapping
 	public ResponseEntity<ModelResponse<StateModelResponse>> create(@Valid @RequestBody StateModelRequest stateModelRequest) {
 		State state = stateAssembler.toEntity(stateModelRequest);
@@ -54,6 +56,7 @@ public class StateController {
 				.body(ModelResponse.withData(stateModelResponse));
 	}
 	
+	@CheckSecurity.States.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<StateModelResponse>>> findAll() {
 		List<State> states = stateService.findAll();
@@ -65,6 +68,7 @@ public class StateController {
 				.body(ModelResponse.withData(stateModelResponse));
 	}
 	
+	@CheckSecurity.States.CanQuery
 	@GetMapping("/{id}")
 	public ResponseEntity<ModelResponse<StateModelResponse>> findById(@PathVariable("id") Long id) {
 		State state = stateService.findById(id);
@@ -76,6 +80,7 @@ public class StateController {
 				.body(ModelResponse.withData(stateModelResponse));
 	}
 	
+	@CheckSecurity.States.CanEdit
 	@PutMapping("/{id}")
 	public ResponseEntity<ModelResponse<StateModelResponse>> update(@Valid @RequestBody StateModelRequest stateModelRequest,
 			@PathVariable("id") Long id) {
@@ -91,6 +96,7 @@ public class StateController {
 				.body(ModelResponse.withData(stateModelResponse));
 	}
 	
+	@CheckSecurity.States.CanEdit
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		stateService.delete(id);

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.smartcook.fooddeliveryapi.configuration.security.AuthenticationSecurityConfig;
 import com.smartcook.fooddeliveryapi.domain.entity.Product;
 import com.smartcook.fooddeliveryapi.domain.entity.PurchaseOrder;
 import com.smartcook.fooddeliveryapi.domain.model.filter.PurchaseOrderFilter;
@@ -37,6 +38,9 @@ public class PurchaseOrderService {
 	@Autowired
 	private PurchaseOrderStatusService purchaseOrderStatusService;
 	
+	@Autowired
+	private AuthenticationSecurityConfig authenticationSecurityConfig;
+	
 	@Transactional
 	public PurchaseOrder create(PurchaseOrder purchaseOrder) {
 		validatePurchaseOrder(purchaseOrder);
@@ -47,7 +51,7 @@ public class PurchaseOrderService {
 		
 		purchaseOrderRepository.save(purchaseOrder);
 		
-		purchaseOrderStatusService.publichEmailEvent(purchaseOrder);
+		purchaseOrderStatusService.publishEmailEvent(purchaseOrder);
 		
 		return purchaseOrder;
 	}
@@ -65,7 +69,7 @@ public class PurchaseOrderService {
 		purchaseOrder.setRestaurant(restaurantService.findById(purchaseOrder.getRestaurant().getId()));
 		purchaseOrder.setPaymentMethod(paymentMethodService.findById(purchaseOrder.getPaymentMethod().getId()));
 		purchaseOrder.getAddress().setCity(cityService.findById(purchaseOrder.getAddress().getCity().getId()));
-		purchaseOrder.setUser(userService.findById(1L));
+		purchaseOrder.setUser(userService.findById(authenticationSecurityConfig.getUserId()));
 		
 		// M-26=Restaurant does not accept Payment Method {0}.
 		if (purchaseOrder.getRestaurant().notAcceptsPaymentMethod(purchaseOrder.getPaymentMethod())) {

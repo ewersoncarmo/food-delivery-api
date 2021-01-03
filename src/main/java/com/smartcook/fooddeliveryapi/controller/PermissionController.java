@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.PermissionAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.Permission;
 import com.smartcook.fooddeliveryapi.domain.model.request.PermissionModelRequest;
@@ -37,6 +38,7 @@ public class PermissionController {
 	@Autowired
 	private PermissionAssembler permissionAssembler;
 	
+	@CheckSecurity.UsersGroupsPermissions.CanEdit
 	@PostMapping
 	public ResponseEntity<ModelResponse<PermissionModelResponse>> create(@Valid @RequestBody PermissionModelRequest permissionModelRequest) {
 		Permission permission = permissionAssembler.toEntity(permissionModelRequest);
@@ -54,6 +56,7 @@ public class PermissionController {
 				.body(ModelResponse.withData(permissionModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<PermissionModelResponse>>> findAll() {
 		List<Permission> permissions = permissionService.findAll();
@@ -65,6 +68,7 @@ public class PermissionController {
 				.body(ModelResponse.withData(permissionsModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanQuery
 	@GetMapping("/{id}")
 	public ResponseEntity<ModelResponse<PermissionModelResponse>> findById(@PathVariable("id") Long id) {
 		Permission permission = permissionService.findById(id);
@@ -76,6 +80,7 @@ public class PermissionController {
 				.body(ModelResponse.withData(permissionModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanEdit
 	@PutMapping("/{id}")
 	public ResponseEntity<ModelResponse<PermissionModelResponse>> update(@Valid @RequestBody PermissionModelRequest permissionModelRequest,
 			@PathVariable("id") Long id) {
@@ -91,6 +96,7 @@ public class PermissionController {
 				.body(ModelResponse.withData(permissionModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanEdit
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		permissionService.delete(id);

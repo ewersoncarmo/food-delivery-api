@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.RestaurantAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
 import com.smartcook.fooddeliveryapi.domain.model.filter.RestaurantFilter;
@@ -44,6 +45,7 @@ public class RestaurantController {
 	@Autowired
 	private PagedResourcesAssembler<Restaurant> pagedResourceRestaurantAssembler;
 	
+	@CheckSecurity.Restaurants.CanEdit
 	@PostMapping
 	public ResponseEntity<ModelResponse<RestaurantModelResponse>> create(@Valid @RequestBody RestaurantModelRequest restaurantModelRequest) {
 		Restaurant restaurant = restaurantAssembler.toEntity(restaurantModelRequest);
@@ -63,6 +65,7 @@ public class RestaurantController {
 	
 	// TODO - create a new Response specific for this method, which will return only some properties
 	// TODO - create a new Assembler to handle this new Response
+	@CheckSecurity.Restaurants.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<PagedModel<RestaurantModelResponse>>> search(RestaurantFilter filter, 
 			Pageable pageable) {
@@ -74,6 +77,7 @@ public class RestaurantController {
 				.body(ModelResponse.withData(pagedModel));
 	}
 	
+	@CheckSecurity.Restaurants.CanQuery
 	@GetMapping("/{id}")
 	public ResponseEntity<ModelResponse<RestaurantModelResponse>> findById(@PathVariable("id") Long id) {
 		Restaurant restaurant = restaurantService.findById(id);
@@ -84,6 +88,7 @@ public class RestaurantController {
 				.body(ModelResponse.withData(restaurantModelResponse));
 	}
 	
+	@CheckSecurity.Restaurants.CanEdit
 	@PutMapping("/{id}")
 	public ResponseEntity<ModelResponse<RestaurantModelResponse>> update(@Valid @RequestBody RestaurantModelRequest restaurantModelRequest,
 			@PathVariable("id") Long id) {
@@ -99,6 +104,7 @@ public class RestaurantController {
 				.body(ModelResponse.withData(restaurantModelResponse));
 	}
 	
+	@CheckSecurity.Restaurants.CanEdit
 	@PostMapping("/{id}/activate")
 	public ResponseEntity<Void> activate(@PathVariable("id") Long id) {
 		restaurantService.activate(id);
@@ -107,6 +113,7 @@ public class RestaurantController {
 				.build();
 	}
 	
+	@CheckSecurity.Restaurants.CanEdit
 	@PostMapping("/{id}/deactivate")
 	public ResponseEntity<Void> deactivate(@PathVariable("id") Long id) {
 		restaurantService.deactivate(id);
@@ -115,6 +122,7 @@ public class RestaurantController {
 				.build();
 	}
 	
+	@CheckSecurity.Restaurants.CanEdit
 	@PostMapping("/activate")
 	public ResponseEntity<Void> activateBatch(@Valid @RequestBody List<RestaurantIdModelRequest> restaurantIdModelRequest) {
 		restaurantService.activate(restaurantIdModelRequest.stream().map(r -> {
@@ -125,6 +133,7 @@ public class RestaurantController {
 				.build();
 	}
 	
+	@CheckSecurity.Restaurants.CanEdit
 	@PostMapping("/deactivate")
 	public ResponseEntity<Void> deactivateBatch(@Valid @RequestBody List<RestaurantIdModelRequest> restaurantIdModelRequest) {
 		restaurantService.deactivate(restaurantIdModelRequest.stream().map(r -> {
@@ -135,6 +144,7 @@ public class RestaurantController {
 				.build();
 	}
 	
+	@CheckSecurity.Restaurants.CanManage
 	@PostMapping("/{id}/opening")
 	public ResponseEntity<Void> opening(@PathVariable("id") Long id) {
 		restaurantService.opening(id);
@@ -143,6 +153,7 @@ public class RestaurantController {
 				.build();
 	}
 	
+	@CheckSecurity.Restaurants.CanManage
 	@PostMapping("/{id}/closing")
 	public ResponseEntity<Void> closing(@PathVariable("id") Long id) {
 		restaurantService.closing(id);
@@ -151,6 +162,7 @@ public class RestaurantController {
 				.build();
 	}
 	
+	@CheckSecurity.Restaurants.CanEdit
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		restaurantService.delete(id);

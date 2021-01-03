@@ -207,8 +207,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Purchase Orders",
@@ -481,7 +480,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "051909bd-9fa2-491d-9ee5-1105dba0e004",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -491,15 +489,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f2e4ee33-118e-4986-a8c2-1a9cfa62e0e9",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Statistics",
@@ -594,7 +590,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "41ed0454-b4f5-41eb-a37a-ea42bdfbf8a1",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -604,15 +599,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1ced8048-d535-4166-9716-a50d2d0ae05e",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Users",
@@ -986,7 +979,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f5b80236-660b-4671-b6fe-15ce758fe866",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -996,15 +988,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "946f16b7-2330-40d7-8f4d-6c90c19792ac",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Groups Access",
@@ -1338,7 +1328,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "15eb2c7b-7787-48b6-9309-1898464edead",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1348,15 +1337,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "05cd4661-487c-4d55-80b2-ddbda4a1a544",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "States",
@@ -1522,8 +1509,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Payment Methods",
@@ -1694,7 +1680,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b763a21a-1a46-4adb-9f36-d61df074c303",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1704,15 +1689,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "64cd3d12-4783-4800-9017-1ed20376434d",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Permissions",
@@ -1883,7 +1866,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "35f5e5f9-46a9-45dd-a815-230b0203f749",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1893,15 +1875,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "31a263d7-304c-46fd-9ecb-90a7c76c8339",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Cities",
@@ -2105,8 +2085,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Restaurant",
@@ -2798,8 +2777,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Products",
@@ -3100,15 +3078,319 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
+		},
+		{
+			"name": "Root Entry Point",
+			"item": [
+				{
+					"name": "root",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/food-delivery-api/api",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"api"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OAuth2",
+			"item": [
+				{
+					"name": "Resource Owner Password Credentials Grant",
+					"item": [
+						{
+							"name": "token",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "fooddeliveryapi-web",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "fooddeliveryapi-web",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "ewerson.user@email.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/food-delivery-api/oauth/token",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"food-delivery-api",
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refreshToken",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "fooddeliveryapi-web",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "fooddeliveryapi-web",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "refresh_token",
+											"value": "369c9ce2-c863-4e36-acf9-7fb964c59116",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "refresh_token",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/food-delivery-api/oauth/token",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"food-delivery-api",
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkToken",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "5cdbea14-a8ce-45f1-b3f6-8a7068e42bfe",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/food-delivery-api/oauth/check_token",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"food-delivery-api",
+										"oauth",
+										"check_token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client Credentials Grant",
+					"item": [
+						{
+							"name": "token",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "fooddeliveryapi-batch",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "fooddeliveryapi-batch",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/food-delivery-api/oauth/token",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"food-delivery-api",
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkToken",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "9856858d-4a52-4b95-843f-c0e604e099b1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/food-delivery-api/oauth/check_token",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"food-delivery-api",
+										"oauth",
+										"check_token"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "tokenKey",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:8080/food-delivery-api/oauth/token_key",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"food-delivery-api",
+								"oauth",
+								"token_key"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "c836a985-2dcf-4dae-b450-22d3db85847f",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -3118,13 +3400,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "fafb6023-c574-4db5-905f-b82a27d17940",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.model.dto.DailySale;
 import com.smartcook.fooddeliveryapi.domain.model.filter.DailySaleFilter;
 import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
@@ -22,6 +23,7 @@ public class DailySaleController {
 	@Autowired
 	private DailySaleService dailySaleService;
 	
+	@CheckSecurity.Statistics.CanQuery
 	@GetMapping(path = "/daily-sales", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse<List<DailySale>>> search(DailySaleFilter filter) {
 		List<DailySale> dailySales = dailySaleService.search(filter);
@@ -30,6 +32,7 @@ public class DailySaleController {
 				.body(ModelResponse.withData(dailySales));
 	}
 	
+	@CheckSecurity.Statistics.CanQuery
 	@GetMapping(path = "/daily-sales", produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<byte[]> searchPdf(DailySaleFilter filter) {
 		byte[] report = dailySaleService.generatePdfDailySales(filter);

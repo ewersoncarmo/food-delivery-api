@@ -18,24 +18,24 @@ public class PurchaseOrderStatusService {
 	public void confirm(PurchaseOrder purchaseOrder) {
 		purchaseOrder.getOrderStatus().getPurchaseOrderStatusFlow().confirm(purchaseOrder);
 		
-		publichEmailEvent(purchaseOrder);
+		publishEmailEvent(purchaseOrder);
 	}
 
 	@Transactional
 	public void deliver(PurchaseOrder purchaseOrder) {
 		purchaseOrder.getOrderStatus().getPurchaseOrderStatusFlow().deliver(purchaseOrder);
 
-		publichEmailEvent(purchaseOrder);
+		publishEmailEvent(purchaseOrder);
 	}
 	
 	@Transactional
 	public void cancel(PurchaseOrder purchaseOrder) {
 		purchaseOrder.getOrderStatus().getPurchaseOrderStatusFlow().cancel(purchaseOrder);
 
-		publichEmailEvent(purchaseOrder);
+		publishEmailEvent(purchaseOrder);
 	}
 
-	public void publichEmailEvent(PurchaseOrder purchaseOrder) {
+	public void publishEmailEvent(PurchaseOrder purchaseOrder) {
 		eventPublisher.publishEvent(new EmailEvent(purchaseOrder));
 	}
 }

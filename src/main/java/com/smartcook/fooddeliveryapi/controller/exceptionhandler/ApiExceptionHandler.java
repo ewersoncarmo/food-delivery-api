@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
@@ -51,6 +52,9 @@ public class ApiExceptionHandler {
 	
 	@Autowired
 	private NoHandlerFoundExceptionHandler noHandlerFoundExceptionHandler;
+	
+	@Autowired
+	private AccessDeniedExceptionHandler accessDeniedExceptionHandler;
 	
 	@Autowired
 	private GenericExceptionHandler genericExceptionHandler;
@@ -103,6 +107,11 @@ public class ApiExceptionHandler {
 	@ExceptionHandler(NoHandlerFoundException.class)
 	protected ResponseEntity<ModelResponse<Object>> handleNoHandlerFoundException(NoHandlerFoundException exception) {
 		return noHandlerFoundExceptionHandler.handleException(exception);
+	}
+	
+	@ExceptionHandler(AccessDeniedException.class)
+	protected ResponseEntity<ModelResponse<Object>> handleAccessDeniedException(AccessDeniedException exception) {
+		return accessDeniedExceptionHandler.handleException(exception);
 	}
 
 	@ExceptionHandler({Exception.class, ReportException.class, StorageException.class, EmailException.class})

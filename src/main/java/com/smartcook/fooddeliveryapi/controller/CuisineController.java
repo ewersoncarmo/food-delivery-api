@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.CuisineAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.Cuisine;
 import com.smartcook.fooddeliveryapi.domain.model.request.CuisineModelRequest;
@@ -37,6 +38,7 @@ public class CuisineController {
 	@Autowired
 	private CuisineAssembler cuisineAssembler;
 	
+	@CheckSecurity.Cuisines.CanEdit
 	@PostMapping
 	public ResponseEntity<ModelResponse<CuisineModelResponse>> create(@Valid @RequestBody CuisineModelRequest cuisineModelRequest) {
 		Cuisine cuisine = cuisineAssembler.toEntity(cuisineModelRequest);
@@ -54,6 +56,7 @@ public class CuisineController {
 				.body(ModelResponse.withData(cuisineModelResponse));
 	}
 	
+	@CheckSecurity.Cuisines.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<CuisineModelResponse>>> findAll() {
 		List<Cuisine> cuisines = cuisineService.findAll();
@@ -65,6 +68,7 @@ public class CuisineController {
 				.body(ModelResponse.withData(cuisineModelResponse));
 	}
 	
+	@CheckSecurity.Cuisines.CanQuery
 	@GetMapping("/{id}")
 	public ResponseEntity<ModelResponse<CuisineModelResponse>> findById(@PathVariable("id") Long id) {
 		Cuisine cuisine = cuisineService.findById(id);
@@ -76,6 +80,7 @@ public class CuisineController {
 				.body(ModelResponse.withData(cuisineModelResponse));
 	}
 	
+	@CheckSecurity.Cuisines.CanEdit
 	@PutMapping("/{id}")
 	public ResponseEntity<ModelResponse<CuisineModelResponse>> update(@Valid @RequestBody CuisineModelRequest cuisineModelRequest,
 			@PathVariable("id") Long id) {
@@ -90,7 +95,8 @@ public class CuisineController {
 		return ResponseEntity.ok()
 				.body(ModelResponse.withData(cuisineModelResponse));
 	}
-	
+
+	@CheckSecurity.Cuisines.CanEdit
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		cuisineService.delete(id);

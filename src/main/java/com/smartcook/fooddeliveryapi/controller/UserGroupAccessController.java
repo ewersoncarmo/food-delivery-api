@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.GroupAccessAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.User;
 import com.smartcook.fooddeliveryapi.domain.model.response.GroupAccessModelResponse;
@@ -33,6 +34,7 @@ public class UserGroupAccessController {
 	@Autowired
 	private GroupAccessAssembler groupAccessAssembler;
 	
+	@CheckSecurity.UsersGroupsPermissions.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<GroupAccessModelResponse>>> findGroupsAccess(@PathVariable("userId") Long userId) {
 		User user = userService.findById(userId);
@@ -53,6 +55,7 @@ public class UserGroupAccessController {
 				.body(ModelResponse.withData(groupsAccess));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanEdit
 	@PutMapping("/{groupAccessId}")
 	public ResponseEntity<Void> addGroupAccess(@PathVariable("userId") Long userId,
 			@PathVariable("groupAccessId") Long groupAccessId) {
@@ -62,6 +65,7 @@ public class UserGroupAccessController {
 				.build();
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanEdit
 	@DeleteMapping("/{groupAccessId}")
 	public ResponseEntity<Void> removeGroupAccess(@PathVariable("userId") Long userId,
 			@PathVariable("groupAccessId") Long groupAccessId) {

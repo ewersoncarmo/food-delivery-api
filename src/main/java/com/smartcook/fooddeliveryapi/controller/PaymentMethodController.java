@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.PaymentMethodAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.PaymentMethod;
 import com.smartcook.fooddeliveryapi.domain.model.request.PaymentMethodModelRequest;
@@ -37,6 +38,7 @@ public class PaymentMethodController {
 	@Autowired
 	private PaymentMethodAssembler paymentMethodAssembler;
 	
+	@CheckSecurity.PaymentMethods.CanEdit
 	@PostMapping
 	public ResponseEntity<ModelResponse<PaymentMethodModelResponse>> create(@Valid @RequestBody PaymentMethodModelRequest paymentMethodModelRequest) {
 		PaymentMethod paymentMethod = paymentMethodAssembler.toEntity(paymentMethodModelRequest);
@@ -54,6 +56,7 @@ public class PaymentMethodController {
 				.body(ModelResponse.withData(stateModelResponse));
 	}
 	
+	@CheckSecurity.PaymentMethods.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<PaymentMethodModelResponse>>> findAll() {
 		List<PaymentMethod> paymentMethods = paymentMethodService.findAll();
@@ -65,6 +68,7 @@ public class PaymentMethodController {
 				.body(ModelResponse.withData(paymentMethodModelResponse));
 	}
 	
+	@CheckSecurity.PaymentMethods.CanQuery
 	@GetMapping("/{id}")
 	public ResponseEntity<ModelResponse<PaymentMethodModelResponse>> findById(@PathVariable("id") Long id) {
 		PaymentMethod paymentMethod = paymentMethodService.findById(id);
@@ -76,6 +80,7 @@ public class PaymentMethodController {
 				.body(ModelResponse.withData(paymentMethodModelResponse));
 	}
 	
+	@CheckSecurity.PaymentMethods.CanEdit
 	@PutMapping("/{id}")
 	public ResponseEntity<ModelResponse<PaymentMethodModelResponse>> update(@Valid @RequestBody PaymentMethodModelRequest paymentMethodModelRequest,
 			@PathVariable("id") Long id) {
@@ -91,6 +96,7 @@ public class PaymentMethodController {
 				.body(ModelResponse.withData(stateModelResponse));
 	}
 	
+	@CheckSecurity.PaymentMethods.CanEdit
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		paymentMethodService.delete(id);

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.entity.PurchaseOrder;
 import com.smartcook.fooddeliveryapi.service.PurchaseOrderService;
 import com.smartcook.fooddeliveryapi.service.PurchaseOrderStatusService;
@@ -21,6 +22,7 @@ public class PurchaseOrderStatusController {
 	@Autowired
 	private PurchaseOrderStatusService puchaseOrderStatusService;
 	
+	@CheckSecurity.PurchaseOrders.CanManage
 	@PutMapping("/confirm")
 	public ResponseEntity<Void> confirm(@PathVariable("purchaseOrderId") Long purchaseOrderId) {
 		PurchaseOrder purchaseOrder = purchaseOrderService.findById(purchaseOrderId);
@@ -31,6 +33,7 @@ public class PurchaseOrderStatusController {
 				.build();
 	}
 	
+	@CheckSecurity.PurchaseOrders.CanManage
 	@PutMapping("/deliver")
 	public ResponseEntity<Void> deliver(@PathVariable("purchaseOrderId") Long purchaseOrderId) {
 		PurchaseOrder purchaseOrder = purchaseOrderService.findById(purchaseOrderId);
@@ -41,6 +44,7 @@ public class PurchaseOrderStatusController {
 				.build();
 	}
 	
+	@CheckSecurity.PurchaseOrders.CanManage
 	@PutMapping("/cancel")
 	public ResponseEntity<Void> cancel(@PathVariable("purchaseOrderId") Long purchaseOrderId) {
 		PurchaseOrder purchaseOrder = purchaseOrderService.findById(purchaseOrderId);

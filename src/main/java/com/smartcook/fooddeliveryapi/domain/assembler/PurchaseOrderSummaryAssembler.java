@@ -13,6 +13,7 @@ import org.springframework.hateoas.UriTemplate;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
+import com.smartcook.fooddeliveryapi.configuration.security.AuthenticationSecurityConfig;
 import com.smartcook.fooddeliveryapi.controller.PurchaseOrderController;
 import com.smartcook.fooddeliveryapi.controller.PurchaseOrderStatusController;
 import com.smartcook.fooddeliveryapi.controller.RestaurantController;
@@ -29,6 +30,9 @@ public class PurchaseOrderSummaryAssembler extends RepresentationModelAssemblerS
 
 	@Autowired
 	protected ModelMapper modelMapper;
+	
+	@Autowired
+	private AuthenticationSecurityConfig authenticationSecurityConfig;
 	
 	@Override
 	public PurchaseOrderSummaryModelResponse toModel(PurchaseOrder entity) {
@@ -51,17 +55,22 @@ public class PurchaseOrderSummaryAssembler extends RepresentationModelAssemblerS
 		String purchaseOrdersUrl = linkTo(PurchaseOrderController.class).toUri().toString();
 		// add collection relation
 		purchaseOrderSummaryModelResponse.add(new Link(UriTemplate.of(purchaseOrdersUrl, pageVariables.concat(filterVariables)), "purchase-orders"));
-		if (entity.canBeConfirmed()) {
-			purchaseOrderSummaryModelResponse.add(linkTo(methodOn(PurchaseOrderStatusController.class).confirm(purchaseOrderSummaryModelResponse.getId())).withRel("confirm"));
+		
+		if (authenticationSecurityConfig.canManagePurchaseOrder(purchaseOrderSummaryModelResponse.getId())) {
+			// add self relation to confirm
+			if (entity.canBeConfirmed()) {
+				purchaseOrderSummaryModelResponse.add(linkTo(methodOn(PurchaseOrderStatusController.class).confirm(purchaseOrderSummaryModelResponse.getId())).withRel("confirm"));
+			}
+			// add self relation to deliver
+			if (entity.canBeDelivered()) {
+				purchaseOrderSummaryModelResponse.add(linkTo(methodOn(PurchaseOrderStatusController.class).deliver(purchaseOrderSummaryModelResponse.getId())).withRel("deliver"));
+			}
+			// add self relation to cancel
+			if (entity.canBeCenceled()) {
+				purchaseOrderSummaryModelResponse.add(linkTo(methodOn(PurchaseOrderStatusController.class).cancel(purchaseOrderSummaryModelResponse.getId())).withRel("cancel"));
+			}
 		}
-		// add self relation to deliver
-		if (entity.canBeDelivered()) {
-			purchaseOrderSummaryModelResponse.add(linkTo(methodOn(PurchaseOrderStatusController.class).deliver(purchaseOrderSummaryModelResponse.getId())).withRel("deliver"));
-		}
-		// add self relation to cancel
-		if (entity.canBeCenceled()) {
-			purchaseOrderSummaryModelResponse.add(linkTo(methodOn(PurchaseOrderStatusController.class).cancel(purchaseOrderSummaryModelResponse.getId())).withRel("cancel"));
-		}
+		
 		// add self relation to restaurant
 		purchaseOrderSummaryModelResponse.getRestaurant().add(linkTo(methodOn(RestaurantController.class).findById(purchaseOrderSummaryModelResponse.getRestaurant().getId())).withSelfRel());
 		// add self relation to user

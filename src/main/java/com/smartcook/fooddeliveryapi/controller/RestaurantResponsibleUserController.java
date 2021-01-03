@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.UserAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
 import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
@@ -33,6 +34,7 @@ public class RestaurantResponsibleUserController {
 	@Autowired
 	private UserAssembler userAssembler;
 	
+	@CheckSecurity.Restaurants.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<UserModelResponse>>> findResponsibleUsers(@PathVariable("restaurantId") Long restaurantId) {
 		Restaurant restaurant = restaurantService.findById(restaurantId);
@@ -47,6 +49,7 @@ public class RestaurantResponsibleUserController {
 				.body(ModelResponse.withData(responsibleUsers));
 	}
 	
+	@CheckSecurity.Restaurants.CanEdit
 	@PutMapping("/{userId}")
 	public ResponseEntity<Void> addResponsibleUser(@PathVariable("restaurantId") Long restaurantId,
 			@PathVariable("userId") Long userId) {
@@ -56,6 +59,7 @@ public class RestaurantResponsibleUserController {
 				.build();
 	}
 	
+	@CheckSecurity.Restaurants.CanEdit
 	@DeleteMapping("/{userId}")
 	public ResponseEntity<Void> removeResponsibleUser(@PathVariable("restaurantId") Long restaurantId,
 			@PathVariable("userId") Long userId) {

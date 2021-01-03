@@ -33,4 +33,11 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long>, J
 		 + "from   Restaurant r                "
 		 + "where  r.address.city.id = :cityId ")
 	List<Restaurant> findByCity_Id(@Param("cityId") Long cityId);
+	
+	@Query("select rest                           "
+		 + "from   Restaurant rest                "	
+		 + "join fetch rest.responsibleUsers resp "
+		 + "where  rest.id = :restaurantId and    "
+		 + "       resp.id = :userId              ")
+	Optional<Restaurant> findByResponsibleUser(@Param("restaurantId") Long restaurantId, @Param("userId") Long usesrId);
 }

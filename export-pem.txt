@@ -1,0 +1,1 @@
+keytool -export -rfc -alias fooddeliveyapi -keystore fooddeliveyapi.jks -file fooddeliveyapi-cert.pem

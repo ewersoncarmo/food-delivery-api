@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.UserAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.User;
 import com.smartcook.fooddeliveryapi.domain.model.request.UserChangePasswordModelRequest;
@@ -39,6 +40,7 @@ public class UserController {
 	@Autowired
 	private UserAssembler userAssembler;
 	
+	// This method is public. It musn't require authentication
 	@PostMapping
 	public ResponseEntity<ModelResponse<UserModelResponse>> create(@Valid @RequestBody UserPasswordModelRequest userPasswordModelRequest) {
 		User user = userAssembler.toEntity(userPasswordModelRequest);
@@ -56,6 +58,7 @@ public class UserController {
 				.body(ModelResponse.withData(userModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<UserModelResponse>>> findAll() {
 		List<User> users = userService.findAll();
@@ -67,6 +70,7 @@ public class UserController {
 				.body(ModelResponse.withData(userModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanQuery
 	@GetMapping("/{id}")
 	public ResponseEntity<ModelResponse<UserModelResponse>> findById(@PathVariable("id") Long id) {
 		User user = userService.findById(id);
@@ -78,6 +82,7 @@ public class UserController {
 				.body(ModelResponse.withData(userModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanEditData
 	@PutMapping("/{id}")
 	public ResponseEntity<ModelResponse<UserModelResponse>> update(@Valid @RequestBody UserModelRequest userModelRequest,
 			@PathVariable("id") Long id) {
@@ -93,6 +98,7 @@ public class UserController {
 				.body(ModelResponse.withData(userModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanEditPassword
 	@PutMapping("/{id}/change-password")
 	public ResponseEntity<Void> changePassword(@Valid @RequestBody UserChangePasswordModelRequest userChangePasswordModelRequest,
 			@PathVariable("id") Long id) {
@@ -101,7 +107,8 @@ public class UserController {
 		return ResponseEntity.noContent()
 				.build();
 	}
-	
+
+	@CheckSecurity.UsersGroupsPermissions.CanEditData
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		userService.delete(id);

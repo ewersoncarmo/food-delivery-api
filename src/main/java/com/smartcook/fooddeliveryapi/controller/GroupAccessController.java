@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.GroupAccessAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.GroupAccess;
 import com.smartcook.fooddeliveryapi.domain.model.request.GroupAccessModelRequest;
@@ -37,6 +38,7 @@ public class GroupAccessController {
 	@Autowired
 	private GroupAccessAssembler groupAccessAssembler;
 	
+	@CheckSecurity.UsersGroupsPermissions.CanEdit
 	@PostMapping
 	public ResponseEntity<ModelResponse<GroupAccessModelResponse>> create(@Valid @RequestBody GroupAccessModelRequest groupAccessModelRequest) {
 		GroupAccess groupAccess = groupAccessAssembler.toEntity(groupAccessModelRequest);
@@ -54,6 +56,7 @@ public class GroupAccessController {
 				.body(ModelResponse.withData(groupAccessModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<GroupAccessModelResponse>>> findAll() {
 		List<GroupAccess> groupsAccess = groupAccessService.findAll();
@@ -65,6 +68,7 @@ public class GroupAccessController {
 				.body(ModelResponse.withData(groupAccessModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanQuery
 	@GetMapping("/{id}")
 	public ResponseEntity<ModelResponse<GroupAccessModelResponse>> findById(@PathVariable("id") Long id) {
 		GroupAccess groupAccess = groupAccessService.findById(id);
@@ -76,6 +80,7 @@ public class GroupAccessController {
 				.body(ModelResponse.withData(groupAccessModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanEdit
 	@PutMapping("/{id}")
 	public ResponseEntity<ModelResponse<GroupAccessModelResponse>> update(@Valid @RequestBody GroupAccessModelRequest groupAccessModelRequest,
 			@PathVariable("id") Long id) {
@@ -91,6 +96,7 @@ public class GroupAccessController {
 				.body(ModelResponse.withData(groupAccessModelResponse));
 	}
 	
+	@CheckSecurity.UsersGroupsPermissions.CanEdit
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		groupAccessService.delete(id);

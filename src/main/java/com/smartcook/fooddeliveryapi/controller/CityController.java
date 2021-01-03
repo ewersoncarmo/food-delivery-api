@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.CityAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.City;
 import com.smartcook.fooddeliveryapi.domain.model.request.CityModelRequest;
@@ -37,6 +38,7 @@ public class CityController {
 	@Autowired
 	private CityAssembler cityAssembler;
 	
+	@CheckSecurity.Cities.CanEdit
 	@PostMapping
 	public ResponseEntity<ModelResponse<CityModelResponse>> create(@Valid @RequestBody CityModelRequest cityModelRequest) {
 		City city = cityAssembler.toEntity(cityModelRequest);
@@ -54,6 +56,7 @@ public class CityController {
 				.body(ModelResponse.withData(cityModelResponse));
 	}
 	
+	@CheckSecurity.Cities.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<CityModelResponse>>> findAll() {
 		List<City> cities = cityService.findAll();
@@ -65,6 +68,7 @@ public class CityController {
 				.body(ModelResponse.withData(cityModelResponse));
 	}
 	
+	@CheckSecurity.Cities.CanQuery
 	@GetMapping("/{id}")
 	public ResponseEntity<ModelResponse<CityModelResponse>> findById(@PathVariable("id") Long id) {
 		City city = cityService.findById(id);
@@ -76,6 +80,7 @@ public class CityController {
 				.body(ModelResponse.withData(cityModelResponse));
 	}
 	
+	@CheckSecurity.Cities.CanEdit
 	@PutMapping("/{id}")
 	public ResponseEntity<ModelResponse<CityModelResponse>> update(@Valid @RequestBody CityModelRequest cityModelRequest,
 			@PathVariable("id") Long id) {
@@ -91,6 +96,7 @@ public class CityController {
 				.body(ModelResponse.withData(cityModelResponse));
 	}
 	
+	@CheckSecurity.Cities.CanEdit
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		cityService.delete(id);

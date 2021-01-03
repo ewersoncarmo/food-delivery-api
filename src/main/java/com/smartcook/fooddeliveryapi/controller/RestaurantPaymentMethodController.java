@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.PaymentMethodAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.Restaurant;
 import com.smartcook.fooddeliveryapi.domain.model.response.ModelResponse;
@@ -30,6 +31,7 @@ public class RestaurantPaymentMethodController {
 	@Autowired
 	private PaymentMethodAssembler paymentMethodAssembler;
 	
+	@CheckSecurity.Restaurants.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<PaymentMethodModelResponse>>> findPaymentMethods(@PathVariable("restaurantId") Long restaurantId) {
 		Restaurant restaurant = restaurantService.findById(restaurantId);
@@ -42,6 +44,7 @@ public class RestaurantPaymentMethodController {
 				.body(ModelResponse.withData(paymentMethods));
 	}
 	
+	@CheckSecurity.Restaurants.CanManage
 	@PutMapping("/{paymentMethodId}")
 	public ResponseEntity<Void> addPaymentMethod(@PathVariable("restaurantId") Long restaurantId,
 			@PathVariable("paymentMethodId") Long paymentMethodId) {
@@ -51,6 +54,7 @@ public class RestaurantPaymentMethodController {
 				.build();
 	}
 	
+	@CheckSecurity.Restaurants.CanManage
 	@DeleteMapping("/{paymentMethodId}")
 	public ResponseEntity<Void> removePaymentMethod(@PathVariable("restaurantId") Long restaurantId,
 			@PathVariable("paymentMethodId") Long paymentMethodId) {

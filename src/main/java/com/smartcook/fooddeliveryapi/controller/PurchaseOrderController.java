@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.PurchaseOrderAssembler;
 import com.smartcook.fooddeliveryapi.domain.assembler.PurchaseOrderSummaryAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.PurchaseOrder;
@@ -44,6 +45,7 @@ public class PurchaseOrderController {
 	@Autowired
 	private PagedResourcesAssembler<PurchaseOrder> pagedResourcePurchaseOrderAssembler;
 	
+	@CheckSecurity.PurchaseOrders.CanCreate
 	@PostMapping
 	public ResponseEntity<ModelResponse<PurchaseOrderSummaryModelResponse>> create(@Valid @RequestBody PurchaseOrderModelRequest purchaseOrderModelRequest) {
 		PurchaseOrder purchaseOrder = purchaseOrderAssembler.toEntity(purchaseOrderModelRequest);
@@ -61,6 +63,7 @@ public class PurchaseOrderController {
 				.body(ModelResponse.withData(purchaseOrderSummaryModelResponse));
 	}
 	
+	@CheckSecurity.PurchaseOrders.CanSearch
 	@GetMapping
 	public ResponseEntity<ModelResponse<PagedModel<PurchaseOrderSummaryModelResponse>>> search(PurchaseOrderFilter filter, 
 			Pageable pageable) {
@@ -73,6 +76,7 @@ public class PurchaseOrderController {
 				.body(ModelResponse.withData(purchaseOrderSummaryModelResponsePage));
 	}
 	
+	@CheckSecurity.PurchaseOrders.CanQuery
 	@GetMapping("/{id}")
 	public ResponseEntity<ModelResponse<PurchaseOrderModelResponse>> findById(@PathVariable("id") Long id) {
 		PurchaseOrder purchaseOrder = purchaseOrderService.findById(id);

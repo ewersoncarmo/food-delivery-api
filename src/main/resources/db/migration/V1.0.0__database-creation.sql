@@ -24,7 +24,7 @@ create table user (
 	id bigint not null auto_increment, 
 	name varchar(80) not null, 
 	email varchar(80) not null, 
-	password varchar(20) not null, 
+	password varchar(200) not null, 
 	creation_date datetime(6) not null, 
 	
 	primary key (id)
@@ -231,3 +231,73 @@ alter table purchase_order_item add constraint fk_purchase_order_item_product
 foreign key (product_id) references product (id);
 
 alter table purchase_order_item add constraint uk_purchase_order_item unique (purchase_order_id, product_id);
+
+create table oauth_client_details (
+  client_id varchar(255),
+  resource_ids varchar(256),
+  client_secret varchar(256),
+  scope varchar(256),
+  authorized_grant_types varchar(256),
+  web_server_redirect_uri varchar(256),
+  authorities varchar(256),
+  access_token_validity integer,
+  refresh_token_validity integer,
+  additional_information varchar(4096),
+  autoapprove varchar(256),
+  
+  primary key (client_id)
+) engine=InnoDB default charset=utf8;
+
+insert into permission (id, name, description) values (1, 'EDIT_CUISINES', 'Allows to edit cuisines');
+insert into permission (id, name, description) values (2, 'EDIT_PAYMENT_METHODS', 'Allows to create or edit payment methods');
+insert into permission (id, name, description) values (3, 'EDIT_CITIES', 'Allows to create or edit cities');
+insert into permission (id, name, description) values (4, 'EDIT_STATES', 'Allows to create or edit states');
+insert into permission (id, name, description) values (5, 'QUERY_USERS_GROUPS_PERMISSIONS', 'Allows to query users, groups and permissions');
+insert into permission (id, name, description) values (6, 'EDIT_USERS_GROUPS_PERMISSIONS', 'Allows to create or edit users, groups and permissions');
+insert into permission (id, name, description) values (7, 'EDIT_RESTAURANTS', 'Allows to create, edit or manage restaurants');
+insert into permission (id, name, description) values (8, 'QUERY_PURCHASE_ORDERS', 'Allows to query purchase orders');
+insert into permission (id, name, description) values (9, 'MANAGE_PURCHASE_ORDERS', 'Allows to manage purchase orders');
+insert into permission (id, name, description) values (10, 'GENERATE_REPORTS', 'Allows to generate reports');
+
+insert into group_access (id, name) values (1, 'Manager'), (2, 'Seller'), (3, 'Secretary'), (4, 'Signer');
+
+insert into group_access_permission (group_access_id, permission_id)
+select 1, id from permission;
+
+insert into group_access_permission (group_access_id, permission_id)
+select 2, id from permission where name like 'QUERY_%';
+
+insert into group_access_permission (group_access_id, permission_id) values (2, 7);
+
+insert into group_access_permission (group_access_id, permission_id)
+select 3, id from permission where name like 'QUERY%';
+
+insert into group_access_permission (group_access_id, permission_id)
+select 4, id from permission where name like '%_RESTAURANTS';
+
+insert into user (id, name, email, password, creation_date) values
+(1, 'Ewerson dos Reis Carmo', 'ewerson.user@email.com', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp);
+
+insert into user_group_access (user_id, group_access_id) values (1, 1);
+
+insert into oauth_client_details (
+  client_id, resource_ids, client_secret, 
+  scope, authorized_grant_types, web_server_redirect_uri, authorities,
+  access_token_validity, refresh_token_validity, autoapprove
+)
+values (
+  'fooddeliveryapi-web', null, '$2y$12$oKGMpdDHGxYAGzRDCjgawe41UKz8JS3.osNjbyecygCBDNb84m0Ea',
+  'READ,WRITE', 'password', null, null,
+  6 * 60 * 60, 60 * 24 * 60 * 60, null
+);
+
+insert into oauth_client_details (
+  client_id, resource_ids, client_secret, 
+  scope, authorized_grant_types, web_server_redirect_uri, authorities,
+  access_token_validity, refresh_token_validity, autoapprove
+)
+values (
+  'fooddeliveryapi-batch', null, '$2y$12$xJBAED1lWusb6VDDl1QG6ume9NFNpxcSloYMLbmgl2Y/xOuHFGH5q',
+  'READ,WRITE', 'client_credentials', null, null,
+  null, null, null
+);

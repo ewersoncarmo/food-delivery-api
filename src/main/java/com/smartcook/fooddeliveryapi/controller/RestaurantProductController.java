@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.smartcook.fooddeliveryapi.controller.security.CheckSecurity;
 import com.smartcook.fooddeliveryapi.domain.assembler.ProductAssembler;
 import com.smartcook.fooddeliveryapi.domain.assembler.ProductPhotoAssembler;
 import com.smartcook.fooddeliveryapi.domain.entity.Product;
@@ -55,6 +56,7 @@ public class RestaurantProductController {
 	@Autowired
 	private RestaurantService restaurantService;
 	
+	@CheckSecurity.Restaurants.CanEdit
 	@PostMapping
 	public ResponseEntity<ModelResponse<ProductModelResponse>> create(@PathVariable("restaurantId") Long restaurantId,
 			@Valid @RequestBody ProductModelRequest productModelRequest) {
@@ -76,6 +78,7 @@ public class RestaurantProductController {
 				.body(ModelResponse.withData(productModelResponse));
 	}
 
+	@CheckSecurity.Restaurants.CanEdit
 	@PutMapping("/{productId}")
 	public ResponseEntity<ModelResponse<ProductModelResponse>> update(@PathVariable("restaurantId") Long restaurantId,
 			@PathVariable("productId") Long productId, @Valid @RequestBody ProductModelRequest productModelRequest) {
@@ -91,6 +94,7 @@ public class RestaurantProductController {
 				.body(ModelResponse.withData(productModelResponse));
 	}
 	
+	@CheckSecurity.Restaurants.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<ProductModelResponse>>> findAll(@PathVariable("restaurantId") Long restaurantId,
 			@RequestParam(value = "includeInactive", required = false) boolean includeInactive) {
@@ -110,6 +114,7 @@ public class RestaurantProductController {
 				.body(ModelResponse.withData(products));
 	}
 	
+	@CheckSecurity.Restaurants.CanQuery
 	@GetMapping("/{productId}")
 	public ResponseEntity<ModelResponse<ProductModelResponse>> findById(@PathVariable("restaurantId") Long restaurantId,
 			@PathVariable("productId") Long productId) {
@@ -121,6 +126,7 @@ public class RestaurantProductController {
 				.body(ModelResponse.withData(productModelResponse));
 	}
 	
+	@CheckSecurity.Restaurants.CanManage
 	@PutMapping(path = "/{productId}/photo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<ModelResponse<ProductPhotoModelResponse>> updatePhoto(@PathVariable("restaurantId") Long restaurantId,
 			@PathVariable("productId") Long productId, @Valid ProductPhotoModelRequest productPhotoModelRequest) throws IOException {
@@ -146,6 +152,7 @@ public class RestaurantProductController {
 				.body(ModelResponse.withData(productPhotoModelResponse));
 	}
 
+	@CheckSecurity.Restaurants.CanQuery
 	@GetMapping("/{productId}/photo")
 	public ResponseEntity<ModelResponse<ProductPhotoModelResponse>> findPhoto(@PathVariable("restaurantId") Long restaurantId,
 			@PathVariable("productId") Long productId) {
@@ -162,6 +169,7 @@ public class RestaurantProductController {
 				.body(ModelResponse.withData(productPhotoModelResponse));
 	}
 	
+	@CheckSecurity.Restaurants.CanManage
 	@DeleteMapping("/{productId}/photo")
 	public ResponseEntity<Void> removePhoto(@PathVariable("restaurantId") Long restaurantId,
 			@PathVariable("productId") Long productId) {
