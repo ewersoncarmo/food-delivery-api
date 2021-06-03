@@ -1,9 +1,15 @@
 package com.smartcook.fooddeliveryapi.configuration.security.authorizationserver;
 
+import java.security.KeyPair;
+import java.security.interfaces.RSAPublicKey;
 import java.util.Arrays;
 
 import javax.sql.DataSource;
 
+import com.nimbusds.jose.JWSAlgorithm;
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.KeyUse;
+import com.nimbusds.jose.jwk.RSAKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -66,7 +72,18 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 			// Indicates if a new refresh token should be generated every time a new access token is generated
 			.reuseRefreshTokens(false); 
 	}
-	
+
+	@Bean
+	public JWKSet jwkSet() {
+		RSAKey rsaKey = new RSAKey.Builder((RSAPublicKey) keyPair().getPublic())
+				.keyUse(KeyUse.SIGNATURE)
+				.algorithm(JWSAlgorithm.RS256)
+				.keyID("food-delivery-api-id")
+				.build();
+
+		return new JWKSet(rsaKey);
+	}
+
 	@Bean
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
@@ -76,19 +93,21 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		// Example:
 		//jwtAccessTokenConverter.setSigningKey("asdkfljsaçflksajdflçksafjsakdfljaskflsajfdlçkdfjaskçfljsaflkj");
 		
+		jwtAccessTokenConverter.setKeyPair(keyPair());
+		
+		return jwtAccessTokenConverter;
+	}
+
+	private KeyPair keyPair() {
 		// Configuration to sign token with asymmetric key
 		// It must load data from the key store
 		var keyStorePass = jwtKeyStoreProperties.getPassword();
 		var kayPairAlias = jwtKeyStoreProperties.getKeypairAlias();
-		
+
 		var keyStoreKeyFactory = new KeyStoreKeyFactory(jwtKeyStoreProperties.getJksLocation(), keyStorePass.toCharArray());
-		var keyPair = keyStoreKeyFactory.getKeyPair(kayPairAlias);
-		
-		jwtAccessTokenConverter.setKeyPair(keyPair);
-		
-		return jwtAccessTokenConverter;
+		return keyStoreKeyFactory.getKeyPair(kayPairAlias);
 	}
-	
+
 //	public TokenStore redisTokenStore() {
 //		return new RedisTokenStore(redisConnectionFactory);
 //	}

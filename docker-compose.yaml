@@ -1,4 +1,8 @@
-version: '3.3'
+version: '3.9'
+
+networks:
+  food-delivery-api-network:
+    driver: bridge
 
 services:
   mysql:
@@ -8,5 +12,29 @@ services:
       MYSQL_DATABASE: fooddeliveryapi
     ports:
       - 3306:3306
+    networks:
+      - food-delivery-api-network
     volumes:
       - ./db_data:/var/lib/mysql
+
+  food-delivery-api:
+    command: ["/wait-for-it.sh", "mysql:3306", "-t", "30", "--", "java", "-jar", "api.jar"]
+    image: food-delivery-api:${API_VERSION}
+    environment: 
+      DB_HOST: mysql
+    networks:
+      - food-delivery-api-network
+    depends_on: 
+      - mysql
+    deploy:
+      replicas: 2
+      
+  nginx:
+    build: ./nginx
+    image: nginx
+    ports:
+      - 80:80
+    networks:
+      - food-delivery-api-network
+    depends_on:
+      - food-delivery-api
