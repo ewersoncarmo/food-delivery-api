@@ -3,7 +3,7 @@ create table state (
 	name varchar(80) not null, 
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table state add constraint uk_state_name unique (name);
 
@@ -13,7 +13,7 @@ create table city (
 	state_id bigint not null, 
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table city add constraint fk_city_state 
 foreign key (state_id) references state (id);
@@ -28,7 +28,7 @@ create table user (
 	creation_date datetime(6) not null, 
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table user add constraint uk_user_email unique (email);
 
@@ -37,7 +37,7 @@ create table group_access (
 	name varchar(80) not null, 
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table group_access add constraint uk_grp_access_name unique (name);
 
@@ -46,7 +46,7 @@ create table user_group_access (
 	group_access_id bigint not null,
 	
 	primary key (user_id, group_access_id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table user_group_access add constraint fk_usr_grp_access_user 
 foreign key (user_id) references user (id);
@@ -60,7 +60,7 @@ create table permission (
 	description varchar(80) not null, 
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table permission add constraint uk_permission_name unique (name);
 
@@ -69,7 +69,7 @@ create table group_access_permission (
 	permission_id bigint not null,
 	
 	primary key (group_access_id, permission_id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table group_access_permission add constraint fk_grp_access_per_group_access 
 foreign key (group_access_id) references group_access (id);
@@ -82,7 +82,7 @@ create table cuisine (
 	name varchar(80) not null, 
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table cuisine add constraint uk_cuisine_name unique (name);
 
@@ -103,7 +103,7 @@ create table restaurant (
 	update_date datetime(6), 
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table restaurant add constraint fk_restaurant_cuisine 
 foreign key (cuisine_id) references cuisine (id);
@@ -122,7 +122,7 @@ create table product (
 	restaurant_id bigint not null, 
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table product add constraint fk_product_restaurant 
 foreign key (restaurant_id) references restaurant (id);
@@ -137,7 +137,7 @@ create table product_photo (
 	size int not null,
 	
 	primary key (product_id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table product_photo add constraint fk_product_photo_product
 foreign key (product_id) references product (id);
@@ -147,7 +147,7 @@ create table payment_method (
 	description varchar(40) not null, 
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table payment_method add constraint uk_payment_method_description unique (description);
 
@@ -156,7 +156,7 @@ create table restaurant_payment_method (
 	payment_method_id bigint not null,
 	
 	primary key (restaurant_id, payment_method_id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table restaurant_payment_method add constraint fk_rest_pay_meth_restaurant 
 foreign key (restaurant_id) references restaurant (id);
@@ -169,7 +169,7 @@ create table restaurant_responsible_user (
 	user_id bigint not null,
 	
 	primary key (restaurant_id, user_id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table restaurant_responsible_user add constraint fk_rest_resp_user_restaurant
 foreign key (restaurant_id) references restaurant (id);
@@ -198,7 +198,7 @@ create table purchase_order (
 	delivery_date datetime(6), 		
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table purchase_order add constraint fk_purchase_order_city 
 foreign key (address_city_id) references city (id);
@@ -222,7 +222,7 @@ create table purchase_order_item (
 	product_id bigint not null, 
 	
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 alter table purchase_order_item add constraint fk_purchase_order_item_order 
 foreign key (purchase_order_id) references purchase_order (id);
@@ -246,7 +246,7 @@ create table oauth_client_details (
   autoapprove varchar(256),
   
   primary key (client_id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 insert into permission (id, name, description) values (1, 'EDIT_CUISINES', 'Allows to edit cuisines');
 insert into permission (id, name, description) values (2, 'EDIT_PAYMENT_METHODS', 'Allows to create or edit payment methods');

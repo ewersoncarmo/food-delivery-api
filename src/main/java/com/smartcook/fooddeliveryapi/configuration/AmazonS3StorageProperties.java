@@ -1,6 +1,7 @@
 package com.smartcook.fooddeliveryapi.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.amazonaws.regions.Regions;
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Getter
 @Component
 @ConfigurationProperties("api.storage.s3")
+@Profile("production")
 public class AmazonS3StorageProperties {
 
 	private String accessKey;

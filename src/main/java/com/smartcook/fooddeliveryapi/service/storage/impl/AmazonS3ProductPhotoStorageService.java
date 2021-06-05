@@ -5,6 +5,7 @@ import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.amazonaws.services.s3.AmazonS3;
@@ -18,6 +19,7 @@ import com.smartcook.fooddeliveryapi.service.exception.StorageException;
 import com.smartcook.fooddeliveryapi.service.storage.AbstractProductPhotoStorage;
 
 @Component
+@Profile("production")
 public class AmazonS3ProductPhotoStorageService extends AbstractProductPhotoStorage {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AmazonS3ProductPhotoStorageService.class);
