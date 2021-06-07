@@ -11,6 +11,16 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -30,12 +40,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines",
+							"raw": "http://localhost/food-delivery-api/api/v1/cuisines",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -52,6 +61,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -71,12 +90,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines",
+							"raw": "http://localhost/food-delivery-api/api/v1/cuisines",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -93,6 +111,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -112,12 +140,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/cuisines/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -132,6 +159,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -151,12 +188,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/cuisines/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -171,6 +207,16 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -190,12 +236,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/cuisines/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -218,6 +263,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -237,12 +292,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders",
+							"raw": "http://localhost/food-delivery-api/api/v1/purchase-orders",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -281,6 +335,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -300,12 +364,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/purchase-orders/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -320,6 +383,16 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -339,12 +412,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders",
+							"raw": "http://localhost/food-delivery-api/api/v1/purchase-orders",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -358,6 +430,16 @@
 				{
 					"name": "confirm",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -377,12 +459,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders/9/confirm",
+							"raw": "http://localhost/food-delivery-api/api/v1/purchase-orders/9/confirm",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -398,6 +479,16 @@
 				{
 					"name": "deliver",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -417,12 +508,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders/9/deliver",
+							"raw": "http://localhost/food-delivery-api/api/v1/purchase-orders/9/deliver",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -438,6 +528,16 @@
 				{
 					"name": "cancel",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -457,12 +557,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/purchase-orders/9/cancel",
+							"raw": "http://localhost/food-delivery-api/api/v1/purchase-orders/9/cancel",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -506,6 +605,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -536,12 +645,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/statistics/daily-sales",
+							"raw": "http://localhost/food-delivery-api/api/v1/statistics/daily-sales",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -613,6 +721,16 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -632,12 +750,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/users",
+							"raw": "http://localhost/food-delivery-api/api/v1/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -654,6 +771,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -673,12 +800,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/users",
+							"raw": "http://localhost/food-delivery-api/api/v1/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -695,6 +821,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -714,12 +850,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/2",
+							"raw": "http://localhost/food-delivery-api/api/v1/users/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -734,6 +869,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -753,12 +898,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/users/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -773,6 +917,16 @@
 				{
 					"name": "add-group-access",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -792,12 +946,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/1/groups-access/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/users/1/groups-access/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -814,6 +967,16 @@
 				{
 					"name": "change-password",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -833,12 +996,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/1/change-password",
+							"raw": "http://localhost/food-delivery-api/api/v1/users/1/change-password",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -854,6 +1016,16 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -873,12 +1045,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/users/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -893,6 +1064,16 @@
 				{
 					"name": "remove-group-access",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -912,12 +1093,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/1/groups-access/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/users/1/groups-access/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -937,6 +1117,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -956,12 +1146,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/users/1/groups-access",
+							"raw": "http://localhost/food-delivery-api/api/v1/users/1/groups-access",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1002,6 +1191,16 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -1021,12 +1220,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access",
+							"raw": "http://localhost/food-delivery-api/api/v1/groups-access",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1043,6 +1241,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1062,12 +1270,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access",
+							"raw": "http://localhost/food-delivery-api/api/v1/groups-access",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1084,6 +1291,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1103,12 +1320,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/groups-access/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1123,6 +1339,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -1142,12 +1368,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cuisines/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/cuisines/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1162,6 +1387,16 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -1181,12 +1416,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/groups-access/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1201,6 +1435,16 @@
 				{
 					"name": "remove-permission",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -1220,12 +1464,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access/1/permissions/2",
+							"raw": "http://localhost/food-delivery-api/api/v1/groups-access/1/permissions/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1245,6 +1488,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1264,12 +1517,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access/1/permissions",
+							"raw": "http://localhost/food-delivery-api/api/v1/groups-access/1/permissions",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1285,6 +1537,16 @@
 				{
 					"name": "add-permission",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -1304,12 +1566,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/groups-access/1/permissions/2",
+							"raw": "http://localhost/food-delivery-api/api/v1/groups-access/1/permissions/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1351,6 +1612,16 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -1370,12 +1641,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/states",
+							"raw": "http://localhost/food-delivery-api/api/v1/states",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1389,15 +1659,24 @@
 				{
 					"name": "findAll",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/states",
+							"raw": "http://localhost/food-delivery-api/api/v1/states",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1411,15 +1690,24 @@
 				{
 					"name": "findById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/states/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/states/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1434,6 +1722,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -1453,12 +1751,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/states/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/states/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1473,6 +1770,16 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -1492,12 +1799,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/states/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/states/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1517,6 +1823,16 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -1536,12 +1852,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/payment-methods",
+							"raw": "http://localhost/food-delivery-api/api/v1/payment-methods",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1555,15 +1870,24 @@
 				{
 					"name": "findAll",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/payment-methods",
+							"raw": "http://localhost/food-delivery-api/api/v1/payment-methods",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1577,15 +1901,24 @@
 				{
 					"name": "findById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/payment-methods/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/payment-methods/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1600,6 +1933,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -1619,12 +1962,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/payment-methods/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/payment-methods/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1639,6 +1981,16 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -1658,12 +2010,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/payment-methods/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/payment-methods/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1703,6 +2054,16 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -1722,12 +2083,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/permissions",
+							"raw": "http://localhost/food-delivery-api/api/v1/permissions",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1741,15 +2101,24 @@
 				{
 					"name": "findAll",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/permissions",
+							"raw": "http://localhost/food-delivery-api/api/v1/permissions",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1763,15 +2132,24 @@
 				{
 					"name": "findById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/permissions/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/permissions/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1786,6 +2164,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -1805,12 +2193,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/permissions/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/permissions/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1825,6 +2212,16 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -1844,12 +2241,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/permissions/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/permissions/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1889,6 +2285,16 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -1900,7 +2306,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Maringá\",\n\t\"state\": {\n\t\t\"id\": 7\n\t}\n}",
+							"raw": "{\n\t\"name\": \"Maringá\",\n\t\"state\": {\n\t\t\"id\": 1\n\t}\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1908,12 +2314,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cities",
+							"raw": "http://localhost/food-delivery-api/api/v1/cities",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1930,6 +2335,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1949,12 +2364,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cities",
+							"raw": "http://localhost/food-delivery-api/api/v1/cities",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -1971,6 +2385,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1990,12 +2414,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cities/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/cities/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2010,6 +2433,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -2029,12 +2462,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cities/6",
+							"raw": "http://localhost/food-delivery-api/api/v1/cities/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2049,6 +2481,16 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -2068,12 +2510,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/cities/6",
+							"raw": "http://localhost/food-delivery-api/api/v1/cities/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2093,6 +2534,16 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -2104,7 +2555,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Habanero\",\n\t\"freightRate\": 10,\n\t\"cuisine\": {\n\t\t\"id\": 10\n\t},\n\t\"address\": {\n\t\t\"zipCode\": \"87005002\",\n\t\t\"street\": \"Rua\",\n\t\t\"number\": \"159\",\n\t\t\"complement\": \"Complement\",\n\t\t\"neighborhood\": \"Bairro\",\n\t\t\"city\": {\n\t\t\t\"id\": 3\n\t\t}\n\t}\n}",
+							"raw": "{\n\t\"name\": \"Habanero\",\n\t\"freightRate\": 10,\n\t\"cuisine\": {\n\t\t\"id\": 1\n\t},\n\t\"address\": {\n\t\t\"zipCode\": \"87005002\",\n\t\t\"street\": \"Rua\",\n\t\t\"number\": \"159\",\n\t\t\"complement\": \"Complement\",\n\t\t\"neighborhood\": \"Bairro\",\n\t\t\"city\": {\n\t\t\t\"id\": 1\n\t\t}\n\t}\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2112,12 +2563,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2131,6 +2581,16 @@
 				{
 					"name": "activate",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -2150,12 +2610,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/activate",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/activate",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2171,6 +2630,16 @@
 				{
 					"name": "activate-batch",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -2190,12 +2659,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/activate",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/activate",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2210,6 +2678,16 @@
 				{
 					"name": "deactivate-batch",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -2229,12 +2707,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/deactivate",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/deactivate",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2249,6 +2726,16 @@
 				{
 					"name": "opening",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -2268,12 +2755,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/opening",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/opening",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2289,6 +2775,16 @@
 				{
 					"name": "closing",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -2308,12 +2804,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/closing",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/closing",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2329,6 +2824,16 @@
 				{
 					"name": "deactivate",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -2348,12 +2853,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/deactivate",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/deactivate",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2372,6 +2876,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2391,12 +2905,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2413,6 +2926,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2432,12 +2955,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/payment-methods",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/payment-methods",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2456,6 +2978,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2475,12 +3007,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/responsible-users",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/responsible-users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2496,6 +3027,16 @@
 				{
 					"name": "add-payment-method",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -2515,12 +3056,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/payment-methods/3",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/payment-methods/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2537,6 +3077,16 @@
 				{
 					"name": "add-responsible-user",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -2556,12 +3106,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/responsible-users/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/responsible-users/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2578,6 +3127,16 @@
 				{
 					"name": "remove-payment-method",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -2597,12 +3156,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/payment-methods/3",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/payment-methods/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2619,6 +3177,16 @@
 				{
 					"name": "remove-responsible-user",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -2638,12 +3206,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/responsible-users/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/responsible-users/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2663,6 +3230,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2682,12 +3259,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2702,6 +3278,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -2721,12 +3307,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/5",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2741,6 +3326,16 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -2760,12 +3355,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/7",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2788,6 +3382,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2807,12 +3411,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/products/2",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/products/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2829,6 +3432,16 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -2848,12 +3461,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/products",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2872,6 +3484,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2891,12 +3513,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/products",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2912,6 +3533,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -2931,12 +3562,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/products",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -2952,6 +3582,16 @@
 				{
 					"name": "update-photo",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -2973,20 +3613,14 @@
 									"value": "pizza",
 									"type": "text"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/products/1/photo",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/products/1/photo",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -3004,6 +3638,16 @@
 				{
 					"name": "find-photo",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -3019,12 +3663,11 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/products/1/photo",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/products/1/photo",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -3042,6 +3685,16 @@
 				{
 					"name": "remove-photo",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -3058,12 +3711,11 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api/v1/restaurants/1/products/1/photo",
+							"raw": "http://localhost/food-delivery-api/api/v1/restaurants/1/products/1/photo",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api",
@@ -3086,15 +3738,24 @@
 				{
 					"name": "root",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJFd2Vyc29uIGRvcyBSZWlzIENhcm1vIiwidXNlcl9pZCI6MSwidXNlcl9uYW1lIjoiZXdlcnNvbi51c2VyQGVtYWlsLmNvbSIsInNjb3BlIjpbIlJFQUQiLCJXUklURSJdLCJleHAiOjE2MjMwMTM0MTYsImF1dGhvcml0aWVzIjpbIk1BTkFHRV9QVVJDSEFTRV9PUkRFUlMiLCJFRElUX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ0lUSUVTIiwiUVVFUllfUFVSQ0hBU0VfT1JERVJTIiwiRURJVF9SRVNUQVVSQU5UUyIsIlFVRVJZX1VTRVJTX0dST1VQU19QRVJNSVNTSU9OUyIsIkVESVRfQ1VJU0lORVMiLCJFRElUX1BBWU1FTlRfTUVUSE9EUyIsIkVESVRfU1RBVEVTIiwiR0VORVJBVEVfUkVQT1JUUyJdLCJqdGkiOiIzNTBiNzU0Yy1mZjJkLTQ5MzgtYTE4Ni0zYTRkN2NlNzMzYTYiLCJjbGllbnRfaWQiOiJmb29kZGVsaXZlcnlhcGktd2ViIn0.WtsmKRcTd3IRt1hnx4tWKvR-PlPLG9aJaIRz5SSRpJDgfcpF-jhEg6wP54PBm8SOlbw-cPO3eXbCkU8xu693wMUTIHDhy125V4K_oMCVdPD9NPt1-ecOYwMM7Cyz_lHcdGuRCYSCb_V5MYkereUup5OnoBsMhXrGRX66jrBkaSRbqt2ERAtaVoVTSRbGoMffbDk4t6m7vdN2HMKQncHKAUbFNvqMO7UHDDWZZxPpz0SIiVkZ4GdTRmAEyUmkjlbFwoZzyGgLzzvASlD8gOSt5Bk5qfMBREdGJJ5rrpfqXsUl8ATMpBti_HXYpMN3B88rcMw1L01cGr5B0Ix5faJdJw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/food-delivery-api/api",
+							"raw": "http://localhost/food-delivery-api/api",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"api"
@@ -3152,11 +3813,10 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:8080/food-delivery-api/oauth/token",
+									"raw": "localhost/food-delivery-api/oauth/token",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"food-delivery-api",
 										"oauth",
@@ -3202,11 +3862,10 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:8080/food-delivery-api/oauth/token",
+									"raw": "localhost/food-delivery-api/oauth/token",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"food-delivery-api",
 										"oauth",
@@ -3235,11 +3894,10 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:8080/food-delivery-api/oauth/check_token",
+									"raw": "localhost/food-delivery-api/oauth/check_token",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"food-delivery-api",
 										"oauth",
@@ -3285,11 +3943,10 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:8080/food-delivery-api/oauth/token",
+									"raw": "localhost/food-delivery-api/oauth/token",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"food-delivery-api",
 										"oauth",
@@ -3318,11 +3975,10 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:8080/food-delivery-api/oauth/check_token",
+									"raw": "localhost/food-delivery-api/oauth/check_token",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"food-delivery-api",
 										"oauth",
@@ -3370,11 +4026,10 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "localhost:8080/food-delivery-api/oauth/token_key",
+							"raw": "localhost/food-delivery-api/oauth/token_key",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
 							"path": [
 								"food-delivery-api",
 								"oauth",
