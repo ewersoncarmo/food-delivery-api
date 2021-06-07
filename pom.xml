@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.smartcook</groupId>
 	<artifactId>food-delivery-api</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>food-delivery-api</name>
 	<description>Smart Cook : Food Delivery API</description>
 
@@ -214,8 +214,9 @@
 							</execution>
 						</executions>
 						<configuration>
+							<contextDirectory>.</contextDirectory>
 							<dockerfile>Dockerfile</dockerfile>
-							<repository>food-delivery-api</repository>
+							<repository>ewersoncarmo/food-delivery-api</repository>
 							<tag>${project.version}</tag>
 							<buildArgs>
 								<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>

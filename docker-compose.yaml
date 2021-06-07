@@ -18,16 +18,18 @@ services:
       - ./db_data:/var/lib/mysql
   food-delivery-api:
     command: ["/wait-for-it.sh", "mysql:3306", "-t", "30", "--", "java", "-jar", "api.jar"]
-    image: food-delivery-api:${API_VERSION}
+    image: ewersoncarmo/food-delivery-api:${API_VERSION}
     environment: 
       DB_HOST: mysql
       SPRING_PROFILES_ACTIVE: development
+      API_STORAGE_TYPE: ${API_STORAGE_TYPE}
+      API_EMAIL_TYPE: ${API_EMAIL_TYPE}
     networks:
       - food-delivery-api-network
     depends_on:
       - mysql
     deploy:
-      replicas: 2
+      replicas: ${API_REPLICAS}
   nginx:
     build: ./nginx
     image: nginx

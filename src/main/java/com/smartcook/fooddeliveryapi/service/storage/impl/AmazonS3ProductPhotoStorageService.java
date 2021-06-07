@@ -1,13 +1,5 @@
 package com.smartcook.fooddeliveryapi.service.storage.impl;
 
-import java.net.URL;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
-
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
@@ -17,9 +9,16 @@ import com.smartcook.fooddeliveryapi.configuration.AmazonS3StorageProperties;
 import com.smartcook.fooddeliveryapi.domain.event.ProductPhotoStorageEvent;
 import com.smartcook.fooddeliveryapi.service.exception.StorageException;
 import com.smartcook.fooddeliveryapi.service.storage.AbstractProductPhotoStorage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Component;
+
+import java.net.URL;
 
 @Component
-@Profile("production")
+@ConditionalOnProperty(name = "api.storage.type", havingValue = "s3")
 public class AmazonS3ProductPhotoStorageService extends AbstractProductPhotoStorage {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AmazonS3ProductPhotoStorageService.class);

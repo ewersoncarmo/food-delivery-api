@@ -2,11 +2,11 @@ package com.smartcook.fooddeliveryapi.service.storage.impl;
 
 import com.smartcook.fooddeliveryapi.domain.event.ProductPhotoStorageEvent;
 import com.smartcook.fooddeliveryapi.service.storage.AbstractProductPhotoStorage;
-import org.springframework.context.annotation.Profile;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("development")
+@ConditionalOnProperty(name = "api.storage.type", havingValue = "local")
 public class LocalProductPhotoStorageService extends AbstractProductPhotoStorage {
 
     @Override

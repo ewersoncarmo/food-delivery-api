@@ -1,19 +1,17 @@
 package com.smartcook.fooddeliveryapi.configuration;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
-
 import com.amazonaws.regions.Regions;
-
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 @Setter
 @Getter
 @Component
 @ConfigurationProperties("api.storage.s3")
-@Profile("production")
+@ConditionalOnProperty(name = "api.storage.type", havingValue = "s3")
 public class AmazonS3StorageProperties {
 
 	private String accessKey;
