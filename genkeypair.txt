@@ -1,1 +1,0 @@
-keytool -genkeypair -alias fooddeliveyapi -keyalg RSA -keypass 123456 -keystore fooddeliveyapi.jks -storepass 123456

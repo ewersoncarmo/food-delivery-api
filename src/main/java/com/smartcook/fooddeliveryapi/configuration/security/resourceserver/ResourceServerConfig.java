@@ -1,10 +1,7 @@
-package com.smartcook.fooddeliveryapi.configuration.security;
+package com.smartcook.fooddeliveryapi.configuration.security.resourceserver;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
+import com.smartcook.fooddeliveryapi.configuration.security.authorizationserver.JwtKeyStoreProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -15,28 +12,35 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
+
+import javax.crypto.spec.SecretKeySpec;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Profile("!test")
 public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
-	
+
+	@Autowired
+	private JwtKeyStoreProperties jwtKeyStoreProperties;
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.csrf().disable()
 			.cors()
 			.and()
-			// Configuration to use with opaque tokens
-			//.oauth2ResourceServer().opaqueToken();
 			.oauth2ResourceServer()
-			// Configuration to use with transparent tokens
-				.jwt() 
-				// Configuration to define a decoder when token has been signed using symmetric key
-				//.decoder(jwtDecoder())
+				.jwt()
+				.decoder(jwtDecoder())
 				.jwtAuthenticationConverter(jwtAuthenticationConverter());
 	}
 	
@@ -73,11 +77,11 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManager();
 	}
 	
-//	@Bean
-//	public JwtDecoder jwtDecoder() {
-//        // It must be used the same MAC (message authentication code) that has been used to sign the token
-//		var secretKey = new SecretKeySpec("asdkfljsaçflksajdflçksafjsakdfljaskflsajfdlçkdfjaskçfljsaflkj".getBytes(), "HmacSHA256");
-//		
-//		return NimbusJwtDecoder.withSecretKey(secretKey).build();
-//	}
+	@Bean
+	public JwtDecoder jwtDecoder() {
+        // It must be used the same MAC (message authentication code) that has been used to sign the token
+		var secretKey = new SecretKeySpec(jwtKeyStoreProperties.getSigningKey().getBytes(), "HmacSHA256");
+
+		return NimbusJwtDecoder.withSecretKey(secretKey).build();
+	}
 }

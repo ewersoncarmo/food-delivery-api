@@ -21,12 +21,5 @@ import lombok.Setter;
 public class JwtKeyStoreProperties {
 	
 	@NotNull
-    private Resource jksLocation;
-    
-    @NotBlank
-    private String password;
-    
-    @NotBlank
-    private String keypairAlias;	
-    
+    private String signingKey;
 }

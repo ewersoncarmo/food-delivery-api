@@ -1,15 +1,5 @@
 package com.smartcook.fooddeliveryapi.configuration.security.authorizationserver;
 
-import java.security.KeyPair;
-import java.security.interfaces.RSAPublicKey;
-import java.util.Arrays;
-
-import javax.sql.DataSource;
-
-import com.nimbusds.jose.JWSAlgorithm;
-import com.nimbusds.jose.jwk.JWKSet;
-import com.nimbusds.jose.jwk.KeyUse;
-import com.nimbusds.jose.jwk.RSAKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +13,9 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
+
+import javax.sql.DataSource;
+import java.util.Arrays;
 
 @Configuration
 @EnableAuthorizationServer
@@ -35,10 +27,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
-    // Used to get new connection with Redis database in order to configure the Token Store	
-//	@Autowired
-//	private RedisConnectionFactory redisConnectionFactory;
 	
 	@Autowired
 	private JwtKeyStoreProperties jwtKeyStoreProperties;
@@ -68,7 +56,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		endpoints
 			.authenticationManager(authenticationManager)
 			.userDetailsService(userDetailsService)
-		    //.tokenStore(redisTokenStore())
 			.accessTokenConverter(jwtAccessTokenConverter())
 			.tokenEnhancer(enhancerChain)
 			// Indicates if a new refresh token should be generated every time a new access token is generated
@@ -76,41 +63,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	}
 
 	@Bean
-	public JWKSet jwkSet() {
-		RSAKey rsaKey = new RSAKey.Builder((RSAPublicKey) keyPair().getPublic())
-				.keyUse(KeyUse.SIGNATURE)
-				.algorithm(JWSAlgorithm.RS256)
-				.keyID("food-delivery-api-id")
-				.build();
-
-		return new JWKSet(rsaKey);
-	}
-
-	@Bean
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-		
+
 		// Configuration to sign token with symmetric key
 		// It must be defined a MAC (message authentication code)
-		// Example:
-		//jwtAccessTokenConverter.setSigningKey("asdkfljsaçflksajdflçksafjsakdfljaskflsajfdlçkdfjaskçfljsaflkj");
-		
-		jwtAccessTokenConverter.setKeyPair(keyPair());
-		
+		jwtAccessTokenConverter.setSigningKey(jwtKeyStoreProperties.getSigningKey());
+
 		return jwtAccessTokenConverter;
 	}
-
-	private KeyPair keyPair() {
-		// Configuration to sign token with asymmetric key
-		// It must load data from the key store
-		var keyStorePass = jwtKeyStoreProperties.getPassword();
-		var kayPairAlias = jwtKeyStoreProperties.getKeypairAlias();
-
-		var keyStoreKeyFactory = new KeyStoreKeyFactory(jwtKeyStoreProperties.getJksLocation(), keyStorePass.toCharArray());
-		return keyStoreKeyFactory.getKeyPair(kayPairAlias);
-	}
-
-//	public TokenStore redisTokenStore() {
-//		return new RedisTokenStore(redisConnectionFactory);
-//	}
 }

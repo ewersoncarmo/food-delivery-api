@@ -21,9 +21,6 @@
 		<jasperreports.version>6.12.2</jasperreports.version>
 		<aws-java-sdk-s3.version>1.11.797</aws-java-sdk-s3.version>
 		<spring-fox.version>2.9.2</spring-fox.version>
-		<!-- Dependency to configure opaque tokens   
-		<oauth2-oidc-sdk.version>6.21.2</oauth2-oidc-sdk.version>
-		-->
 		<!-- Dependency to configure Authorization Server -->
 		<spring-security-oauth2.version>2.3.7.RELEASE</spring-security-oauth2.version>
 		<!-- Dependency to generate jwt tokens -->
@@ -147,15 +144,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-hateoas</artifactId>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.boot</groupId> -->
-<!-- 			<artifactId>spring-boot-starter-security</artifactId> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.security</groupId> -->
-<!-- 			<artifactId>spring-security-test</artifactId> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
@@ -165,21 +153,11 @@
 			<artifactId>spring-security-oauth2</artifactId>
 			<version>${spring-security-oauth2.version}</version>
 		</dependency>
-		<!-- Dependency to create token store in Redis database -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.boot</groupId> -->
-<!-- 			<artifactId>spring-boot-starter-data-redis</artifactId> -->
-<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-jwt</artifactId>
 			<version>${spring-security-jwt.version}</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.nimbusds</groupId> -->
-<!-- 			<artifactId>oauth2-oidc-sdk</artifactId> -->
-<!-- 			<version>${oauth2-oidc-sdk.version}</version> -->
-<!-- 		</dependency> -->
 	</dependencies>
 
 	<build>
