@@ -1,8 +1,7 @@
 package com.smartcook.fooddeliveryapi.serviceintegrationtest;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
@@ -12,11 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.smartcook.fooddeliveryapi.domain.entity.User;
 import com.smartcook.fooddeliveryapi.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class UserServiceIT extends AbstractTransactionalServiceTest {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	private User john;
 	
@@ -120,7 +123,7 @@ public class UserServiceIT extends AbstractTransactionalServiceTest {
 		
 		user = userService.findById(user.getId());
 		
-		assertEquals("john456", user.getPassword());
+		assertTrue(passwordEncoder.matches("john456", user.getPassword()));
 	}
 
 	@Test

@@ -73,7 +73,7 @@ class RestaurantApiIT extends AbstractRestAssuredIntegrationTest {
 		getRequest()
 			.then()
 				.statusCode(HttpStatus.OK.value())
-				.root("data")
+				.root("data.content")
 					.body("", hasSize(1))
 					.body("[0].id", greaterThan(0))
 					.body("[0].name", equalTo("Habanero"))

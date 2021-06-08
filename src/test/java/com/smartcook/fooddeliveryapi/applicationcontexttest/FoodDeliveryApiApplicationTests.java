@@ -1,14 +1,11 @@
 package com.smartcook.fooddeliveryapi.applicationcontexttest;
 
+import com.smartcook.fooddeliveryapi.util.AbstractConfigurationTest;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
-@TestPropertySource(locations = "/application-test.properties")
-@AutoConfigureTestDatabase
-class FoodDeliveryApiApplicationTests {
+class FoodDeliveryApiApplicationTests extends AbstractConfigurationTest {
 
 	@Test
 	void contextLoads() {
