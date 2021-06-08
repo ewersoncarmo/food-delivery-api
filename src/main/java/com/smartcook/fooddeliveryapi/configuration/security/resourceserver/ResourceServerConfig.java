@@ -1,9 +1,4 @@
-package com.smartcook.fooddeliveryapi.configuration.security;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+package com.smartcook.fooddeliveryapi.configuration.security.resourceserver;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +13,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -30,13 +30,8 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.cors()
 			.and()
-			// Configuration to use with opaque tokens
-			//.oauth2ResourceServer().opaqueToken();
 			.oauth2ResourceServer()
-			// Configuration to use with transparent tokens
-				.jwt() 
-				// Configuration to define a decoder when token has been signed using symmetric key
-				//.decoder(jwtDecoder())
+				.jwt()
 				.jwtAuthenticationConverter(jwtAuthenticationConverter());
 	}
 	
@@ -72,12 +67,4 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 	protected AuthenticationManager authenticationManager() throws Exception {
 		return super.authenticationManager();
 	}
-	
-//	@Bean
-//	public JwtDecoder jwtDecoder() {
-//        // It must be used the same MAC (message authentication code) that has been used to sign the token
-//		var secretKey = new SecretKeySpec("asdkfljsaçflksajdflçksafjsakdfljaskflsajfdlçkdfjaskçfljsaflkj".getBytes(), "HmacSHA256");
-//		
-//		return NimbusJwtDecoder.withSecretKey(secretKey).build();
-//	}
 }
