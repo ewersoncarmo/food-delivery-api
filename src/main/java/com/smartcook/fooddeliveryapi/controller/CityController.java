@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.validation.Valid;
 
+import com.smartcook.fooddeliveryapi.configuration.security.AuthenticationSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.CacheControl;
@@ -37,6 +38,9 @@ public class CityController {
 	
 	@Autowired
 	private CityAssembler cityAssembler;
+
+	@Autowired
+	private AuthenticationSecurityConfig authenticationSecurityConfig;
 	
 	@CheckSecurity.Cities.CanEdit
 	@PostMapping
@@ -56,9 +60,10 @@ public class CityController {
 				.body(ModelResponse.withData(cityModelResponse));
 	}
 	
-	@CheckSecurity.Cities.CanQuery
+//	@CheckSecurity.Cities.CanQuery
 	@GetMapping
 	public ResponseEntity<ModelResponse<CollectionModel<CityModelResponse>>> findAll() {
+		authenticationSecurityConfig.getAuthenticationTest();
 		List<City> cities = cityService.findAll();
 
 		CollectionModel<CityModelResponse> cityModelResponse = cityAssembler.toCollectionModel(cities);

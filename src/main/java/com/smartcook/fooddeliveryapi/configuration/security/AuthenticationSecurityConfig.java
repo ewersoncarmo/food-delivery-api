@@ -42,7 +42,13 @@ public class AuthenticationSecurityConfig {
 		
 		return jwt.getClaim("user_id");
 	}
-	
+
+	public void getAuthenticationTest() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Object principal = authentication.getPrincipal();
+		System.out.println("ok");
+	}
+
 	private Authentication getAuthentication() {
 		return SecurityContextHolder.getContext().getAuthentication();
 	}
