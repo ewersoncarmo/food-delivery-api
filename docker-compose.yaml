@@ -5,6 +5,16 @@ networks:
     driver: bridge
 
 services:
+  redis:
+    image: redis:alpine3.13
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - 6379:6379
+    networks:
+      - food-delivery-api-network
+    volumes:
+      - ./token_store:/data
   mysql:
     image: mysql:5.7
     environment:
@@ -21,6 +31,7 @@ services:
     image: ewersoncarmo/food-delivery-api:${API_VERSION}
     environment: 
       DB_HOST: mysql
+      DB_TOKEN_STORE: redis
       SPRING_PROFILES_ACTIVE: development
       API_STORAGE_TYPE: ${API_STORAGE_TYPE}
       API_EMAIL_TYPE: ${API_EMAIL_TYPE}
@@ -28,6 +39,7 @@ services:
       - food-delivery-api-network
     depends_on:
       - mysql
+      - redis
     deploy:
       replicas: ${API_REPLICAS}
   nginx:

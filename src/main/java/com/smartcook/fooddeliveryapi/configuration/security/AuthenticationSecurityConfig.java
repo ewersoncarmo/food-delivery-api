@@ -1,14 +1,18 @@
 package com.smartcook.fooddeliveryapi.configuration.security;
 
+import com.smartcook.fooddeliveryapi.domain.entity.User;
+import com.smartcook.fooddeliveryapi.persistence.PurchaseOrderRepository;
+import com.smartcook.fooddeliveryapi.persistence.RestaurantRepository;
+import com.smartcook.fooddeliveryapi.persistence.UserRepository;
+import net.minidev.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.DefaultOAuth2AuthenticatedPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Component;
 
-import com.smartcook.fooddeliveryapi.persistence.PurchaseOrderRepository;
-import com.smartcook.fooddeliveryapi.persistence.RestaurantRepository;
+import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class AuthenticationSecurityConfig {
@@ -18,6 +22,9 @@ public class AuthenticationSecurityConfig {
 	
 	@Autowired
 	private PurchaseOrderRepository purchaseOrderRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 	
 	public boolean isUserResponsibleForRestaurant(Long restaurantId) {
 		if (restaurantId == null) {
@@ -29,7 +36,7 @@ public class AuthenticationSecurityConfig {
 	}
 	
 	public boolean canManagePurchaseOrder(Long purchaseOrderId) {
-		return hasAuthority("SCOPE_WRITE") && (hasAuthority("MANAGE_PURCHASE_ORDERS") ||
+		return hasAuthority("WRITE") && (hasAuthority("MANAGE_PURCHASE_ORDERS") ||
 				isUserResponsibleForPurchaseOrder(purchaseOrderId));
 	}
 	
@@ -38,28 +45,34 @@ public class AuthenticationSecurityConfig {
 	}
 	
 	public Long getUserId() {
-		Jwt jwt = (Jwt) getAuthentication().getPrincipal();
-		
-		return jwt.getClaim("user_id");
+		Map<String, Object> attributes = getPrincipalAttributes();
+
+		String email = (String) attributes.get("user_name");
+
+		User user = userRepository.findByEmail(email).get();
+
+		return user.getId();
 	}
 
-	public void getAuthenticationTest() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Object principal = authentication.getPrincipal();
-		System.out.println("ok");
-	}
-
-	private Authentication getAuthentication() {
-		return SecurityContextHolder.getContext().getAuthentication();
+	private Map<String, Object> getPrincipalAttributes() {
+		DefaultOAuth2AuthenticatedPrincipal principal = (DefaultOAuth2AuthenticatedPrincipal) SecurityContextHolder
+				.getContext().getAuthentication().getPrincipal();
+		return principal.getAttributes();
 	}
 	
 	private boolean isUserResponsibleForPurchaseOrder(Long purchaseOrderId) {
 		return purchaseOrderRepository.findByResponsibleUser(purchaseOrderId, getUserId())
 				.isPresent();
 	}
-	
-	private boolean hasAuthority(String authorityName) {
-		return getAuthentication().getAuthorities().stream()
-				.anyMatch(a -> a.getAuthority().equals(authorityName));
+
+	public boolean hasAuthority(String authority) {
+		Map<String, Object> attributes = getPrincipalAttributes();
+
+		return attributes.entrySet().stream()
+				.filter(a -> a.getKey().equals("authorities") || a.getKey().equals("scope"))
+				.anyMatch(a -> {
+					JSONArray value = (JSONArray) a.getValue();
+					return value.stream().anyMatch(v -> v.equals(authority));
+				});
 	}
 }

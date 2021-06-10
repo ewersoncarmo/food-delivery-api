@@ -301,3 +301,14 @@ values (
   'READ,WRITE', 'client_credentials', null, null,
   null, null, null
 );
+
+insert into oauth_client_details (
+  client_id, resource_ids, client_secret,
+  scope, authorized_grant_types, web_server_redirect_uri, authorities,
+  access_token_validity, refresh_token_validity, autoapprove
+)
+values (
+  'checktoken', null, '$2a$10$zewmWilycKsDsFZvD3qoGeQ.qI43LycxMPB8qOmnXvyEuqnPrEN7S',
+  null, null, null, null,
+  null, null, null
+);

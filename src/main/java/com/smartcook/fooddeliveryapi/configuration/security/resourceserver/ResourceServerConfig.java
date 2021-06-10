@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 
 @Configuration
 @EnableWebSecurity
@@ -22,9 +21,6 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 		http
 			.csrf().disable()
 			.cors()
-			.and()
-			.authorizeRequests()
-				.anyRequest().authenticated()
 			.and()
 				.oauth2ResourceServer().opaqueToken();
 	}
