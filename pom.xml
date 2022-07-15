@@ -19,7 +19,7 @@
 		<java.version>12</java.version>
 		<modelmapper.version>2.3.6</modelmapper.version>
 		<jasperreports.version>6.12.2</jasperreports.version>
-		<aws-java-sdk-s3.version>1.11.797</aws-java-sdk-s3.version>
+		<aws-java-sdk-s3.version>1.12.261</aws-java-sdk-s3.version>
 		<spring-fox.version>2.9.2</spring-fox.version>
 		<!-- Dependency to configure opaque tokens   
 		<oauth2-oidc-sdk.version>6.21.2</oauth2-oidc-sdk.version>
